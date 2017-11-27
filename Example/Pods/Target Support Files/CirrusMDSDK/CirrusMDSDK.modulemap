@@ -1,6 +1,0 @@
-framework module CirrusMDSDK {
-  umbrella header "CirrusMDSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -8,8 +8,7 @@
     "CirrusMD": "http://cirrusmd.com"
   },
   "source": {
-    "git": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example.git",
-    "tag": "0.1.0"
+    "http": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v0.1.0/CirrusMDSDK.zip"
   },
   "social_media_url": "https://twitter.com/cirrusmd",
   "platforms": {
@@ -28,6 +27,6 @@
       "z",
       "c++"
     ],
-    "vendored_frameworks": "CirrusMDSDK/CirrusMDSDK.framework"
+    "vendored_frameworks": "CirrusMDSDK.framework"
   }
 }
