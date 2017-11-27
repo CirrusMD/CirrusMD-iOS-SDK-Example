@@ -6,10 +6,10 @@ Pod::Spec.new do |s|
   s.homepage                = "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example"
   s.license                 = 'MIT'
   s.author                  = {'CirrusMD' => 'http://cirrusmd.com'}
-  s.source                  = { :git => 'https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example.git',  :tag => "#{s.version}"}
+  s.source                  = { :http => "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v#{s.version}/CirrusMDSDK.zip" }
   s.social_media_url        = 'https://twitter.com/cirrusmd'
   s.ios.deployment_target   = '9.0'
   s.ios.frameworks          = 'UIKit', 'SystemConfiguration', 'Security', 'Foundation', 'CoreGraphics', 'Accelerate'
   s.ios.libraries           = 'z', 'c++'
-  s.ios.vendored_frameworks = 'CirrusMDSDK/CirrusMDSDK.framework'
+  s.ios.vendored_frameworks = 'CirrusMDSDK.framework'
 end
