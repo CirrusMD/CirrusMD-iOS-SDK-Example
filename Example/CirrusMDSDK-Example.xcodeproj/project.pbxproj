@@ -22,18 +22,18 @@
 		149F42D01FCC6C6500C166DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		149F42D11FCC6C6500C166DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149F42BF1FCBAD8C00C166DA /* Assets.xcassets */; };
 		149F42D21FCC6C6500C166DA /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149F42BC1FCBA97300C166DA /* CirrusMD-LaunchScreen.xib */; };
-		14D50BDC1FCC6FF700ECF757 /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BD41FCC6D1C00ECF757 /* CirrusMDSDK.framework */; };
 		14D50BDE1FCC70CD00ECF757 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDD1FCC70CD00ECF757 /* Security.framework */; };
 		14D50BE01FCC70D300ECF757 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDF1FCC70D300ECF757 /* SystemConfiguration.framework */; };
 		14D50BE21FCC70EE00ECF757 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BE11FCC70EE00ECF757 /* libz.1.tbd */; };
 		14D50BE41FCC70FD00ECF757 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BE31FCC70FD00ECF757 /* libc++.tbd */; };
-		14D50BE51FCC732D00ECF757 /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BD41FCC6D1C00ECF757 /* CirrusMDSDK.framework */; };
-		14D50BE61FCC732D00ECF757 /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BD41FCC6D1C00ECF757 /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14D50BF71FCC834E00ECF757 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BE11FCC70EE00ECF757 /* libz.1.tbd */; };
 		14D50BFC1FCC836200ECF757 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BE31FCC70FD00ECF757 /* libc++.tbd */; };
 		14D50BFD1FCC836D00ECF757 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDD1FCC70CD00ECF757 /* Security.framework */; };
 		14D50BFE1FCC837400ECF757 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDF1FCC70D300ECF757 /* SystemConfiguration.framework */; };
 		14D50C051FCC84C900ECF757 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50C001FCC84C900ECF757 /* Accelerate.framework */; };
+		14F62A7E1FCCBFF40040250C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50C001FCC84C900ECF757 /* Accelerate.framework */; };
+		14F62A851FCCC0C70040250C /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F62A711FCCBF700040250C /* CirrusMDSDK.framework */; };
+		14F62A861FCCC0C70040250C /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14F62A711FCCBF700040250C /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -45,35 +45,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		14D50BD31FCC6D1C00ECF757 /* PBXContainerItemProxy */ = {
+		14F62A701FCCBF700040250C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 140A21E61F8D2BF700FB44D8;
 			remoteInfo = CirrusMDSDK;
 		};
-		14D50BD51FCC6D1C00ECF757 /* PBXContainerItemProxy */ = {
+		14F62A721FCCBF700040250C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 140A21EF1F8D2BF700FB44D8;
 			remoteInfo = CirrusMDSDKTests;
 		};
-		14D50BD71FCC6D1C00ECF757 /* PBXContainerItemProxy */ = {
+		14F62A741FCCBF700040250C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 148A885E1F993FDB003F0066;
 			remoteInfo = CirrusMDSDKTestHost;
 		};
-		14D50BDA1FCC6FE100ECF757 /* PBXContainerItemProxy */ = {
+		14F62A771FCCBF9B0040250C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 140A21E51F8D2BF700FB44D8;
 			remoteInfo = CirrusMDSDK;
 		};
-		14D50BE71FCC732D00ECF757 /* PBXContainerItemProxy */ = {
+		14F62A871FCCC0C70040250C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 			proxyType = 1;
@@ -89,7 +89,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				14D50BE61FCC732D00ECF757 /* CirrusMDSDK.framework in Embed Frameworks */,
+				14F62A861FCCC0C70040250C /* CirrusMDSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +105,7 @@
 		149F42BD1FCBA97300C166DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/CirrusMD-LaunchScreen.xib"; sourceTree = "<group>"; };
 		149F42BF1FCBAD8C00C166DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		149F42D81FCC6C6500C166DA /* CirrusMDSDK-DO-NOT-USE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CirrusMDSDK-DO-NOT-USE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CirrusMDSDK.xcodeproj; path = ../../CirrusMDSDK/CirrusMDSDK.xcodeproj; sourceTree = "<group>"; };
+		14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CirrusMDSDK.xcodeproj; path = "../../CirrusMD-iOS-SDK/CirrusMDSDK.xcodeproj"; sourceTree = "<group>"; };
 		14D50BDD1FCC70CD00ECF757 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14D50BDF1FCC70D300ECF757 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		14D50BE11FCC70EE00ECF757 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
@@ -142,12 +142,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F62A7E1FCCBFF40040250C /* Accelerate.framework in Frameworks */,
 				14D50BE41FCC70FD00ECF757 /* libc++.tbd in Frameworks */,
 				14D50BE21FCC70EE00ECF757 /* libz.1.tbd in Frameworks */,
 				14D50BE01FCC70D300ECF757 /* SystemConfiguration.framework in Frameworks */,
 				14D50BDE1FCC70CD00ECF757 /* Security.framework in Frameworks */,
-				14D50BDC1FCC6FF700ECF757 /* CirrusMDSDK.framework in Frameworks */,
-				14D50BE51FCC732D00ECF757 /* CirrusMDSDK.framework in Frameworks */,
+				14F62A851FCCC0C70040250C /* CirrusMDSDK.framework in Frameworks */,
 				149F42CA1FCC6C6500C166DA /* CoreGraphics.framework in Frameworks */,
 				149F42CB1FCC6C6500C166DA /* UIKit.framework in Frameworks */,
 				149F42CC1FCC6C6500C166DA /* Foundation.framework in Frameworks */,
@@ -173,12 +173,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14D50BCC1FCC6D1C00ECF757 /* Products */ = {
+		14F62A691FCCBF700040250C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				14D50BD41FCC6D1C00ECF757 /* CirrusMDSDK.framework */,
-				14D50BD61FCC6D1C00ECF757 /* CirrusMDSDKTests.xctest */,
-				14D50BD81FCC6D1C00ECF757 /* CirrusMDSDKTestHost.app */,
+				14F62A711FCCBF700040250C /* CirrusMDSDK.framework */,
+				14F62A731FCCBF700040250C /* CirrusMDSDKTests.xctest */,
+				14F62A751FCCBF700040250C /* CirrusMDSDKTestHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,8 +307,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				14D50BDB1FCC6FE100ECF757 /* PBXTargetDependency */,
-				14D50BE81FCC732D00ECF757 /* PBXTargetDependency */,
+				14F62A781FCCBF9B0040250C /* PBXTargetDependency */,
+				14F62A881FCCC0C70040250C /* PBXTargetDependency */,
 			);
 			name = "CirrusMDSDK-DO-NOT-USE";
 			productName = CirrusMDSDK;
@@ -367,7 +367,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 14D50BCC1FCC6D1C00ECF757 /* Products */;
+					ProductGroup = 14F62A691FCCBF700040250C /* Products */;
 					ProjectRef = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
 				},
 			);
@@ -380,25 +380,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		14D50BD41FCC6D1C00ECF757 /* CirrusMDSDK.framework */ = {
+		14F62A711FCCBF700040250C /* CirrusMDSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CirrusMDSDK.framework;
-			remoteRef = 14D50BD31FCC6D1C00ECF757 /* PBXContainerItemProxy */;
+			remoteRef = 14F62A701FCCBF700040250C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		14D50BD61FCC6D1C00ECF757 /* CirrusMDSDKTests.xctest */ = {
+		14F62A731FCCBF700040250C /* CirrusMDSDKTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = CirrusMDSDKTests.xctest;
-			remoteRef = 14D50BD51FCC6D1C00ECF757 /* PBXContainerItemProxy */;
+			remoteRef = 14F62A721FCCBF700040250C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		14D50BD81FCC6D1C00ECF757 /* CirrusMDSDKTestHost.app */ = {
+		14F62A751FCCBF700040250C /* CirrusMDSDKTestHost.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = CirrusMDSDKTestHost.app;
-			remoteRef = 14D50BD71FCC6D1C00ECF757 /* PBXContainerItemProxy */;
+			remoteRef = 14F62A741FCCBF700040250C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -508,15 +508,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		14D50BDB1FCC6FE100ECF757 /* PBXTargetDependency */ = {
+		14F62A781FCCBF9B0040250C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CirrusMDSDK;
-			targetProxy = 14D50BDA1FCC6FE100ECF757 /* PBXContainerItemProxy */;
+			targetProxy = 14F62A771FCCBF9B0040250C /* PBXContainerItemProxy */;
 		};
-		14D50BE81FCC732D00ECF757 /* PBXTargetDependency */ = {
+		14F62A881FCCC0C70040250C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CirrusMDSDK;
-			targetProxy = 14D50BE71FCC732D00ECF757 /* PBXContainerItemProxy */;
+			targetProxy = 14F62A871FCCC0C70040250C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
