@@ -1,0 +1,11 @@
+framework module CirrusMDSDK {
+  umbrella header "CirrusMDSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module CirrusMDSDK.Swift {
+    header "CirrusMDSDK-Swift.h"
+    requires objc
+}
