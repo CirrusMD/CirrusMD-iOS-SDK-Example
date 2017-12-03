@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		149F42BA1FCB6D4700C166DA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B61FCB6D4600C166DA /* SecondViewController.m */; };
-		149F42BB1FCB6D4700C166DA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B91FCB6D4700C166DA /* FirstViewController.m */; };
+		149F42BB1FCB6D4700C166DA /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B91FCB6D4700C166DA /* ExampleViewController.m */; };
 		149F42BE1FCBA97300C166DA /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149F42BC1FCBA97300C166DA /* CirrusMD-LaunchScreen.xib */; };
 		149F42C01FCBAD8C00C166DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149F42BF1FCBAD8C00C166DA /* Assets.xcassets */; };
 		149F42C41FCC6C6500C166DA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B61FCB6D4600C166DA /* SecondViewController.m */; };
-		149F42C51FCC6C6500C166DA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B91FCB6D4700C166DA /* FirstViewController.m */; };
+		149F42C51FCC6C6500C166DA /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F42B91FCB6D4700C166DA /* ExampleViewController.m */; };
 		149F42C61FCC6C6500C166DA /* CMDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* CMDAppDelegate.m */; };
 		149F42C81FCC6C6500C166DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		149F42CA1FCC6C6500C166DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -100,8 +100,8 @@
 		0DAB228D0CBF0BB6A93E52CF /* Pods-CirrusMDSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirrusMDSDK_Tests/Pods-CirrusMDSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		149F42B61FCB6D4600C166DA /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		149F42B71FCB6D4600C166DA /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		149F42B81FCB6D4700C166DA /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		149F42B91FCB6D4700C166DA /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		149F42B81FCB6D4700C166DA /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		149F42B91FCB6D4700C166DA /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		149F42BD1FCBA97300C166DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/CirrusMD-LaunchScreen.xib"; sourceTree = "<group>"; };
 		149F42BF1FCBAD8C00C166DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		149F42D81FCC6C6500C166DA /* CirrusMDSDK-DO-NOT-USE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CirrusMDSDK-DO-NOT-USE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,8 +228,8 @@
 			children = (
 				149F42BF1FCBAD8C00C166DA /* Assets.xcassets */,
 				149F42BC1FCBA97300C166DA /* CirrusMD-LaunchScreen.xib */,
-				149F42B81FCB6D4700C166DA /* FirstViewController.h */,
-				149F42B91FCB6D4700C166DA /* FirstViewController.m */,
+				149F42B81FCB6D4700C166DA /* ExampleViewController.h */,
+				149F42B91FCB6D4700C166DA /* ExampleViewController.m */,
 				149F42B71FCB6D4600C166DA /* SecondViewController.h */,
 				149F42B61FCB6D4600C166DA /* SecondViewController.m */,
 				6003F59C195388D20070C39A /* CMDAppDelegate.h */,
@@ -488,7 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				149F42C41FCC6C6500C166DA /* SecondViewController.m in Sources */,
-				149F42C51FCC6C6500C166DA /* FirstViewController.m in Sources */,
+				149F42C51FCC6C6500C166DA /* ExampleViewController.m in Sources */,
 				149F42C61FCC6C6500C166DA /* CMDAppDelegate.m in Sources */,
 				149F42C81FCC6C6500C166DA /* main.m in Sources */,
 			);
@@ -499,7 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				149F42BA1FCB6D4700C166DA /* SecondViewController.m in Sources */,
-				149F42BB1FCB6D4700C166DA /* FirstViewController.m in Sources */,
+				149F42BB1FCB6D4700C166DA /* ExampleViewController.m in Sources */,
 				6003F59E195388D20070C39A /* CMDAppDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

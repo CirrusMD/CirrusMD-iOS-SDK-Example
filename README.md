@@ -30,7 +30,7 @@ To integrate CirrusMDSDK into your Xcode project using CocoaPods, specify it in 
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '11.0'
+platform :ios, '11.0' # must be >= 9.0
 use_frameworks!
 
 target '<Your Target Name>' do
