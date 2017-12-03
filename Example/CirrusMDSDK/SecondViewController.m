@@ -1,9 +1,9 @@
 //
 //  SecondViewController.m
-//  CirrusMDSDK-Example
+//  CirrusMDSDK
 //
-//  Created by Sean Dougherty on 10/13/17.
-//  Copyright © 2017 CirrusMD. All rights reserved.
+//  Created by CirrusMD.
+//  Copyright (c) 2017 CirrusMD. All rights reserved.
 //
 
 #import "SecondViewController.h"
