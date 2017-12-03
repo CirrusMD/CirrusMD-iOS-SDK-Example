@@ -12,6 +12,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
+![embed-swift](https://user-images.githubusercontent.com/12459/33527866-2c576554-d815-11e7-8e58-794d61422289.png)
+
 ## Installing CirrusMDSDK in your own project
 
 The CirrusMDSDK installs as a prebuilt framework, `CirrusMDSDK.framework`.
