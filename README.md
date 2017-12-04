@@ -230,6 +230,8 @@ Customization of both the _logged out view_ and _error view_ happens via the `Ci
 #### Swift
 
 ```swift
+CirrusMDSDKSession.singleton.delegate = self
+
 func viewForError(code: CirrusMDSDKSessionResult) -> UIView {
     // return a custom logged out view
 }
@@ -241,6 +243,8 @@ func viewForLoggedOut() -> UIView {
 #### Objective-C
 
 ```obj-c
+CirrusMDSDKSession.singleton.delegate = self;
+
 - (UIView *)viewForLoggedOut {
     // return a custom logged out view
 }
@@ -295,6 +299,34 @@ CirrusMDSDKSession.singleton.unregisterforRemoteNotifications()
 
 ```obj-c
 [CirrusMDSDKSession.singleton unregisterforRemoteNotifications];
+```
+
+### Additional API
+
+Access `CirrusMDSDKSession.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
+
+#### Swift
+
+```swift
+let tokenState = CirrusMDSDKSession.singleton.tokenState
+
+switch tokenState {
+case .invalid:
+case .unknown:
+case .valid
+}
+```
+
+#### Objective-C
+
+```obj-c
+CirrusMDSKSessionTokenState tokenState = CirrusMDSDKSession.singleton.tokenState;
+
+switch (tokenState) {
+    case CirrusMDSKSessionTokenStateInvalid:
+    case CirrusMDSKSessionTokenStateUnknown:
+    case CirrusMDSKSessionTokenStateValid:
+}
 ```
 
 ## Author
