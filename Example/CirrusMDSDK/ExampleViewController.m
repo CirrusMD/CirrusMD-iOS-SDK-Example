@@ -147,6 +147,13 @@
                                [self resetHistoryForPatient:@886];
                            }];
 
+    UIAlertAction *triggerError =
+    [UIAlertAction actionWithTitle:@"Trigger Error"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self setToken: @"INVALID"];
+                           }];
+
     UIAlertAction *close = [UIAlertAction actionWithTitle:@"Close"
                                                        style:UIAlertActionStyleDefault
                                                      handler:nil];
@@ -157,6 +164,7 @@
     [alertController addAction:resetLucyHistory];
     [alertController addAction:loadMicah];
     [alertController addAction:resetMicahHistory];
+    [alertController addAction:triggerError];
     [alertController addAction:close];
 
     if(UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
