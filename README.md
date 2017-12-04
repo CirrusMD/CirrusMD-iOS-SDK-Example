@@ -185,17 +185,71 @@ UIViewController *controller = [CirrusMDSDKSession.singleton messageViewControll
 [self presentViewController:controller animated:YES completion:^{...}];
 ```
 
-If the SDK has been provided with a valid secret and token the SSO user's messages will display in the retrieved view controller. It will look something like this:
+If the SDK has been provided with a valid secret and token the SSO user's messages will display in the retrieved view controller. A user's first look at their messages will look something like this:
 
-
+![welcome-message](https://user-images.githubusercontent.com/12459/33579479-304386aa-d907-11e7-99df-b5b163196fd7.png)
 
 ## Advanced Usage
 
-### Custom Status Views
+### Logout
 
-![welcome-message](https://user-images.githubusercontent.com/12459/33579031-9f945fcc-d905-11e7-8213-b7eebb172f08.png  | width=447)
-![error-message](https://user-images.githubusercontent.com/12459/33579037-a4687c22-d905-11e7-84dc-163abf4d191f.png  | width=447)
-![logged-out-message](https://user-images.githubusercontent.com/12459/33579042-a7ecebd0-d905-11e7-9ae0-17e6d67ffd09.png  | width=447)
+You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.
+
+#### Swift
+
+```swift
+CirrusMDSDKSession.singleton.logOut()
+```
+
+#### Objective-C
+
+```obj-c
+[CirrusMDSDKSession.singleton logout];
+```
+
+
+### Custom Status Views
+Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. By default they will look similar to the screens below.
+
+The logged out screen is shown after you call `CirrusMDSDKSession.singleton.logOut()`.
+
+![logged-out-message](https://user-images.githubusercontent.com/12459/33579421-09a8c690-d907-11e7-93e1-f38d5759bd2d.png)
+
+The error screen can be shown for several reasons, such as providing an expired token or invalid secret.
+
+![error-message](https://user-images.githubusercontent.com/12459/33579485-365a9a60-d907-11e7-85e8-603060b0ac1e.png)
+
+Customization of both the _logged out view_ and _error view_ happens via the `CirrusMDSDKSession.delegate`.
+
+1. Implement `CirrusMDSKSessionDelegate`
+2. Provide custom views for any or all of the optional delegates.
+3. Set a frame on the view you provide and it will be centered in the yellow area of the screen below.
+
+![customized-message](https://user-images.githubusercontent.com/12459/33580171-6152b174-d909-11e7-90a6-ff551369382f.png)
+
+#### Swift
+
+```swift
+func viewForError(code: CirrusMDSDKSessionResult) -> UIView {
+    // return a custom logged out view
+}
+func viewForLoggedOut() -> UIView {
+    // return a custom view appropriate for the CirrusMDSDKSessionResult
+}
+```
+
+#### Objective-C
+
+```obj-c
+- (UIView *)viewForLoggedOut {
+    // return a custom logged out view
+}
+
+- (UIView *)viewForErrorWithCode:(enum CirrusMDSDKSessionResult)code {
+    // return a custom view appropriate for the CirrusMDSDKSessionResult
+}
+```
+
 
 ### Push notifications
 In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
