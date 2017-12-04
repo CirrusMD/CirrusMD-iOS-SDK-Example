@@ -14,6 +14,7 @@
 @property UIView *loggedOutView;
 @property NSString *secret;
 @property NSString *sdkID;
+@property NSString *serverToken;
 @end
 
 @implementation ExampleViewController
@@ -190,7 +191,8 @@
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            [self setToken: responseDict[@"token"]];
+            self.serverToken = responseDict[@"token"];
+            [self setToken: self.serverToken];
         }
     }];
 
@@ -213,7 +215,9 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:postData];
 
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {}];
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [self setToken:self.serverToken];
+    }];
 
     [postDataTask resume];
 }
