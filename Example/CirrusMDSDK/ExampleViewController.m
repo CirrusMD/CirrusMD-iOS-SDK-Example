@@ -13,6 +13,7 @@
 @property UIView *errorView;
 @property UIView *loggedOutView;
 @property NSString *secret;
+@property NSString *sdkID;
 @end
 
 @implementation ExampleViewController
@@ -24,9 +25,11 @@
     [self styleNavigationBar];
 
 
-    self.secret = @"eyJzaGFyZWRfc2VjcmV0IjoiZDNlNDYwYjQtOTc3YS00N2QyLTk4YmMtN2M4ZGI1YTkyYTMxIiwieDUwOV9jZXJ0X2RlciI6Ik1JSUQ4RENDQXRpZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREJjTVFzd0NRWURWUVFHRXdKVlV6RVdNQlFHQTFVRUNnd05RMmx5Y25WelRVUWdTVzVqTGpFVU1CSUdBMVVFQ3d3TFJXNW5hVzVsWlhKcGJtY3hEREFLQmdOVkJBTU1BMU5FU3pFUk1BOEdBMVVFQ0F3SVEyOXNiM0poWkc4d0lCY05OekF3TVRBeE1EQXdNREF3V2hnUE5EQXdNVEF4TURFd01EQXdNREJhTUZ3eEN6QUpCZ05WQkFZVEFsVlRNUll3RkFZRFZRUUtEQTFEYVhKeWRYTk5SQ0JKYm1NdU1SUXdFZ1lEVlFRTERBdEZibWRwYm1WbGNtbHVaekVNTUFvR0ExVUVBd3dEVTBSTE1SRXdEd1lEVlFRSURBaERiMnh2Y21Ga2J6Q0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5aNkdTRlVGODFLODN6blBPOFZVOHpnUUE5aGF6dFFoa1BqWloxTmlQZnBYL0ZrNUdaR2I1WVplUzU1VzZET1dDNU1ydTQrOW9BcWtRQ3haSGtDa1pTQmpTdTMxY05lNlVIMTZHbnU1S2xBekx2TDJGeDRMOFhCS2FVQVlLMUZnZ2FmcFE5d0dLOGVVMWpjR3U2VTVybXlaNkRpdlJoNlZpVDJndHFuTmhHTzBTV1hlYkQxaS8rM1AzbGhzRFhlaGZLaEJYWk1QZWlPNmR1VElabWYvWFpORzlHZHVOZkthZ1dHY0prcXBweHB6Q1U3akMyQXJ5L0ZFYnVwckorcGh6aUpTd09abVAyekw4ZXltQUNZL1Q3dTZKMXJlWHA5MFNrS3pRRnlBSytEN2thbzJyMzVkQ2Q5Nm1CZVJRdTcwRWxzT3FSalJEa1huUFpLN3N2VlVRRUNBd0VBQWFPQnVqQ0J0ekFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlN3a0ZpRDlXVkZwc3hrT2JoUVhzakRad0FpYmpDQmhBWURWUjBqQkgwd2U0QVVzSkJZZy9WbFJhYk1aRG00VUY3SXcyY0FJbTZoWUtSZU1Gd3hDekFKQmdOVkJBWVRBbFZUTVJZd0ZBWURWUVFLREExRGFYSnlkWE5OUkNCSmJtTXVNUlF3RWdZRFZRUUxEQXRGYm1kcGJtVmxjbWx1WnpFTU1Bb0dBMVVFQXd3RFUwUkxNUkV3RHdZRFZRUUlEQWhEYjJ4dmNtRmtiNElCQURBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQWZmS0dHREk5SjVLSlhjVU9kQ05GemM2TDFNdC93TnJPa3l0RTJTb0JWcytaTUhwdDNJeVMwZTUvallKYlhSOFdneFVBa000WVhXazZHdXljYlhRMVE4Wk9QYnB3VXYxcy84aEV6V2haK0lpdnlXL2ErMTV5UmpaYzFTWE4rTEFwSzFKalVpSFFiZlpldGMvemo3Rm1PMG9mU2tJdjlaQmJPcXFVWmY4S0pRc3lCcGl3TDdBUUxZOUlqTzlYa1Q2WG45NkxLT3IwdHRUZU5obGJVZHd4TVFMdTRCeGpTd1FidXlUb0h5d3pxUHhNQU9OWXdldVZGbzdQUlNNV0g4TGFONGwySXdCUngzZHQ2SmFuRWprM0ZLQ3lKd2xZNDJLSTBUYzBBZy9zLzE5UTdjZXpHUWh5YXY4alR1ZWlNRlUyeEl1YWVUOXZsS2hqbUg0Tk5BanE1dz09IiwicHVibGljX2tleV9wZW0iOiItLS0tLUJFR0lOIFBVQkxJQyBLRVktLS0tLVxuTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUExbm9aSVZRWHpVcnpmT2M4N3hWVFxuek9CQUQyRnJPMUNHUStObG5VMkk5K2xmOFdUa1prWnZsaGw1TG5sYm9NNVlMa3l1N2o3MmdDcVJBTEZrZVFLUlxubElHTks3ZlZ3MTdwUWZYb2FlN2txVURNdTh2WVhIZ3Z4Y0VwcFFCZ3JVV0NCcCtsRDNBWXJ4NVRXTndhN3BUbVxudWJKbm9PSzlHSHBXSlBhQzJxYzJFWTdSSlpkNXNQV0wvN2MvZVdHd05kNkY4cUVGZGt3OTZJN3AyNU1obVovOVxuZGswYjBaMjQxOHBxQllad21TcW1uR25NSlR1TUxZQ3ZMOFVSdTZtc242bUhPSWxMQTVtWS9iTXZ4N0tZQUpqOVxuUHU3b25XdDVlbjNSS1FyTkFYSUFyNFB1UnFqYXZmbDBKMzNxWUY1RkM3dlFTV3c2cEdORU9SZWM5a3J1eTlWUlxuQVFJREFRQUJcbi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLVxuIn0=";
+    self.secret = @"eyJzaGFyZWRfc2VjcmV0IjoiZWFlZGZkYWMtZjBkYS00NGYxLTkxNDgtYTE3ZWQ4NDcxY2Q3IiwieDUwOV9jZXJ0X2RlciI6Ik1JSUQ4RENDQXRpZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREJjTVFzd0NRWURWUVFHRXdKVlV6RVdNQlFHQTFVRUNnd05RMmx5Y25WelRVUWdTVzVqTGpFVU1CSUdBMVVFQ3d3TFJXNW5hVzVsWlhKcGJtY3hEREFLQmdOVkJBTU1BMU5FU3pFUk1BOEdBMVVFQ0F3SVEyOXNiM0poWkc4d0lCY05OekF3TVRBeE1EQXdNREF3V2hnUE5EQXdNVEF4TURFd01EQXdNREJhTUZ3eEN6QUpCZ05WQkFZVEFsVlRNUll3RkFZRFZRUUtEQTFEYVhKeWRYTk5SQ0JKYm1NdU1SUXdFZ1lEVlFRTERBdEZibWRwYm1WbGNtbHVaekVNTUFvR0ExVUVBd3dEVTBSTE1SRXdEd1lEVlFRSURBaERiMnh2Y21Ga2J6Q0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUt2NFNDT284UURvV3dnWDJHM3NHNTZXcTlBQ3VQMVlMbkQwNjVNdE5oZXZ5SGFiMWhTQTRlOStSR1R6ZUU1cDBFdUh0a3NYK3ZCek9iUFdUOVQwN0dBaVBSVkdWaVFSellpWEFOQTIvMVBBdk9Pa1JCVGUrZlJFc2FkVHJEdWx1SHhhc3B6dk9NR21KU0xIckJBUTVVTUdjck9leU9PYktnb2JzK0dUNFg4V3ZsMG1wWEN4aEZtTVozdmx3aDZJaTEwRlFqN2J0NmI2b2YremRxSXRaK1hkTWtZalB2NFc2dGp4Ym0zS005djJxaTYrcVJraWxlZW5NbTRQb2FEL09YUmZCdUZMMFJrYi9uTDgxV0M4MkFyREUzNE0ycmZrUXNMeGFvLzROdHBtVlExemtxSXNYU3g4VEZaMWpDUVJXcFIxTDAzK09BYkp3c3gwVEgwUE9Fc0NBd0VBQWFPQnVqQ0J0ekFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlI3RHdOdE5tNzVvVnZiSlBtaXg0dHY4MXlmUkRDQmhBWURWUjBqQkgwd2U0QVVldzhEYlRadSthRmIyeVQ1b3NlTGIvTmNuMFNoWUtSZU1Gd3hDekFKQmdOVkJBWVRBbFZUTVJZd0ZBWURWUVFLREExRGFYSnlkWE5OUkNCSmJtTXVNUlF3RWdZRFZRUUxEQXRGYm1kcGJtVmxjbWx1WnpFTU1Bb0dBMVVFQXd3RFUwUkxNUkV3RHdZRFZRUUlEQWhEYjJ4dmNtRmtiNElCQURBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUN6V0ZFY1N5WUQxNWQ1Qm0vdEhWZTRzQU44RWNNVGFQaVRXWkdYN0dXNGZUTFphWE5XRCtrUnN6VDlOU0FCNDVGNHF6Q3pCNE1hbmdZSHI5VlR0c1kzeGZpVDl3ZDFpMDJtNUorTjZLeFVrZ3Awdzh3YW90bVFmLzR4WnRta21Qa1Z3Rlo1NkVXTFVKcDFLLzIvQ2hOMDRlRGNHL3pvWXI1TDVaRkRDQW5iM0s5TUdoOVM0QjdBY2lKV0k1V0lmZncreGJQN3c4ckc3Y2sveDliWXFZbXZmelBrdXh0elRSK1Z1bHV5aDJCMzI2QU5na1k0dDNRNWNDNk1JQm45VFdFTEt3L1p4a2E3SUhKdGZ0ekxxZlpMckJBd1VFcm1OK29IbmFBaGxZb1VjdG9yNmk5alFmQTNnSTVTTW9hcVpUWEwrK0I4aW9nVHJZOUgwNWFEYzZ0dz09IiwicHVibGljX2tleV9wZW0iOiItLS0tLUJFR0lOIFBVQkxJQyBLRVktLS0tLVxuTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFxL2hJSTZqeEFPaGJDQmZZYmV3YlxubnBhcjBBSzQvVmd1Y1BUcmt5MDJGNi9JZHB2V0ZJRGg3MzVFWlBONFRtblFTNGUyU3hmNjhITTVzOVpQMVBUc1xuWUNJOUZVWldKQkhOaUpjQTBEYi9VOEM4NDZSRUZONzU5RVN4cDFPc082VzRmRnF5bk84NHdhWWxJc2VzRUJEbFxuUXdaeXM1N0k0NXNxQ2h1ejRaUGhmeGErWFNhbGNMR0VXWXhuZStYQ0hvaUxYUVZDUHR1M3B2cWgvN04yb2kxblxuNWQweVJpTSsvaGJxMlBGdWJjb3oyL2FxTHI2cEdTS1Y1NmN5YmcraG9QODVkRjhHNFV2UkdSditjdnpWWUx6WVxuQ3NNVGZnemF0K1JDd3ZGcWovZzIybVpWRFhPU29peGRMSHhNVm5XTUpCRmFsSFV2VGY0NEJzbkN6SFJNZlE4NFxuU3dJREFRQUJcbi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLVxuIn0=";
 
-    [self loadTokenForPatient:@270];
+    self.sdkID = @"21dca847-a7c8-4150-99eb-a255231a2f00";
+
+    [self loadTokenForPatient:@886];
 
     UIViewController *root = [CirrusMDSDKSession.singleton messageViewController];
     [self setViewControllers:@[root] animated:NO];
@@ -115,18 +118,32 @@
                            }];
 
 
-    UIAlertAction *loadPatient270 =
-    [UIAlertAction actionWithTitle:@"Load Patient 270"
+    UIAlertAction *loadLucy =
+    [UIAlertAction actionWithTitle:@"Load Lucy Barnet"
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction * _Nonnull action) {
-                               [self loadTokenForPatient:@270];
+                               [self loadTokenForPatient:@887];
                            }];
 
-    UIAlertAction *loadPatient271 =
-    [UIAlertAction actionWithTitle:@"Load Patient 1"
+    UIAlertAction *resetLucyHistory =
+    [UIAlertAction actionWithTitle:@"Reset Lucy Barnet's History"
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction * _Nonnull action) {
-                               [self loadTokenForPatient:@1];
+                               [self resetHistoryForPatient:@887];
+                           }];
+
+    UIAlertAction *loadMicah =
+    [UIAlertAction actionWithTitle:@"Load Micah Green"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self loadTokenForPatient:@886];
+                           }];
+
+    UIAlertAction *resetMicahHistory =
+    [UIAlertAction actionWithTitle:@"Reset Micah Green's History"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self resetHistoryForPatient:@886];
                            }];
 
     UIAlertAction *close = [UIAlertAction actionWithTitle:@"Close"
@@ -135,8 +152,10 @@
     [alertController addAction:logout];
     [alertController addAction:registerForRN];
     [alertController addAction:unregisterForRN];
-    [alertController addAction:loadPatient270];
-    [alertController addAction:loadPatient271];
+    [alertController addAction:loadLucy];
+    [alertController addAction:resetLucyHistory];
+    [alertController addAction:loadMicah];
+    [alertController addAction:resetMicahHistory];
     [alertController addAction:close];
 
     if(UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -159,7 +178,7 @@
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSURL *url = [NSURL URLWithString:@"https://staging.cirrusmd.com/sdk/v1/sandbox/sessions"];
-    NSDictionary *postDict = @{@"patient_id": patientID, @"sdk_id": @"a7236e99-4e4a-4bc9-b29f-abf5616bbeb7"};
+    NSDictionary *postDict = @{@"patient_id": patientID, @"sdk_id": self.sdkID};
     NSData *postData = [NSJSONSerialization dataWithJSONObject:postDict options:0 error:nil];
 
     [request setURL:url];
@@ -174,6 +193,27 @@
             [self setToken: responseDict[@"token"]];
         }
     }];
+
+    [postDataTask resume];
+}
+
+- (void)resetHistoryForPatient:(NSNumber *)patientID {
+    [CirrusMDSDKSession.singleton setSecret: self.secret];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSURL *url = [NSURL URLWithString:@"https://staging.cirrusmd.com/sdk/v1/sandbox/history"];
+    NSDictionary *postDict = @{@"patient_id": patientID, @"sdk_id": self.sdkID};
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:postDict options:0 error:nil];
+
+    [request setURL:url];
+    [request setHTTPMethod:@"DELETE"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:postData];
+
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {}];
 
     [postDataTask resume];
 }

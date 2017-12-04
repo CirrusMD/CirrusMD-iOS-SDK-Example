@@ -159,6 +159,36 @@ CirrusMDSDKSession.singleton.setToken("RETRIEVED_TOKEN") { result in
 }];
 ```
 
+4. Retrieve a `MessageViewController` present it.
+
+#### Swift
+
+```swift
+let controller = CirrusMDSDKSession.singleton.messageViewController()
+
+self.navigationController?.pushViewController(controller, animated: true)
+
+// or
+
+self.present(controller, animated: true) {...}
+```
+
+#### Objective-C
+
+```obj-c
+UIViewController *controller = [CirrusMDSDKSession.singleton messageViewController];
+
+[self.navigationController pushViewController:controller animated:YES];
+
+// or
+
+[self presentViewController:controller animated:YES completion:^{...}];
+```
+
+If the SDK has been provided with a valid secret and token the SSO user's messages will display in the retrieved view controller. It will look something like this:
+
+
+
 ## Advanced Usage
 
 ### Push notifications
