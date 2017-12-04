@@ -191,6 +191,12 @@ If the SDK has been provided with a valid secret and token the SSO user's messag
 
 ## Advanced Usage
 
+### Custom Status Views
+
+![welcome-message](https://user-images.githubusercontent.com/12459/33579031-9f945fcc-d905-11e7-8213-b7eebb172f08.png  | width=447)
+![error-message](https://user-images.githubusercontent.com/12459/33579037-a4687c22-d905-11e7-84dc-163abf4d191f.png  | width=447)
+![logged-out-message](https://user-images.githubusercontent.com/12459/33579042-a7ecebd0-d905-11e7-9ae0-17e6d67ffd09.png  | width=447)
+
 ### Push notifications
 In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
 
