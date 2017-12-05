@@ -256,10 +256,25 @@ CirrusMDSDKSession.singleton.delegate = self;
 
 
 ### Push notifications
-In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
+In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. Contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
 
 #### Registering for remote notifications
 **_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
+
+1. Register for remote notications.
+
+```swift
+registerForRemoteNotifications()
+```
+
+```obj-c
+UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
+     (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
+[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+[[UIApplication sharedApplication] registerForRemoteNotifications];
+```
+
+Use the `deviceToken` provided by Apple when [application(_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
 
 #### Swift
 
@@ -300,6 +315,25 @@ CirrusMDSDKSession.singleton.unregisterforRemoteNotifications()
 ```obj-c
 [CirrusMDSDKSession.singleton unregisterforRemoteNotifications];
 ```
+
+It is up to the host application to handle incoming push notifications appropriately. The payload of the `userInfo` dictionary passed to [application(_:didReceiveRemoteNotification:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623117-application) or the newer [application(_:didReceiveRemoteNotification:fetchCompletionHandler:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) has the following shape.
+
+```json
+{
+  "aps" : {
+    "alert" : "You have a new message.",
+    "badge" : 1,
+    "sound" : "default"
+  },
+  "custom_data" : {
+    "event" : "message:new",
+    "owner_id" : 1234,
+    "stream_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  }
+}
+```
+
+After inspecting the incoming payload and finding `custom_data.event.message:new` you may want to display the `UIViewController` provided by `CirrusMDSDKSession.singleton.messageViewController()`.
 
 ### Additional API
 
