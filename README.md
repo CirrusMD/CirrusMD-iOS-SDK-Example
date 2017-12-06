@@ -213,7 +213,7 @@ Two screens displayed by the SDK have default values that can be customized. The
 
 The logged out screen is shown after you call `CirrusMDSDKSession.singleton.logOut()`.
 
-![logged-out-message](https://user-images.githubusercontent.com/12459/33579421-09a8c690-d907-11e7-93e1-f38d5759bd2d.png)
+![logged-out](https://user-images.githubusercontent.com/12459/33667547-605ac368-da5a-11e7-8abc-bfd6457b6ee0.png)
 
 The error screen can be shown for several reasons, such as providing an expired token or invalid secret.
 
