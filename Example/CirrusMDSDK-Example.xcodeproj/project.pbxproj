@@ -111,6 +111,8 @@
 		14D50BE11FCC70EE00ECF757 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		14D50BE31FCC70FD00ECF757 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		14D50C001FCC84C900ECF757 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		14E3EE561FD71B72003E8EE9 /* CirrusMDSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CirrusMDSDK_Example.entitlements; sourceTree = "<group>"; };
+		14E3EE571FD71B86003E8EE9 /* CirrusMDSDK-DO-NOT-USE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CirrusMDSDK-DO-NOT-USE.entitlements"; sourceTree = "<group>"; };
 		51E99D086FBA14DBF5EBDAEF /* Pods_CirrusMDSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CirrusMDSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* CirrusMDSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CirrusMDSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,6 +188,8 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				14E3EE571FD71B86003E8EE9 /* CirrusMDSDK-DO-NOT-USE.entitlements */,
+				14E3EE561FD71B72003E8EE9 /* CirrusMDSDK_Example.entitlements */,
 				14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for CirrusMDSDK */,
@@ -346,11 +350,21 @@
 				ORGANIZATIONNAME = steam;
 				TargetAttributes = {
 					149F42C11FCC6C6500C166DA = {
-						DevelopmentTeam = DL5M889URM;
+						DevelopmentTeam = C7DYCH58CQ;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = DL5M889URM;
+						DevelopmentTeam = C7DYCH58CQ;
 						LastSwiftMigration = 0910;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -554,13 +568,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DL5M889URM;
+				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
+				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CirrusMDSDK/CirrusMDSDK-Prefix.pch";
 				INFOPLIST_FILE = "CirrusMDSDK_Example copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cirrusmd.sdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -575,13 +590,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DL5M889URM;
+				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
+				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CirrusMDSDK/CirrusMDSDK-Prefix.pch";
 				INFOPLIST_FILE = "CirrusMDSDK_Example copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cirrusmd.sdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -669,13 +685,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DL5M889URM;
+				CODE_SIGN_ENTITLEMENTS = CirrusMDSDK_Example.entitlements;
+				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CirrusMDSDK/CirrusMDSDK-Prefix.pch";
 				INFOPLIST_FILE = "CirrusMDSDK/CirrusMDSDK-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cirrusmd.sdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -691,13 +708,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DL5M889URM;
+				CODE_SIGN_ENTITLEMENTS = CirrusMDSDK_Example.entitlements;
+				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CirrusMDSDK/CirrusMDSDK-Prefix.pch";
 				INFOPLIST_FILE = "CirrusMDSDK/CirrusMDSDK-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cirrusmd.sdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

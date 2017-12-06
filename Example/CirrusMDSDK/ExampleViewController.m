@@ -97,6 +97,37 @@
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
 
+
+
+
+    UIAlertAction *loadLucy =
+    [UIAlertAction actionWithTitle:@"Load Lucy Barnet"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self loadTokenForPatient:@887];
+                           }];
+
+    UIAlertAction *loadMicah =
+    [UIAlertAction actionWithTitle:@"Load Micah Green"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self loadTokenForPatient:@886];
+                           }];
+
+    UIAlertAction *resetLucyHistory =
+    [UIAlertAction actionWithTitle:@"Reset Lucy Barnet's History"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self resetHistoryForPatient:@887];
+                           }];
+
+    UIAlertAction *resetMicahHistory =
+    [UIAlertAction actionWithTitle:@"Reset Micah Green's History"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               [self resetHistoryForPatient:@886];
+                           }];
+
     UIAlertAction *logout =
     [UIAlertAction actionWithTitle:@"Log Out"
                              style:UIAlertActionStyleDefault
@@ -118,33 +149,18 @@
                                [self unregisterDeviceToken];
                            }];
 
-
-    UIAlertAction *loadLucy =
-    [UIAlertAction actionWithTitle:@"Load Lucy Barnet"
+    UIAlertAction *toggleCustomViewsOn  =
+    [UIAlertAction actionWithTitle:@"Custom Views On"
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction * _Nonnull action) {
-                               [self loadTokenForPatient:@887];
+                               CirrusMDSDKSession.singleton.delegate = self;
                            }];
 
-    UIAlertAction *resetLucyHistory =
-    [UIAlertAction actionWithTitle:@"Reset Lucy Barnet's History"
+    UIAlertAction *toggleCustomViewsOff  =
+    [UIAlertAction actionWithTitle:@"Custom Views Off"
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction * _Nonnull action) {
-                               [self resetHistoryForPatient:@887];
-                           }];
-
-    UIAlertAction *loadMicah =
-    [UIAlertAction actionWithTitle:@"Load Micah Green"
-                             style:UIAlertActionStyleDefault
-                           handler:^(UIAlertAction * _Nonnull action) {
-                               [self loadTokenForPatient:@886];
-                           }];
-
-    UIAlertAction *resetMicahHistory =
-    [UIAlertAction actionWithTitle:@"Reset Micah Green's History"
-                             style:UIAlertActionStyleDefault
-                           handler:^(UIAlertAction * _Nonnull action) {
-                               [self resetHistoryForPatient:@886];
+                               CirrusMDSDKSession.singleton.delegate = nil;
                            }];
 
     UIAlertAction *triggerError =
@@ -157,14 +173,17 @@
     UIAlertAction *close = [UIAlertAction actionWithTitle:@"Close"
                                                        style:UIAlertActionStyleDefault
                                                      handler:nil];
-    [alertController addAction:logout];
+
+    [alertController addAction:loadLucy];
+    [alertController addAction:loadMicah];
+    [alertController addAction:resetLucyHistory];
+    [alertController addAction:resetMicahHistory];
     [alertController addAction:registerForRN];
     [alertController addAction:unregisterForRN];
-    [alertController addAction:loadLucy];
-    [alertController addAction:resetLucyHistory];
-    [alertController addAction:loadMicah];
-    [alertController addAction:resetMicahHistory];
+    [alertController addAction:toggleCustomViewsOn];
+    [alertController addAction:toggleCustomViewsOff];
     [alertController addAction:triggerError];
+    [alertController addAction:logout];
     [alertController addAction:close];
 
     if(UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -270,9 +289,12 @@
 }
 
 - (void)registerDeviceToken {
-    NSString* str = @"teststring";
-    NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    [CirrusMDSDKSession.singleton registerforRemoteNotifications: data];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
+     (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
+
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (void)unregisterDeviceToken {
