@@ -80,7 +80,8 @@ Basic usage of of the CirrusMDSDK is very simple.
 
 ### The details
 
-1. Ensure your backend API service retrieves a valid token via CirrusMD's SSO API. TODO: Add the correct documentation for JWT retrieval here.
+1. Our team works with your technical staff to provide SSO for your patients using the CirrusMD platform. The CirrusMDSDK uses tokens retrieved via SSO from CirrusMD's SSO service. Each SSO integration is slightly customized based on your needs. In general, your backend service requests a token representing a patient from our SSO service which provides the token that should be set on the SDK.
+
 *** **_Do not cache CirrusMD provided JWTs_** ***
 
 2. Set the CirrusMD provided secret. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. The secret must be set prior to setting the token in the next step. You must also set set the secret after logging out of the SDK.
