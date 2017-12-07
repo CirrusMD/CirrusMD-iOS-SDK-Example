@@ -1,6 +1,21 @@
+![cirrus-logo](https://user-images.githubusercontent.com/12459/33736599-70d3255e-db50-11e7-80db-74e5b3899b77.png)
+
 # CirrusMDSDK
 
 CirrusMDSDK it an embeddable SDK. It enables customers of CirrusMD to provide the CirrusMD patient chat experience in their own applications. While the example application will work in a sandboxed environment when built, integrating CirrusMDSDK into your own application will require you to be a CirrusMD customer. Integration requires a unique `secret` and SSO `token` to work correctly. Please contact your CirrusMD account representative for more information.
+
+![chat](https://user-images.githubusercontent.com/12459/33736363-9149bb00-db4f-11e7-89d6-50151ca1761f.png)
+
+- [Example Application](#example-application)
+- [Requirements](#requirements)
+- [Installation](#installing-cirrusmdsdk-in-your-own-project)
+- [Basic Usage](#basic-usage)
+- [Advanced Usage](#advanced-usage)
+  - [Logout](#logout)
+  - [Custom Status Views](#custom-status-views)
+  - [Push notifications](#push-notifications)
+  - [Additional API](#additional-api)
+- [License](#license)
 
 ## Example Application
 
@@ -11,7 +26,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - iOS 9.0+
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
-
 
 ## Installing CirrusMDSDK in your own project
 
