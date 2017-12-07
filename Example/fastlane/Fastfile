@@ -1,0 +1,29 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+fastlane_version "2.68.2"
+
+default_platform :ios
+
+# Fastfile actions accept additional configuration, but
+# don't worry, fastlane will prompt you for required
+# info which you can add here later
+lane :beta do
+  increment_build_number
+
+  gym(
+    scheme: "CirrusMDSDK-DO-NOT-USE",
+    workspace: "CirrusMDSDK-Example.xcworkspace",
+    export_method: "enterprise",
+    export_options: {
+      provisioningProfiles: {
+        "com.cirrusmd.CirrusMDSDK-Example" => "CirrusMD SDK Example"
+      }
+    }
+  )
+
+  crashlytics(
+    api_token: ENV["CIRRUSMD_IOS_SDK_CRASHLYTICS_API_TOKEN"],
+    build_secret: ENV["CIRRUSMD_IOS_SDK_CRASHLYTICS_BUILD_SECRET"]
+  )
+end
