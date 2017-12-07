@@ -76,8 +76,7 @@ Basic usage of of the CirrusMDSDK is very simple.
 1. retrieve a token via SSO
 1. set the CirrusMD provided secret on the SDK
 1. set the SSO provided token on the SDK
-1. ask the SDK for a messages controller
-1. display the controller
+1. ask the SDK for a messages controller and display it
 
 ### The details
 
@@ -167,7 +166,7 @@ CirrusMDSDKSession.singleton.setToken("RETRIEVED_TOKEN") { result in
 }];
 ```
 
-4. Retrieve a `MessageViewController` present it.
+4. Retrieve a `MessageViewController` and present it.
 
 #### Swift
 
@@ -218,6 +217,12 @@ CirrusMDSDKSession.singleton.logOut()
 
 ### Custom Status Views
 
+Ideally, your patients always see a working messages view when you present a `MessagesViewController`. However, there are certain times when we're unable to show messages.
+
+The first is when you have explicity called `logout()`. We recommend calling logout, _only_ when your patient logs out of your appication. In that case they will not see the _logged out view_ because they will be logged out of your application as well. You should log them back into the SDK when they next log back into your application.
+
+The second is when the SDK is unable to verify the secret and/or token. In either case, an _error view_  is shown. We recommend you handle all errors passed to the last argument of `CirrusMDSDKSession.singleton.setToken`'s completion handler prior to showing the `MessagesViewController` if possible. Doing so will provide a better experience for your user. Some errors may happen after the `MessagesViewController` is already on screen. In that case, _error view_ is displayed.
+
 Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. We strongly recommend that you provide your own custom views for both cases. Because the CirrusMDSDK uses SSO to authenticate your patients, we are unable to provide logged out UI that helps the patient log back in. By providing your patients with a custom _logout out view_ you can, for example, provide relevant messaging and a button to log back in using the same SSO you implemented to log them in originally. Every time the _error view_ is shown the resolution is retrieving a new SSO token and setting it via `CirrusMDSDKSession.singleton.setToken(:)`. Providing a custom _error view_ gives you the ability to display relevant messaging and interactions the user can take, most likely a button to re-attempt SSO.
 
 By default they will look similar to the screens below:
@@ -265,14 +270,12 @@ CirrusMDSDKSession.singleton.delegate = self;
 }
 ```
 
-
 ### Push notifications
 In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. Contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
 
 #### Registering for remote notifications
 **_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
 
-1. Register for remote notications.
 
 #### Swift
 
