@@ -12,7 +12,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
-![embed-swift](https://user-images.githubusercontent.com/12459/33527866-2c576554-d815-11e7-8e58-794d61422289.png)
 
 ## Installing CirrusMDSDK in your own project
 
@@ -72,6 +71,15 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 #### NEED TO DOCUMENT THE STEPS FOR INTEGRATING IT MANUALLY HERE
 
 ## Basic Usage
+
+Basic usage of of the CirrusMDSDK is very simple.
+1. retrieve a token via SSO
+1. set the CirrusMD provided secret on the SDK
+1. set the SSO provided token on the SDK
+1. ask the SDK for a messages controller
+1. display the controller
+
+### The details
 
 1. Ensure your backend API service retrieves a valid token via CirrusMD's SSO API. TODO: Add the correct documentation for JWT retrieval here.
 *** **_Do not cache CirrusMD provided JWTs_** ***
@@ -209,9 +217,12 @@ CirrusMDSDKSession.singleton.logOut()
 
 
 ### Custom Status Views
-Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. By default they will look similar to the screens below.
 
-The logged out screen is shown after you call `CirrusMDSDKSession.singleton.logOut()`.
+Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. We strongly recommend that you provide your own custom views for both cases. Because the CirrusMDSDK uses SSO to authenticate your patients, we are unable to provide logged out UI that helps the patient log back in. By providing your patients with a custom _logout out view_ you can, for example, provide relevant messaging and a button to log back in using the same SSO you implemented to log them in originally. Every time the _error view_ is shown the resolution is retrieving a new SSO token and setting it via `CirrusMDSDKSession.singleton.setToken(:)`. Providing a custom _error view_ gives you the ability to display relevant messaging and interactions the user can take, most likely a button to re-attempt SSO.
+
+By default they will look similar to the screens below:
+
+The default logged out screen is shown after you call `CirrusMDSDKSession.singleton.logOut()`.
 
 ![logged-out](https://user-images.githubusercontent.com/12459/33667547-605ac368-da5a-11e7-8abc-bfd6457b6ee0.png)
 
@@ -263,13 +274,19 @@ In order to enable push notifications for your patients you'll need to provide C
 
 1. Register for remote notications.
 
+#### Swift
+
 ```swift
-registerForRemoteNotifications()
+let settings = UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil)
+UIApplication.shared.registerUserNotificationSettings(settings)
+UIApplication.shared.registerForRemoteNotifications()
 ```
+
+#### Objective-C
 
 ```obj-c
 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
-     (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
+  (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
 [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
