@@ -1,5 +1,5 @@
 PODS:
-  - CirrusMDSDK (0.1.0)
+  - CirrusMDSDK (0.2.0)
 
 DEPENDENCIES:
   - CirrusMDSDK (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: 0385ff3bae0f41e3bed2523acbdc2d7ef5a1944f
+  CirrusMDSDK: 04b247ce83a27e8750155af234aa3141955dbcef
 
 PODFILE CHECKSUM: 9ecdf2b46445388f2289b629032240995fe995d1
 
