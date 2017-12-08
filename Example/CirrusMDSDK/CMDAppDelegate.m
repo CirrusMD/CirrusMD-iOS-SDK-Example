@@ -16,8 +16,35 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Examples of CirrusMDSDK usage found in  ExampleViewController.m
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    //    Notifications sent by CirrusMD have the following shape:
+    //    {
+    //        aps =     {
+    //            alert = "You have a new message.";
+    //            badge = 1;
+    //            sound = default;
+    //        };
+    //        "custom_data" =     {
+    //            event = "message:new";
+    //            "owner_id" = 1234;
+    //            "stream_id" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+    //        };
+    //    }
+    NSLog(@"Remote notification received: %@", userInfo);
+}
+
+- (void)application:(UIApplication *)app
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+    [CirrusMDSDKSession.singleton registerforRemoteNotifications:devToken];
+}
+
+- (void)application:(UIApplication *)app
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Remote notification support is unavailable due to error: %@", err);
 }
 
 @end
