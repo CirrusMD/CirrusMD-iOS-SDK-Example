@@ -172,14 +172,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_OBJC(Msg) SWIFT_DEPRECATED_MSG(Msg)
 #endif
 #if __has_feature(modules)
-@import UIKit;
-@import CoreGraphics;
 @import ObjectiveC;
 @import Foundation;
-@import QuartzCore;
+@import UIKit;
 #endif
-
-#import <CirrusMDSDK/CirrusMDSDK.h>
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
@@ -190,78 +186,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("CirrusMDSDK")
-@class NSCoder;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK13SeparatedCell")
-@interface SeparatedCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK20AppointmentEventCell")
-@interface AppointmentEventCell : SeparatedCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)prepareForReuse;
-@end
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK11ArrowButton")
-@interface ArrowButton : UIButton
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)drawRect:(CGRect)rect;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK14AttachmentView")
-@interface AttachmentView : UIView
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK21AttendingProviderView")
-@interface AttendingProviderView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK10AvatarView")
-@interface AvatarView : UIView
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@end
-
-
-
-@class NSBundle;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK32CirrusMDSDKMessageViewController")
-@interface CirrusMDSDKMessageViewController : UIViewController
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @protocol CirrusMDSKSessionDelegate;
 enum CirrusMDSKSessionTokenState : NSInteger;
 
@@ -273,32 +197,35 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CirrusMDSDKS
 + (CirrusMDSDKSession * _Nonnull)singleton SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 - (void)registerforRemoteNotifications:(NSData * _Nonnull)deviceToken;
-/// Unregisters for CirrusMDSDK remote notifications
-/// If present, the previously registered device token
-/// will be unregistered.
 - (void)unregisterforRemoteNotifications;
 @end
 
 
 
+@class UIViewController;
 enum CirrusMDSDKSessionResult : NSInteger;
 
 @interface CirrusMDSDKSession (SWIFT_EXTENSION(CirrusMDSDK))
 - (UIViewController * _Nonnull)messageViewController SWIFT_WARN_UNUSED_RESULT;
-- (void)setToken:(NSString * _Nonnull)token withSecret:(NSString * _Nonnull)secret completion:(void (^ _Nullable)(enum CirrusMDSDKSessionResult))completion;
+- (BOOL)setSecret:(NSString * _Nonnull)secret;
+- (void)setToken:(NSString * _Nonnull)token completion:(void (^ _Nullable)(enum CirrusMDSDKSessionResult))completion;
+- (void)logout;
 @end
 
 typedef SWIFT_ENUM(NSInteger, CirrusMDSDKSessionResult) {
   CirrusMDSDKSessionResultSuccess = 0,
   CirrusMDSDKSessionResultInvalidToken = 1,
-  CirrusMDSDKSessionResultServiceUnavailable = 2,
+  CirrusMDSDKSessionResultNoSecretProvided = 2,
+  CirrusMDSDKSessionResultServiceUnavailable = 3,
 };
 
+@class UIView;
 
 SWIFT_PROTOCOL("_TtP11CirrusMDSDK25CirrusMDSKSessionDelegate_")
 @protocol CirrusMDSKSessionDelegate <NSObject>
 @optional
 - (UIView * _Nonnull)viewForErrorWithCode:(enum CirrusMDSDKSessionResult)code SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForLoggedOut SWIFT_WARN_UNUSED_RESULT;
 @end
 
 typedef SWIFT_ENUM(NSInteger, CirrusMDSKSessionTokenState) {
@@ -308,604 +235,58 @@ typedef SWIFT_ENUM(NSInteger, CirrusMDSKSessionTokenState) {
 };
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK18CloseBarButtonItem")
-@interface CloseBarButtonItem : UIBarButtonItem
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic) SEL _Nullable action;
-@end
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK11CloseButton")
-@interface CloseButton : UIButton
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)drawRect:(CGRect)giantFrame;
-@end
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK24CommunicationChannelCell")
-@interface CommunicationChannelCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK17DateSeparatorCell")
-@interface DateSeparatorCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK23EncounterViewController")
-@interface EncounterViewController : UIViewController
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
 
 
 
 
 
 
-@interface EncounterViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewWillDisappear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-- (void)viewWillLayoutSubviews;
-@end
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK11Environment")
-@interface Environment : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Environment * _Nonnull singleton;)
-+ (Environment * _Nonnull)singleton SWIFT_WARN_UNUSED_RESULT;
-- (NSString * _Nullable)get:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK19ErrorViewController")
-@interface ErrorViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK25EventStreamViewController")
-@interface EventStreamViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
 
-@class CMDJTSImageViewController;
 
-@interface EventStreamViewController (SWIFT_EXTENSION(CirrusMDSDK)) <CMDJTSImageViewControllerOptionsDelegate>
-- (CGFloat)alphaForBackgroundDimmingOverlayInImageViewer:(CMDJTSImageViewController * _Null_unspecified)imageViewer SWIFT_WARN_UNUSED_RESULT;
-@end
 
 
-@interface EventStreamViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-@end
 
 
 
-@class UITableView;
 
-@interface EventStreamViewController (SWIFT_EXTENSION(CirrusMDSDK)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)tableView:(UITableView * _Nonnull)tableView willDisplayCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)tableView:(UITableView * _Nonnull)tableView didEndDisplayingCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
 
 
 
-@class NSAttributedString;
 
-SWIFT_CLASS("_TtC11CirrusMDSDK11FancyButton")
-@interface FancyButton : UIButton
-- (void)setAttributedTitle:(NSAttributedString * _Nullable)title forState:(UIControlState)state;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@end
 
 
 
 
-SWIFT_CLASS("_TtC11CirrusMDSDK26GlobalStatusViewController")
-@interface GlobalStatusViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
 
 
-
-
-@interface GlobalStatusViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)loadView;
-- (void)viewDidLoad;
-- (void)didMoveToParentViewController:(UIViewController * _Nullable)parent;
-@end
-
-
-
-@class NSTextContainer;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15GrowingTextView")
-@interface GrowingTextView : UITextView
-- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-@property (nonatomic, copy) NSString * _Null_unspecified text;
-- (nonnull instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer * _Nullable)textContainer OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=7.0);
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK32HorizontalGradientBackgroundView")
-@interface HorizontalGradientBackgroundView : UIView
-- (void)drawRect:(CGRect)rect;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK11ImagePicker")
-@interface ImagePicker : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-@class UIImagePickerController;
-
-@interface ImagePicker (SWIFT_EXTENSION(CirrusMDSDK)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK10InsetLabel")
-@interface InsetLabel : UILabel
-- (void)drawTextInRect:(CGRect)rect;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK16LayoutConstraint")
-@interface LayoutConstraint : NSLayoutConstraint
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface LayoutConstraint (SWIFT_EXTENSION(CirrusMDSDK))
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK21LoadingViewController")
-@interface LoadingViewController : UIViewController
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK16MessageEventCell")
-@interface MessageEventCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-- (void)prepareForReuse;
-@end
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK11MessageView")
-@interface MessageView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK13ModalAnimator")
-@interface ModalAnimator : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@protocol UIViewControllerContextTransitioning;
-
-@interface ModalAnimator (SWIFT_EXTENSION(CirrusMDSDK)) <UIViewControllerAnimatedTransitioning>
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
-- (void)animateTransition:(id <UIViewControllerContextTransitioning> _Nonnull)transitionContext;
-@end
-
-
-
-
-
-
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK7ObjcHUD")
-@interface ObjcHUD : NSObject
-+ (void)show;
-+ (void)hide;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK24PatientEventStreamHeader")
-@interface PatientEventStreamHeader : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-@interface PatientEventStreamHeader (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK36PatientInputAttachmentViewController")
-@interface PatientInputAttachmentViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-
-
-
-
-
-@interface PatientInputAttachmentViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)loadView;
-- (void)viewDidLoad;
-@end
-
-@class CAAnimation;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK12PieChartView")
-@interface PieChartView : UIView <CAAnimationDelegate>
-- (void)drawRect:(CGRect)rect;
-- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK29ProgressNoteEncounterInfoView")
-@interface ProgressNoteEncounterInfoView : UILabel
-- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK21ProgressNoteEventCell")
-@interface ProgressNoteEventCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)prepareForReuse;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK26ProgressNoteViewController")
-@interface ProgressNoteViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-@interface ProgressNoteViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK29QueueStatusInfoViewController")
-@interface QueueStatusInfoViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface QueueStatusInfoViewController (SWIFT_EXTENSION(CirrusMDSDK)) <UIViewControllerTransitioningDelegate>
-- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
-- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-
-
-@interface QueueStatusInfoViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-- (void)viewDidLayoutSubviews;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15QueueStatusView")
-@interface QueueStatusView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-@class UIImage;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15RemoteImageView")
-@interface RemoteImageView : UIImageView
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image highlightedImage:(UIImage * _Nullable)highlightedImage OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK14SecureTextView")
-@interface SecureTextView : UITextView
-- (void)awakeFromNib;
-- (BOOL)canPerformAction:(SEL _Nonnull)action withSender:(id _Nullable)sender SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer * _Nullable)textContainer OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=7.0);
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-@class NSURLSession;
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15SessionDelegate")
-@interface SessionDelegate : NSObject <NSURLSessionDelegate>
-/// Requests credentials from the delegate in response to a session-level authentication request from the
-/// remote server.
-/// \param session The session containing the task that requested authentication.
-///
-/// \param challenge An object that contains the request for authentication.
-///
-/// \param completionHandler A handler that your delegate method must call providing the disposition
-/// and credential.
-///
-- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK21SessionViewController")
-@interface SessionViewController : UIViewController
-@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface SessionViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidLoad;
-@end
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK19StreamEventInputBar")
-@interface StreamEventInputBar : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-- (void)invalidateIntrinsicContentSize;
-@end
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK30StreamEventInputViewController")
-@interface StreamEventInputViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-
-
-
-
-
-
-
-@interface StreamEventInputViewController (SWIFT_EXTENSION(CirrusMDSDK)) <UITextViewDelegate>
-- (BOOL)textView:(UITextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
-- (void)textViewDidChange:(UITextView * _Nonnull)textView;
-@end
-
-
-@interface StreamEventInputViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)loadView;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewWillDisappear:(BOOL)animated;
-@end
-
-
-
-@class UIEvent;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15StyledTableView")
-@interface StyledTableView : UITableView
-- (nonnull instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK15TypingIndicator")
-@interface TypingIndicator : UILabel
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-@end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK29UnauthenticatedViewController")
-@interface UnauthenticatedViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface UnauthenticatedViewController (SWIFT_EXTENSION(CirrusMDSDK))
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK14UserDetailView")
-@interface UserDetailView : UIView
-- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11CirrusMDSDK17VideoCameraButton")
-@interface VideoCameraButton : UIButton
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-@end
-
-
-
-
-
-@class NSStream;
-
-SWIFT_CLASS("_TtC11CirrusMDSDK9WebSocket")
-@interface WebSocket : NSObject <NSStreamDelegate>
-/// Delegate for the stream methods. Processes incoming bytes
-- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
 
 
 
