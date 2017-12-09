@@ -73,12 +73,16 @@ $ brew install carthage
 To integrate CirrusMDSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "CirrusMDSDK/CirrusMD-iOS-SDK-Example"
+github "CirrusMD/CirrusMD-iOS-SDK-Example"
 ```
 
 Run `carthage update` to build the framework and drag the built `CirrusMDSDK.framework` into your Xcode project.
 
-Follow the instructions found on [Carthage](https://github.com/Carthage/Carthage) to add both an Input File and Output File in your Build Phase for Carthage.
+Follow the instructions found on [Carthage](https://github.com/Carthage/Carthage) to add both an Input File and Output File in your `Build Phase` for Carthage.
+
+Add an Import Path to your build settings:
+> `Build Settings > Import Paths > Carthage/Build/iOS/CirrusMDSDK.framework/zlib`
+
 
 ### Manually
 
