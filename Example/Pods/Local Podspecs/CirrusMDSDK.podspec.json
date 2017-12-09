@@ -8,8 +8,7 @@
     "CirrusMD": "http://cirrusmd.com"
   },
   "source": {
-    "http": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v0.2.0/CirrusMDSDK.framework.zip",
-    "flatten": true
+    "http": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v0.2.0/CirrusMDSDK.framework.zip"
   },
   "social_media_url": "https://twitter.com/cirrusmd",
   "platforms": {
