@@ -93,6 +93,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 ## Basic Usage
 
 Basic usage of of the CirrusMDSDK is very simple.
+1. import CirrusMDSDK
 1. retrieve a token via SSO
 1. set the CirrusMD provided secret on the SDK
 1. set the SSO provided token on the SDK
@@ -100,11 +101,25 @@ Basic usage of of the CirrusMDSDK is very simple.
 
 ### The details
 
-1. Our team works with your technical staff to provide SSO for your patients using the CirrusMD platform. The CirrusMDSDK uses tokens retrieved via SSO from CirrusMD's SSO service. Each SSO integration is slightly customized based on your needs. In general, your backend service requests a token representing a patient from our SSO service which provides the token that should be set on the SDK.
+1. import CirrusMDSDK
+
+#### Swift
+
+```swift
+import CirrusMDSDK
+```
+
+#### Objective-C
+
+```obj-c
+#import <CirrusMDSDK/CirrusMDSDK-Swift.h>
+```
+
+2. Our team works with your technical staff to provide SSO for your patients using the CirrusMD platform. The CirrusMDSDK uses tokens retrieved via SSO from CirrusMD's SSO service. Each SSO integration is slightly customized based on your needs. In general, your backend service requests a token representing a patient from our SSO service which provides the token that should be set on the SDK.
 
 *** **_Do not cache CirrusMD provided JWTs_** ***
 
-2. Set the CirrusMD provided secret. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. The secret must be set prior to setting the token in the next step. You must also set set the secret after logging out of the SDK.
+3. Set the CirrusMD provided secret. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. The secret must be set prior to setting the token in the next step. You must also set set the secret after logging out of the SDK.
 
 #### Swift
 
@@ -118,7 +133,7 @@ CirrusMDSDKSession.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
 [CirrusMDSDKSession.singleton setSecret: @"CIRRUSMD-PROVIDED-SECRET"];
 ```
 
-3. **_AFTER_** setting the secret on the SDK, set the token. This is your opportunity to verify that the token provided to the SDK is able to load a patient.
+4. **_AFTER_** setting the secret on the SDK, set the token. This is your opportunity to verify that the token provided to the SDK is able to load a patient.
 
 #### Swift
 
@@ -187,7 +202,7 @@ CirrusMDSDKSession.singleton.setToken("RETRIEVED_TOKEN") { result in
 }];
 ```
 
-4. Retrieve a `MessageViewController` and present it.
+5. Retrieve a `MessageViewController` and present it.
 
 #### Swift
 
