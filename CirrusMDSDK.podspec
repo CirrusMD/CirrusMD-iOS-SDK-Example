@@ -12,4 +12,9 @@ Pod::Spec.new do |s|
   s.ios.frameworks          = 'UIKit', 'SystemConfiguration', 'Security', 'Foundation', 'CoreGraphics', 'Accelerate'
   s.ios.libraries           = 'z', 'c++'
   s.ios.vendored_frameworks = 'CirrusMDSDK.framework'
+  s.pod_target_xcconfig = {
+    'SWIFT_VERSION' => '4.0',
+    'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/CirrusMDSDK/CirrusMDSDK.framework/zlib'
+  }
+  s.preserve_paths = 'zlib/*'
 end
