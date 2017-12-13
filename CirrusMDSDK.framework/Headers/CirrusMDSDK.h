@@ -23,6 +23,9 @@
 #import "CMDJTSImageViewController.h"
 #import "CMDJTSSimpleImageDownloader.h"
 #import "UIApplication+CMDJTSImageViewController.h"
+#import "NSData+HMAC.h"
+#import "NSData+SHA.h"
+
 
 //! Project version number for CirrusMDSDK.
 FOUNDATION_EXPORT double CirrusMDSDKVersionNumber;
