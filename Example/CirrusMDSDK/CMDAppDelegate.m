@@ -37,6 +37,10 @@
     NSLog(@"Remote notification received: %@", userInfo);
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 - (void)application:(UIApplication *)app
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
     [CirrusMDSDKSession.singleton registerforRemoteNotifications:devToken];
