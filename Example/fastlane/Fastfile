@@ -1,9 +1,15 @@
+require 'dotenv'
+
 # More documentation about how to customize your build
 # can be found here:
 # https://docs.fastlane.tools
 fastlane_version "2.68.2"
 
 default_platform :ios
+
+before_all do |_lane, _options|
+  Dotenv.load
+end
 
 # Fastfile actions accept additional configuration, but
 # don't worry, fastlane will prompt you for required
@@ -24,6 +30,8 @@ lane :beta do
 
   crashlytics(
     api_token: ENV["CIRRUSMD_IOS_SDK_CRASHLYTICS_API_TOKEN"],
-    build_secret: ENV["CIRRUSMD_IOS_SDK_CRASHLYTICS_BUILD_SECRET"]
+    build_secret: ENV["CIRRUSMD_IOS_SDK_CRASHLYTICS_BUILD_SECRET"],
+    groups: 'cirrusmd-beta',
+    notifications: true,
   )
 end
