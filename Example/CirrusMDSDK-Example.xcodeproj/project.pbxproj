@@ -581,7 +581,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = DL5M889URM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,7 +618,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CirrusMD, Inc";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = DL5M889URM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
