@@ -1,4 +1,4 @@
-##Screenshots
+Screenshots
 
 The screenshots below highlight most of the possible UI displayed in the SDK. The only configurable screens in the SDK are the error and logged out screens.
 
