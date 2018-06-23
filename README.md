@@ -7,7 +7,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
 ![chat](https://user-images.githubusercontent.com/12459/33736363-9149bb00-db4f-11e7-89d6-50151ca1761f.png)
 
 - [Example Application](#example-application)
-- [Screen Shots](/screens.md)
+- [Screen Shots](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/wiki/Screenshots)
 - [Requirements](#requirements)
 - [Installation](#installing-cirrusmdsdk-in-your-own-project)
 - [Basic Usage](#basic-usage)
