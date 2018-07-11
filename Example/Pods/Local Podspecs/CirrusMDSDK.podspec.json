@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "summary": "Your virtual front door to integrated care delivery. Text with a doctor in under a minute.",
   "homepage": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example",
-  "license": "MIT",
+  "license": "Custom",
   "authors": {
     "CirrusMD": "http://cirrusmd.com"
   },
@@ -28,5 +28,10 @@
       "c++"
     ],
     "vendored_frameworks": "CirrusMDSDK.framework"
-  }
+  },
+  "xcconfig": {
+    "SWIFT_VERSION": "4.0",
+    "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/CirrusMDSDK/CirrusMDSDK.framework/zlib"
+  },
+  "preserve_paths": "CirrusMDSDK.framework/zlib/module.modulemap"
 }
