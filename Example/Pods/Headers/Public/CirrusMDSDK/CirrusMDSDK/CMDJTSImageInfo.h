@@ -1,0 +1,1 @@
+../../../../../../CirrusMDSDK.framework/Headers/CMDJTSImageInfo.h
