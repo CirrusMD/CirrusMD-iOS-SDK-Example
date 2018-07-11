@@ -42,11 +42,18 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* CMDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* CMDAppDelegate.m */; };
+		6492ABEBBFBF3FC8CBE2F51C /* libPods-CirrusMDSDK_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D78F582BCC3DAA34F68846 /* libPods-CirrusMDSDK_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		DF61E19EBF912FE69D049913 /* Pods_CirrusMDSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E99D086FBA14DBF5EBDAEF /* Pods_CirrusMDSDK_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		140694FB20F3F82E00FB74EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 14466CF21FE05CEE00586ABD;
+			remoteInfo = "CirrusMDSDK-Release";
+		};
 		1484EB6B1FD8C1E400E91A19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */;
@@ -93,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		0DAB228D0CBF0BB6A93E52CF /* Pods-CirrusMDSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirrusMDSDK_Tests/Pods-CirrusMDSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		140694FD20F3F86300FB74EC /* CirrusMDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CirrusMDSDK.framework; sourceTree = "<group>"; };
 		1484EB861FD999AC00E91A19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1484EB871FD999AC00E91A19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		149F42B61FCB6D4600C166DA /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
@@ -110,7 +118,6 @@
 		14D50C001FCC84C900ECF757 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		14E3EE561FD71B72003E8EE9 /* CirrusMDSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CirrusMDSDK_Example.entitlements; sourceTree = "<group>"; };
 		14E3EE571FD71B86003E8EE9 /* CirrusMDSDK-DO-NOT-USE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CirrusMDSDK-DO-NOT-USE.entitlements"; sourceTree = "<group>"; };
-		51E99D086FBA14DBF5EBDAEF /* Pods_CirrusMDSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CirrusMDSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* CirrusMDSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CirrusMDSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +133,7 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		60D78F582BCC3DAA34F68846 /* libPods-CirrusMDSDK_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CirrusMDSDK_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6805C97112D8299C3D3468 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		789DBA2BBDC527272FF70721 /* Pods-CirrusMDSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirrusMDSDK_Example/Pods-CirrusMDSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -167,7 +175,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				DF61E19EBF912FE69D049913 /* Pods_CirrusMDSDK_Example.framework in Frameworks */,
+				6492ABEBBFBF3FC8CBE2F51C /* libPods-CirrusMDSDK_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +188,7 @@
 				14F62A711FCCBF700040250C /* CirrusMDSDK.framework */,
 				14F62A731FCCBF700040250C /* CirrusMDSDKTests.xctest */,
 				14F62A751FCCBF700040250C /* CirrusMDSDKTestHost.app */,
+				140694FC20F3F82E00FB74EC /* CirrusMDSDK.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,6 +196,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				140694FD20F3F86300FB74EC /* CirrusMDSDK.framework */,
 				14E3EE571FD71B86003E8EE9 /* CirrusMDSDK-DO-NOT-USE.entitlements */,
 				14E3EE561FD71B72003E8EE9 /* CirrusMDSDK_Example.entitlements */,
 				14D50BCB1FCC6D1C00ECF757 /* CirrusMDSDK.xcodeproj */,
@@ -222,8 +232,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				51E99D086FBA14DBF5EBDAEF /* Pods_CirrusMDSDK_Example.framework */,
 				8DABD7C0FF95FDCF128CC274 /* Pods_CirrusMDSDK_Tests.framework */,
+				60D78F582BCC3DAA34F68846 /* libPods-CirrusMDSDK_Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -396,6 +406,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		140694FC20F3F82E00FB74EC /* CirrusMDSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CirrusMDSDK.framework;
+			remoteRef = 140694FB20F3F82E00FB74EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		14F62A711FCCBF700040250C /* CirrusMDSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -581,7 +598,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = DL5M889URM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,7 +635,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CirrusMDSDK-DO-NOT-USE.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CirrusMD, Inc";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = DL5M889URM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -635,8 +652,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "30d82204-9807-44e4-914f-37803505b0dd";
-				PROVISIONING_PROFILE_SPECIFIER = "CirrusMD SDK Example";
+				PROVISIONING_PROFILE = "03a1af84-247b-4fa7-9c5c-43ca17945555";
+				PROVISIONING_PROFILE_SPECIFIER = "com.cirrusmd.CirrusMDSDK-Example InHouse";
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
