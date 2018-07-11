@@ -33,3 +33,4 @@ Carthage
 #
 # Pods/
 /Example/.env
+/Example/vendor
