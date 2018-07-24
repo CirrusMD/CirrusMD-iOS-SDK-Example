@@ -32,8 +32,6 @@
 		14D50BFC1FCC836200ECF757 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BE31FCC70FD00ECF757 /* libc++.tbd */; };
 		14D50BFD1FCC836D00ECF757 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDD1FCC70CD00ECF757 /* Security.framework */; };
 		14D50BFE1FCC837400ECF757 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50BDF1FCC70D300ECF757 /* SystemConfiguration.framework */; };
-		14D50C051FCC84C900ECF757 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50C001FCC84C900ECF757 /* Accelerate.framework */; };
-		14F62A7E1FCCBFF40040250C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D50C001FCC84C900ECF757 /* Accelerate.framework */; };
 		14F62A851FCCC0C70040250C /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F62A711FCCBF700040250C /* CirrusMDSDK.framework */; };
 		14F62A861FCCC0C70040250C /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14F62A711FCCBF700040250C /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -149,7 +147,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F62A7E1FCCBFF40040250C /* Accelerate.framework in Frameworks */,
 				1484EB881FD999AC00E91A19 /* Fabric.framework in Frameworks */,
 				14D50BE41FCC70FD00ECF757 /* libc++.tbd in Frameworks */,
 				14D50BE21FCC70EE00ECF757 /* libz.1.tbd in Frameworks */,
@@ -167,7 +164,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D50C051FCC84C900ECF757 /* Accelerate.framework in Frameworks */,
 				14D50BFE1FCC837400ECF757 /* SystemConfiguration.framework in Frameworks */,
 				14D50BFD1FCC836D00ECF757 /* Security.framework in Frameworks */,
 				14D50BFC1FCC836200ECF757 /* libc++.tbd in Frameworks */,
@@ -620,7 +616,7 @@
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
@@ -656,7 +652,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.cirrusmd.CirrusMDSDK-Example InHouse";
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
@@ -778,7 +774,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -823,7 +819,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK/CirrusMDSDK_Example-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
