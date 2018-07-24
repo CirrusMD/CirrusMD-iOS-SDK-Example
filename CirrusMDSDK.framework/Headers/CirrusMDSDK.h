@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import "UserFormattingUtils.h"
 #import "NSString+CirrusAdditions.h"
-#import "UIAlertController+Window.h"
 #import "LoadingView.h"
 #import "FullScreenFader.h"
 #import "MBProgressHUD.h"
