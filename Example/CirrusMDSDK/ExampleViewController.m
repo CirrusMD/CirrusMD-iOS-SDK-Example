@@ -35,6 +35,7 @@
     UIViewController *root = [CirrusMDSDKSession.singleton messageViewController];
     [self setViewControllers:@[root] animated:NO];
     [self addRightBarButtonItem];
+    [self addLeftBarButtonItem];
 }
 
 - (void)configureSessionDelegate {
@@ -55,11 +56,25 @@
     self.loggedOutView.backgroundColor = [UIColor blueColor];
 
     /*
+        Uncomment the following line to set custom colors.
+     */
+    
+//    [self configureColors];
+
+    
+    /*
         Uncomment the following line to set a custom CirrusMDSKSessionDelegate
         This allows you provide custom error and logged out views to the SDK.
     */
 
 //     CirrusMDSDKSession.singleton.delegate = self;
+}
+
+- (void)configureColors {
+    CirrusMDSDKColorConfig* config = [[CirrusMDSDKColorConfig alloc] init];
+    config.primary = @"FF5733";
+    
+    [CirrusMDSDKSession.singleton setColorConfig:config];
 }
 
 /*
@@ -92,6 +107,19 @@
     self.navigationBar.topItem.rightBarButtonItem = searchButton;
 }
 
+- (void)addLeftBarButtonItem {
+    if (self.tabBarController != nil) { return; }
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                 target:self
+                                                                                 action:@selector(close:)];
+    self.navigationBar.topItem.leftBarButtonItem = closeButton;
+}
+
+
+- (IBAction)close:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+    
 - (IBAction)showMenu:(id)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
                                                                              message:nil

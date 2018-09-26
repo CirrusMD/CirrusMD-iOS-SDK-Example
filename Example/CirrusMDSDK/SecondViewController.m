@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "ExampleViewController.h"
 
 @interface SecondViewController ()
 
@@ -25,5 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)showSDK:(id)sender {
+    UIViewController* example = [[ExampleViewController alloc] init];
+    [self presentViewController:example animated:YES completion:^{}];
+}
 
 @end
