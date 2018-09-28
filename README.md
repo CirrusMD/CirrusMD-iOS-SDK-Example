@@ -12,6 +12,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
 - [Installation](#installing-cirrusmdsdk-in-your-own-project)
 - [Basic Usage](#basic-usage)
 - [Advanced Usage](#advanced-usage)
+  - [Colors](#colors)
   - [Logout](#logout)
   - [Custom Status Views](#custom-status-views)
   - [Push notifications](#push-notifications)
@@ -234,6 +235,38 @@ If the SDK has been provided with a valid secret and token the SSO user's messag
 ![welcome-message](https://user-images.githubusercontent.com/12459/33579479-304386aa-d907-11e7-99df-b5b163196fd7.png)
 
 ## Advanced Usage
+
+### Colors
+
+Many of the colors in the SDK are configurable. To override the the colors provide a `CirrusMDSDKColorConfig` object.
+
+```swift
+primary     // defaults to "#1a9af2", used in avatar outlines and buttons
+offHours    // defaults to "#4a4a4a", used in the Patient Encounter Queue
+unassigned  // defaults to "#0c4c78", used in the Patient Encounter Queue
+assigned    // defaults to "#44db5e", used in the Patient Encounter Queue
+error       // defaults to "#dd0000", will be used in the future 
+success     // defaults to "#44db5e", will be used in the future
+warning     // defaults to "#daaf0f", used in the offline banner
+```
+
+#### Swift
+
+```swift
+let config = CirrusMDSDKColorConfig()
+config.primary = "FF5733"
+
+CirrusMDSDKSession.singleton.setColorConfig(config)
+```
+
+#### Objective-C
+
+```obj-c
+CirrusMDSDKColorConfig* config = [[CirrusMDSDKColorConfig alloc] init];
+config.primary = @"FF5733";
+    
+[CirrusMDSDKSession.singleton setColorConfig:config];
+```
 
 ### Logout
 

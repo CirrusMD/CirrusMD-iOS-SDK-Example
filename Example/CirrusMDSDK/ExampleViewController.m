@@ -59,8 +59,7 @@
         Uncomment the following line to set custom colors.
      */
     
-//    [self configureColors];
-
+    [self configureColors];
     
     /*
         Uncomment the following line to set a custom CirrusMDSKSessionDelegate

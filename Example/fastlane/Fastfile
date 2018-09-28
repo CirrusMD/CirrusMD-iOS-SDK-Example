@@ -20,12 +20,7 @@ lane :beta do
   gym(
     scheme: "CirrusMDSDK-DO-NOT-USE",
     workspace: "CirrusMDSDK-Example.xcworkspace",
-    export_method: "enterprise",
-    export_options: {
-      provisioningProfiles: {
-        "com.cirrusmd.CirrusMDSDK-Example" => "CirrusMD SDK Example"
-      }
-    }
+    export_method: "enterprise"
   )
 
   crashlytics(
