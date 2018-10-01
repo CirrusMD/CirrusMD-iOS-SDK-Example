@@ -26,6 +26,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - iOS 9.0+
+- Xcode 10 (The latest version of the CirrusMDSDK is written in Swift 4.2)
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
@@ -452,6 +453,14 @@ switch (tokenState) {
     case CirrusMDSKSessionTokenStateValid:
 }
 ```
+
+## Troubleshooting
+
+1. If you see the following error in an Objective-C project you likely haven't embedded the Swift Standard Libraries. Ensure `Build Settings > Build Options > Always Embed Swift Standard Libraries` is set to `Yes`.
+
+    > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
+    Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
+    Reason: image not found
 
 ## Author
 
