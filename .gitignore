@@ -34,3 +34,6 @@ Carthage
 # Pods/
 /Example/.env
 /Example/vendor
+
+# VSCode
+.vscode
