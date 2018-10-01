@@ -13,8 +13,8 @@ Enhancements:
 
 Bug Fixes:
 
-Fixed a bug when dismissing images, the underlying cell is no longer grey
-Fixed a bug that prevented image thumbnails from displaying for some users
+* Fixed a bug when dismissing images, the underlying cell is no longer grey
+* Fixed a bug that prevented image thumbnails from displaying for some users
 
 # 1.0.5 / 2018-08-08
 
