@@ -1,4 +1,4 @@
-### 1.1.0 / 2018-10-01
+# 1.1.0 / 2018-10-01
 
 Enhancements:
 
@@ -16,7 +16,7 @@ Bug Fixes:
 Fixed a bug when dismissing images, the underlying cell is no longer grey
 Fixed a bug that prevented image thumbnails from displaying for some users
 
-### 1.0.5 / 2018-08-08
+# 1.0.5 / 2018-08-08
 
 Bug Fixes:
 
@@ -24,26 +24,26 @@ Bug Fixes:
 * Updated VoiceOver labels
 * Explicit text input tint color is black
 
-### 1.0.2 / 2018-07-24
+# 1.0.2 / 2018-07-24
 
 Bug Fixes:
 
 * Resize uploaded images to a max width and/or height of 4000 pixels
 * Remove dependency on libswiftaccelerate
 
-### 1.0.1 / 2018-07-19
+# 1.0.1 / 2018-07-19
 
 Bug Fixes:
 
 * Updates AlertController presentation logic
 
-### 1.0.0 / 2018-07-11
+# 1.0.0 / 2018-07-11
 
 Enhancements:
 
 * Adds accessibility labels, hints, and announcements
 
-### 0.2.2 / 2018-01-19
+# 0.2.2 / 2018-01-19
 
 Enhancements:
 
@@ -54,7 +54,7 @@ Bug Fixes:
 
 * Various UI bug fixes and tweaks
 
-### 0.2.0 / 2017-12-08
+# 0.2.0 / 2017-12-08
 
 Enhancements:
 
@@ -62,7 +62,7 @@ Enhancements:
 * Update the logged out icon
 * Show error when no token is found
 
-### 0.1.0 / 2017-11-27
+# 0.1.0 / 2017-11-27
 
 Enhancements:
 
