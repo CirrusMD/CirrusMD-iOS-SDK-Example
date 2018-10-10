@@ -183,6 +183,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+SWIFT_CLASS("_TtC11CirrusMDSDK22CirrusMDSDKColorConfig")
+@interface CirrusMDSDKColorConfig : NSObject
+@property (nonatomic, copy) NSString * _Nullable primary;
+@property (nonatomic, copy) NSString * _Nullable offHours;
+@property (nonatomic, copy) NSString * _Nullable unassigned;
+@property (nonatomic, copy) NSString * _Nullable assigned;
+@property (nonatomic, copy) NSString * _Nullable error;
+@property (nonatomic, copy) NSString * _Nullable success;
+@property (nonatomic, copy) NSString * _Nullable warning;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @protocol CirrusMDSKSessionDelegate;
 enum CirrusMDSKSessionTokenState : NSInteger;
 
@@ -204,6 +217,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CirrusMDSDKS
 enum CirrusMDSDKSessionResult : NSInteger;
 
 @interface CirrusMDSDKSession (SWIFT_EXTENSION(CirrusMDSDK))
+- (void)setColorConfig:(CirrusMDSDKColorConfig * _Nonnull)config;
 - (UIViewController * _Nonnull)messageViewController SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)setSecret:(NSString * _Nonnull)secret;
 - (void)setToken:(NSString * _Nonnull)token completion:(void (^ _Nullable)(enum CirrusMDSDKSessionResult))completion;
