@@ -12,6 +12,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
 - [Installation](#installing-cirrusmdsdk-in-your-own-project)
 - [Basic Usage](#basic-usage)
 - [Advanced Usage](#advanced-usage)
+  - [Text](#text)
   - [Colors](#colors)
   - [Logout](#logout)
   - [Custom Status Views](#custom-status-views)
@@ -85,8 +86,8 @@ Run `carthage update` to build the framework and drag the built `CirrusMDSDK.fra
 Follow the instructions found on [Carthage](https://github.com/Carthage/Carthage) to add both an Input File and Output File in your `Build Phase` for Carthage.
 
 Add an Import Path to your build settings:
-> `Build Settings > Import Paths > Carthage/Build/iOS/CirrusMDSDK.framework/zlib`
 
+> `Build Settings > Import Paths > Carthage/Build/iOS/CirrusMDSDK.framework/zlib`
 
 ### Manually
 
@@ -97,6 +98,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 ## Basic Usage
 
 Basic usage of of the CirrusMDSDK is very simple.
+
 1. import CirrusMDSDK
 1. retrieve a token via SSO
 1. set the CirrusMD provided secret on the SDK
@@ -121,7 +123,7 @@ import CirrusMDSDK
 
 2. Our team works with your technical staff to provide SSO for your patients using the CirrusMD platform. The CirrusMDSDK uses tokens retrieved via SSO from CirrusMD's SSO service. Each SSO integration is slightly customized based on your needs. In general, your backend service requests a token representing a patient from our SSO service which provides the token that should be set on the SDK.
 
-*** **_Do not cache CirrusMD provided JWTs_** ***
+**\* **_Do not cache CirrusMD provided JWTs_** \***
 
 3. Set the CirrusMD provided secret. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. The secret must be set prior to setting the token in the next step. You must also set set the secret after logging out of the SDK.
 
@@ -238,6 +240,32 @@ If the SDK has been provided with a valid secret and token the SSO user's messag
 
 ## Advanced Usage
 
+### Text
+
+Some of the text in the SDK is configurable. To override text provide a `CirrusMDSDKConfig` object.
+
+```swift
+title // defaults to "My Healthcare Services", used when a patient has multiple channels fo care
+```
+
+#### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.title = "Custom Title Here"
+
+CirrusMDSDKSession.singleton.setConfig(config)
+```
+
+#### Objective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.title = @"Custom Title Here";
+
+[CirrusMDSDKSession.singleton setConfig:config];
+```
+
 ### Colors
 
 Many of the colors in the SDK are configurable. To override the colors provide a `CirrusMDSDKColorConfig` object.
@@ -286,14 +314,13 @@ CirrusMDSDKSession.singleton.logOut()
 [CirrusMDSDKSession.singleton logout];
 ```
 
-
 ### Custom Status Views
 
 Ideally, your patients always see a working messages view when you present a `MessagesViewController`. However, there are certain times when we're unable to show messages.
 
 The first is when you have explicity called `logout()`. We recommend calling logout, _only_ when your patient logs out of your appication. In that case they will not see the _logged out view_ because they will be logged out of your application as well. You should log them back into the SDK when they next log back into your application.
 
-The second is when the SDK is unable to verify the secret and/or token. In either case, an _error view_  is shown. We recommend you handle all errors passed to the last argument of `CirrusMDSDKSession.singleton.setToken`'s completion handler prior to showing the `MessagesViewController` if possible. Doing so will provide a better experience for your user. Some errors may happen after the `MessagesViewController` is already on screen. In that case, _error view_ is displayed.
+The second is when the SDK is unable to verify the secret and/or token. In either case, an _error view_ is shown. We recommend you handle all errors passed to the last argument of `CirrusMDSDKSession.singleton.setToken`'s completion handler prior to showing the `MessagesViewController` if possible. Doing so will provide a better experience for your user. Some errors may happen after the `MessagesViewController` is already on screen. In that case, _error view_ is displayed.
 
 Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. We strongly recommend that you provide your own custom views for both cases. Because the CirrusMDSDK uses SSO to authenticate your patients, we are unable to provide logged out UI that helps the patient log back in. By providing your patients with a custom _logout out view_ you can, for example, provide relevant messaging and a button to log back in using the same SSO you implemented to log them in originally. Every time the _error view_ is shown the resolution is retrieving a new SSO token and setting it via `CirrusMDSDKSession.singleton.setToken(:)`. Providing a custom _error view_ gives you the ability to display relevant messaging and interactions the user can take, most likely a button to re-attempt SSO.
 
@@ -343,11 +370,12 @@ CirrusMDSDKSession.singleton.delegate = self;
 ```
 
 ### Push notifications
+
 In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. Contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
 
 #### Registering for remote notifications
-**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
 
+**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
 
 #### Swift
 
@@ -366,7 +394,7 @@ UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTy
 [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
 
-Use the `deviceToken` provided by Apple when [application(_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
+Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
 
 #### Swift
 
@@ -408,19 +436,19 @@ CirrusMDSDKSession.singleton.unregisterforRemoteNotifications()
 [CirrusMDSDKSession.singleton unregisterforRemoteNotifications];
 ```
 
-It is up to the host application to handle incoming push notifications appropriately. The payload of the `userInfo` dictionary passed to [application(_:didReceiveRemoteNotification:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623117-application) or the newer [application(_:didReceiveRemoteNotification:fetchCompletionHandler:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) has the following shape.
+It is up to the host application to handle incoming push notifications appropriately. The payload of the `userInfo` dictionary passed to [application(\_:didReceiveRemoteNotification:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623117-application) or the newer [application(\_:didReceiveRemoteNotification:fetchCompletionHandler:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) has the following shape.
 
 ```json
 {
-  "aps" : {
-    "alert" : "You have a new message.",
-    "badge" : 1,
-    "sound" : "default"
+  "aps": {
+    "alert": "You have a new message.",
+    "badge": 1,
+    "sound": "default"
   },
-  "custom_data" : {
-    "event" : "message:new",
-    "owner_id" : 1234,
-    "stream_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  "custom_data": {
+    "event": "message:new",
+    "owner_id": 1234,
+    "stream_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   }
 }
 ```
@@ -459,9 +487,9 @@ switch (tokenState) {
 
 1. If you see the following error in an Objective-C project you likely haven't embedded the Swift Standard Libraries. Ensure `Build Settings > Build Options > Always Embed Swift Standard Libraries` is set to `Yes`.
 
-    > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
-    Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
-    Reason: image not found
+   > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
+   > Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
+   > Reason: image not found
 
 ## Author
 
