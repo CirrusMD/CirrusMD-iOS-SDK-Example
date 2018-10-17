@@ -57,9 +57,15 @@
 
     /*
         Uncomment the following line to set custom colors.
-     */
+    */
     
     [self configureColors];
+    
+    /*
+        Uncomment the following line to set custom text.
+    */
+    
+    [self configureText];
     
     /*
         Uncomment the following line to set a custom CirrusMDSKSessionDelegate
@@ -67,6 +73,13 @@
     */
 
 //     CirrusMDSDKSession.singleton.delegate = self;
+}
+
+- (void)configureText {
+    CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+    config.title = @"Your Custom Title";
+    
+    [CirrusMDSDKSession.singleton setConfig:config];
 }
 
 - (void)configureColors {
