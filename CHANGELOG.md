@@ -1,3 +1,25 @@
+# 1.3.0 / 2018-10-19
+
+Enhancements:
+
+* Restores Swift 4.2 support
+* Ability to access multiple programs of care
+* Show the plan name in the navigation bar instead of the provider group's
+  name
+
+Bug fixes:
+
+* Fix User Agent string typo
+
+# 1.2.0 / 2018-10-10
+
+Enhancements:
+
+* Downgraded to Swift 4.1 
+
+This was a special release for a specific customer. Please do not use this
+version in your production application.
+
 # 1.1.0 / 2018-10-01
 
 Enhancements:

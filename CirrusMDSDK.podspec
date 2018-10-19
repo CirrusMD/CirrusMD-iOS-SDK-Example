@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name                    = 'CirrusMDSDK'
-  s.version                 = '1.0.2'
+  s.version                 = '1.3.0'
   s.summary                 = 'Your virtual front door to integrated care delivery. Text with a doctor in under a minute.'
   s.homepage                = "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example"
   s.license                 = 'Custom'
