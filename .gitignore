@@ -37,3 +37,9 @@ Carthage
 
 # VSCode
 .vscode
+/.idea
+/Example
+/Example/.idea
+/.ruby-version
+/Gemfile
+/Gemfile.lock
