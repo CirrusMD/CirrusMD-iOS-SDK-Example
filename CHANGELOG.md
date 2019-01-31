@@ -1,3 +1,9 @@
+# 1.4.0 / 2019-01-31
+
+Bug fixes:
+
+* Websocket activity no longer occurs when the app is not active.
+
 # 1.3.0 / 2018-10-19
 
 Enhancements:
