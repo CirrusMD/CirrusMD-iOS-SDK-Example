@@ -1,6 +1,6 @@
 {
   "name": "CirrusMDSDK",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "summary": "Your virtual front door to integrated care delivery. Text with a doctor in under a minute.",
   "homepage": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example",
   "license": "Custom",
@@ -8,11 +8,11 @@
     "CirrusMD": "http://cirrusmd.com"
   },
   "source": {
-    "http": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v1.0.0/CirrusMDSDK.framework.zip"
+    "http": "https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/releases/download/v1.4.0/CirrusMDSDK.framework.zip"
   },
   "social_media_url": "https://twitter.com/cirrusmd",
   "platforms": {
-    "ios": "9.0"
+    "ios": "9.3"
   },
   "ios": {
     "frameworks": [
@@ -20,8 +20,7 @@
       "SystemConfiguration",
       "Security",
       "Foundation",
-      "CoreGraphics",
-      "Accelerate"
+      "CoreGraphics"
     ],
     "libraries": [
       "z",
@@ -30,7 +29,7 @@
     "vendored_frameworks": "CirrusMDSDK.framework"
   },
   "xcconfig": {
-    "SWIFT_VERSION": "4.0",
+    "SWIFT_VERSION": "4.2",
     "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/CirrusMDSDK/CirrusMDSDK.framework/zlib"
   },
   "preserve_paths": "CirrusMDSDK.framework/zlib/module.modulemap"
