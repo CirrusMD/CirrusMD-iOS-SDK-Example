@@ -1,3 +1,7 @@
+# 1.4.1 / 2019-02-11
+
+* Internal release details. No code changes. 
+
 # 1.4.0 / 2019-01-31
 
 Bug fixes:
