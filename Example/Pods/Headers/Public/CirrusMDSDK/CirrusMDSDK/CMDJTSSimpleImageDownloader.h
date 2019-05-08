@@ -1,1 +1,0 @@
-../../../../../../CirrusMDSDK.framework/Headers/CMDJTSSimpleImageDownloader.h
