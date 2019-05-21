@@ -19,7 +19,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Push notifications](#push-notifications)
   - [Additional API](#additional-api)
 - [License](#license)
-- [CHANGELOG](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/CHANGELOG.md)
+- [CHANGELOG](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CHANGELOG.html)
 
 ## Example Application
 
@@ -27,8 +27,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- iOS 9.3+
-- Xcode 10 (The latest version of the CirrusMDSDK is written in Swift 4.2)
+- iOS 10.0+
+- Xcode 10.2, Swift 5
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
