@@ -1,0 +1,25 @@
+PODS:
+  - Base64 (1.1.2)
+  - CirrusMDSDK (1.4.3)
+  - JWT (2.2.0):
+    - Base64 (~> 1.1.2)
+
+DEPENDENCIES:
+  - CirrusMDSDK
+  - JWT
+
+SPEC REPOS:
+  https://github.com/CirrusMD/podspecs.git:
+    - CirrusMDSDK
+  https://github.com/cocoapods/specs.git:
+    - Base64
+    - JWT
+
+SPEC CHECKSUMS:
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+  CirrusMDSDK: 32eda39b20963486d00f1ceb5c6561a2b9fadcd6
+  JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
+
+PODFILE CHECKSUM: 50338fa5501d53b9e634c58ed7918c363488520f
+
+COCOAPODS: 1.6.2
