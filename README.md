@@ -6,6 +6,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
 
 ![chat](https://user-images.githubusercontent.com/12459/33736363-9149bb00-db4f-11e7-89d6-50151ca1761f.png)
 
+- [CHANGELOG](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CHANGELOG.html)
 - [Example Application](#example-application)
 - [Screen Shots](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/wiki/Screenshots)
 - [Requirements](#requirements)
@@ -19,7 +20,6 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Push notifications](#push-notifications)
   - [Additional API](#additional-api)
 - [License](#license)
-- [CHANGELOG](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CHANGELOG.html)
 
 ## Example Application
 
@@ -78,7 +78,7 @@ $ brew install carthage
 To integrate CirrusMDSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "CirrusMD/CirrusMD-iOS-SDK-Example"
+binary "https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json"
 ```
 
 Run `carthage update` to build the framework and drag the built `CirrusMDSDK.framework` into your Xcode project.
@@ -93,7 +93,7 @@ Add an Import Path to your build settings:
 
 If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
 
-#### NEED TO DOCUMENT THE STEPS FOR INTEGRATING IT MANUALLY HERE
+#### TODO: DOCUMENT THE STEPS FOR INTEGRATING IT MANUALLY HERE
 
 ## Basic Usage
 
