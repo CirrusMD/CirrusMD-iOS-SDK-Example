@@ -1,9 +1,0 @@
-source 'https://github.com/CirrusMD/podspecs.git'
-use_frameworks!
-
-platform :ios, '10.0'
-target 'CirrusMDSDK_Example' do
-  pod 'CirrusMDSDK'
-  pod 'JWT'
-end
-
