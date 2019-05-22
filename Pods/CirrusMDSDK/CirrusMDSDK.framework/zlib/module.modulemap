@@ -1,0 +1,5 @@
+module SSCZLib [system] {
+    header "include.h"
+    link "z"
+    export *
+}
