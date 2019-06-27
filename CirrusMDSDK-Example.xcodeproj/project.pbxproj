@@ -328,8 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
@@ -337,8 +335,6 @@
 				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",

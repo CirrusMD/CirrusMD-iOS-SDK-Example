@@ -217,8 +217,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CirrusMDSDKS
 + (CirrusMDSDKSession * _Nonnull)singleton SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (void)registerforRemoteNotifications:(NSData * _Nonnull)deviceToken;
-- (void)unregisterforRemoteNotifications;
+- (void)registerForRemoteNotifications:(NSData * _Nonnull)deviceToken;
+- (void)unregisterForRemoteNotifications;
 @end
 
 
@@ -234,6 +234,8 @@ enum CirrusMDSDKSessionResult : NSInteger;
 - (UIViewController * _Nonnull)messageViewController SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)setSecret:(NSString * _Nonnull)secret;
 - (void)setToken:(NSString * _Nonnull)token completion:(void (^ _Nullable)(enum CirrusMDSDKSessionResult))completion;
+- (BOOL)onPushNotificationSelectedWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldShowNotificationWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType SWIFT_WARN_UNUSED_RESULT;
 - (void)logout;
 @end
 
