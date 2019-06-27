@@ -109,13 +109,13 @@ Basic usage of of the CirrusMDSDK is very simple.
 
 1. import CirrusMDSDK
 
-#### Swift
+##### Swift
 
 ```swift
 import CirrusMDSDK
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 #import <CirrusMDSDK/CirrusMDSDK-Swift.h>
@@ -127,13 +127,13 @@ import CirrusMDSDK
 
 3. Set the CirrusMD provided secret. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. The secret must be set prior to setting the token in the next step. You must also set set the secret after logging out of the SDK.
 
-#### Swift
+##### Swift
 
 ```swift
 CirrusMDSDKSession.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 [CirrusMDSDKSession.singleton setSecret: @"CIRRUSMD-PROVIDED-SECRET"];
@@ -141,7 +141,7 @@ CirrusMDSDKSession.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
 
 4. **_AFTER_** setting the secret on the SDK, set the token. This is your opportunity to verify that the token provided to the SDK is able to load a patient.
 
-#### Swift
+##### Swift
 
 ```swift
 /*
@@ -173,7 +173,7 @@ CirrusMDSDKSession.singleton.setToken("RETRIEVED_TOKEN") { result in
 }
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 /*
@@ -210,7 +210,7 @@ CirrusMDSDKSession.singleton.setToken("RETRIEVED_TOKEN") { result in
 
 5. Retrieve a `MessageViewController` and present it.
 
-#### Swift
+##### Swift
 
 ```swift
 let controller = CirrusMDSDKSession.singleton.messageViewController()
@@ -222,7 +222,7 @@ self.navigationController?.pushViewController(controller, animated: true)
 self.present(controller, animated: true) {...}
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 UIViewController *controller = [CirrusMDSDKSession.singleton messageViewController];
@@ -248,7 +248,7 @@ Some of the text in the SDK is configurable. To override text provide a `CirrusM
 title // defaults to "My Healthcare Services", used when a patient has multiple channels fo care
 ```
 
-#### Swift
+##### Swift
 
 ```swift
 let config = CirrusMDSDKConfig()
@@ -257,7 +257,7 @@ config.title = "Custom Title Here"
 CirrusMDSDKSession.singleton.setConfig(config)
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
@@ -280,7 +280,7 @@ success     // defaults to "#44db5e", will be used in the future
 warning     // defaults to "#daaf0f", used in the offline banner
 ```
 
-#### Swift
+##### Swift
 
 ```swift
 let config = CirrusMDSDKColorConfig()
@@ -289,7 +289,7 @@ config.primary = "FF5733"
 CirrusMDSDKSession.singleton.setColorConfig(config)
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 CirrusMDSDKColorConfig* config = [[CirrusMDSDKColorConfig alloc] init];
@@ -302,13 +302,13 @@ config.primary = @"FF5733";
 
 You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.
 
-#### Swift
+##### Swift
 
 ```swift
 CirrusMDSDKSession.singleton.logOut()
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 [CirrusMDSDKSession.singleton logout];
@@ -342,7 +342,7 @@ Customization of both the _logged out view_ and _error view_ happens via the `Ci
 
 ![customized-message](https://user-images.githubusercontent.com/12459/33580171-6152b174-d909-11e7-90a6-ff551369382f.png)
 
-#### Swift
+##### Swift
 
 ```swift
 CirrusMDSDKSession.singleton.delegate = self
@@ -355,7 +355,7 @@ func viewForLoggedOut() -> UIView {
 }
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 CirrusMDSDKSession.singleton.delegate = self;
@@ -377,7 +377,7 @@ In order to enable push notifications for your patients you'll need to provide C
 
 **_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
 
-#### Swift
+##### Swift
 
 ```swift
 let settings = UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil)
@@ -385,7 +385,7 @@ UIApplication.shared.registerUserNotificationSettings(settings)
 UIApplication.shared.registerForRemoteNotifications()
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
@@ -396,7 +396,7 @@ UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTy
 
 Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
 
-#### Swift
+##### Swift
 
 ```swift
 /*
@@ -410,7 +410,7 @@ Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemot
 CirrusMDSDKSession.singleton.registerforRemoteNotifications(deviceToken)
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 /*
@@ -424,42 +424,71 @@ CirrusMDSDKSession.singleton.registerforRemoteNotifications(deviceToken)
 
 #### Unregistering for remote notifications
 
-#### Swift
+##### Swift
 
 ```swift
-CirrusMDSDKSession.singleton.unregisterforRemoteNotifications()
+CirrusMDSDKSession.singleton.unregisterForRemoteNotifications()
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
-[CirrusMDSDKSession.singleton unregisterforRemoteNotifications];
+[CirrusMDSDKSession.singleton unregisterForRemoteNotifications];
 ```
 
-It is up to the host application to handle incoming push notifications appropriately. The payload of the `userInfo` dictionary passed to [application(\_:didReceiveRemoteNotification:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623117-application) or the newer [application(\_:didReceiveRemoteNotification:fetchCompletionHandler:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) has the following shape.
+### Handling remote notifications
+
+The SDK provides methods to help handle push notifications and their interactions.
+
+The payload of the package sent by CirrusMD has the shape shown below, which are the values passed in to these methods:
 
 ```json
 {
-  "aps": {
-    "alert": "You have a new message.",
-    "badge": 1,
-    "sound": "default"
-  },
-  "custom_data": {
     "event": "message:new",
-    "owner_id": 1234,
     "stream_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  }
-}
+ }
 ```
 
-After inspecting the incoming payload and finding `custom_data.event.message:new` you may want to display the `UIViewController` provided by `CirrusMDSDKSession.singleton.messageViewController()`.
+#### Displaying notifications
 
+`shouldShowNotification` returns a bool used to determine if a notification should be displayed based on if the ViewContoller is being shown and which `streamId` is currently selected.
+
+`true` means the notification should be displayed. Either the view is not being shown or a different `streamId` is selected.
+
+`false`means the notification should **not** be displayed. The view is being shown and is on the provided `streamId`.
+##### Swift
+```swift
+CirrusMDSDKSession.singleton.shouldShowNotification(streamId: String, eventType: String)
+```
+
+##### Objective-C
+```obj-c
+[CirrusMDSDKSession.singleton shouldShowNotificationWithStreamId:streamId eventType:eventType];
+```
+#### Selecting notifications
+
+`onPushNotificationSelected` can be called when a user selects a push notification.
+
+If the SDK view controller is being displayed, it will switch to the provided `streamId`.
+
+If the view controller is not being displayed, the provided `streamId` will be presented when it is shown.
+
+If the provided `streamId` is not found on the current user's profile, no action will be taken. 
+
+##### Swift
+```swift
+onPushNotificationSelected(streamId: String, eventType: String)
+```
+
+##### Objective-C
+```obj-c
+[CirrusMDSDKSession.singleton onPushNotificationSelectedWithStreamId:streamId eventType:eventType];
+```
 ### Additional API
 
 Access `CirrusMDSDKSession.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
 
-#### Swift
+##### Swift
 
 ```swift
 let tokenState = CirrusMDSDKSession.singleton.tokenState
@@ -471,7 +500,7 @@ case .valid
 }
 ```
 
-#### Objective-C
+##### Obective-C
 
 ```obj-c
 CirrusMDSKSessionTokenState tokenState = CirrusMDSDKSession.singleton.tokenState;

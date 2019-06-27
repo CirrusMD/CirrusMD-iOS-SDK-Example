@@ -25,7 +25,7 @@
 
 - (void)application:(UIApplication *)app
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-    [CirrusMDSDKSession.singleton registerforRemoteNotifications:devToken];
+    [CirrusMDSDKSession.singleton registerForRemoteNotifications:devToken];
 }
 
 - (void)application:(UIApplication *)app
