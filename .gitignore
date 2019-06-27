@@ -24,6 +24,7 @@ CirrusMDSDK-DO-NOT-USE.app.dSYM.zip
 .bundle
 
 Carthage
+Cartfile.resolved
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
@@ -34,6 +35,7 @@ Carthage
 # Pods/
 /Example/.env
 /Example/vendor
+Podfile.lock
 
 # VSCode
 .vscode
