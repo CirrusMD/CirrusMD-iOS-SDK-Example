@@ -3,7 +3,13 @@ use_frameworks!
 project 'CirrusMDSDK-Example.xcodeproj'
 
 platform :ios, '10.0'
+
 target 'CirrusMDSDK-Pods' do
+  pod 'CirrusMDSDK'
+  pod 'JWT'
+end
+
+target 'CirrusMDSDK-Swift-Pods' do
   pod 'CirrusMDSDK'
   pod 'JWT'
 end
