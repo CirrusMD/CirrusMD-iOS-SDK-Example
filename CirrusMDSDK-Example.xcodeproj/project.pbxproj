@@ -78,7 +78,6 @@
 		C3EEDF9E22957AC6005EF358 /* JWT_iOS_Framework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT_iOS_Framework.framework; path = Carthage/Build/iOS/JWT_iOS_Framework.framework; sourceTree = "<group>"; };
 		C3EEDFA022957AD2005EF358 /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
 		C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CirrusMDSDK.framework; path = Carthage/Build/iOS/CirrusMDSDK.framework; sourceTree = "<group>"; };
-		C3EEDFD222959CEB005EF358 /* CirrusMDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CirrusMDSDK.framework; sourceTree = "<group>"; };
 		C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "CirrusMD-LaunchScreen.xib"; sourceTree = "<group>"; };
 		C3EEDFD72295A1FE005EF358 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F74E60FBD5D1C3AFC76A8D91 /* Pods-CirrusMDSDK-Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK-Pods.debug.xcconfig"; path = "Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,7 +108,6 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				C3EEDFD222959CEB005EF358 /* CirrusMDSDK.framework */,
 				C3A9FFAF22939DD200801651 /* Source */,
 				C3A9FFFC22939F2600801651 /* CirrusMDSDK-Pods */,
 				C3EEDF81229575B2005EF358 /* CirrusMDSDK-Carthage */,
