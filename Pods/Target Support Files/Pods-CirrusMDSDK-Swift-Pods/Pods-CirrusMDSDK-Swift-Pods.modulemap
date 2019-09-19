@@ -1,0 +1,6 @@
+framework module Pods_CirrusMDSDK_Swift_Pods {
+  umbrella header "Pods-CirrusMDSDK-Swift-Pods-umbrella.h"
+
+  export *
+  module * { export * }
+}
