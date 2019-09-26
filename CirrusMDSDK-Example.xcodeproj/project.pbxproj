@@ -506,15 +506,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
 				"${PODS_ROOT}/CirrusMDSDK/CirrusMDSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -594,15 +590,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Swift-Pods/Pods-CirrusMDSDK-Swift-Pods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
 				"${PODS_ROOT}/CirrusMDSDK/CirrusMDSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
