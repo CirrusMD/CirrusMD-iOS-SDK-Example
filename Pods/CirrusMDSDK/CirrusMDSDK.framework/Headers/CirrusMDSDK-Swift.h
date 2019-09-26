@@ -187,6 +187,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+SWIFT_CLASS("_TtC11CirrusMDSDK15CirrusMDChannel")
+@interface CirrusMDChannel : NSObject
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSString * _Nonnull id;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC11CirrusMDSDK22CirrusMDSDKColorConfig")
 @interface CirrusMDSDKColorConfig : NSObject
 @property (nonatomic, copy) NSString * _Nullable primary;
@@ -225,6 +234,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CirrusMDSDKS
 
 
 
+
+
 @class UIViewController;
 enum CirrusMDSDKSessionResult : NSInteger;
 
@@ -234,8 +245,12 @@ enum CirrusMDSDKSessionResult : NSInteger;
 - (UIViewController * _Nonnull)messageViewController SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)setSecret:(NSString * _Nonnull)secret;
 - (void)setToken:(NSString * _Nonnull)token completion:(void (^ _Nullable)(enum CirrusMDSDKSessionResult))completion;
-- (BOOL)onPushNotificationSelectedWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)shouldShowNotificationWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldShowRemoteNotificationWithUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)onRemoteNotificationSelectedWithUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldShowRemoteNotificationWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType SWIFT_WARN_UNUSED_RESULT;
+- (void)onRemoteNotificationSelectedWithStreamId:(NSString * _Nonnull)streamId eventType:(NSString * _Nonnull)eventType;
+- (NSArray<CirrusMDChannel *> * _Nonnull)channels SWIFT_WARN_UNUSED_RESULT;
+- (void)navigateToChannelWithId:(NSString * _Nonnull)id;
 - (void)logout;
 @end
 

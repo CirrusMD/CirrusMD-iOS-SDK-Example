@@ -28,7 +28,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - iOS 10.0+
-- Xcode 10.2, Swift 5
+- Xcode 10.3, Swift 5
 - CirrusMDSDK works in both Swift and Objective-C projects
 - `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
@@ -446,7 +446,7 @@ The payload of the package sent by CirrusMD has the shape shown below, which are
 {
     "event": "message:new",
     "stream_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
- }
+}
 ```
 
 #### Displaying notifications
@@ -477,12 +477,12 @@ If the provided `streamId` is not found on the current user's profile, no action
 
 ##### Swift
 ```swift
-onPushNotificationSelected(streamId: String, eventType: String)
+CirrusMDSDKSession.singleton.onRemoteNotificationSelected(streamId: String, eventType: String)
 ```
 
 ##### Objective-C
 ```obj-c
-[CirrusMDSDKSession.singleton onPushNotificationSelectedWithStreamId:streamId eventType:eventType];
+[CirrusMDSDKSession.singleton onRemoteNotificationSelectedWithStreamId:streamId eventType:eventType];
 ```
 ### Additional API
 

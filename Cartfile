@@ -1,3 +1,1 @@
 binary "https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json"
-
-github "yourkarma/JWT"
