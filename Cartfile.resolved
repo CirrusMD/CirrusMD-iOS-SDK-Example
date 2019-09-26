@@ -1,3 +1,1 @@
-binary "https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json" "1.5.0"
-github "soheilbm/Base64" "67083ec1e3e970ec920cbf126e6957c6e9e88ae4"
-github "yourkarma/JWT" "2.2.0"
+binary "https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json" "1.6.0"

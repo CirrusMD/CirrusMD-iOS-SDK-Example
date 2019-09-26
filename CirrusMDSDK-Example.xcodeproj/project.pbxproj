@@ -22,12 +22,8 @@
 		B170B987232C401300665AE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD222939E3000801651 /* Assets.xcassets */; };
 		B170B988232C401A00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
 		B170B989232C401B00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
-		B170B98A232C403D00665AE8 /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA022957AD2005EF358 /* JWT.framework */; };
-		B170B98B232C403D00665AE8 /* JWT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA022957AD2005EF358 /* JWT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B170B98D232C404400665AE8 /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; };
 		B170B98E232C404400665AE8 /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B170B98F232C404A00665AE8 /* Base64.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDF9C22957AB6005EF358 /* Base64.framework */; };
-		B170B990232C404A00665AE8 /* Base64.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDF9C22957AB6005EF358 /* Base64.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B170B992232C414000665AE8 /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */; };
 		C3A9000D22939F2600801651 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9000C22939F2600801651 /* main.m */; };
 		C3A9001122939F4100801651 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9FFCE22939E3000801651 /* SecondViewController.m */; };
@@ -43,10 +39,6 @@
 		C3EEDF9B229575EC005EF358 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9FFCE22939E3000801651 /* SecondViewController.m */; };
 		C3EEDFA922957B2D005EF358 /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; };
 		C3EEDFAA22957B2D005EF358 /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C3EEDFAB22957B2D005EF358 /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA022957AD2005EF358 /* JWT.framework */; };
-		C3EEDFAC22957B2D005EF358 /* JWT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA022957AD2005EF358 /* JWT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C3EEDFAD22957B2D005EF358 /* Base64.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDF9C22957AB6005EF358 /* Base64.framework */; };
-		C3EEDFAE22957B2D005EF358 /* Base64.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDF9C22957AB6005EF358 /* Base64.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3EEDFD82295A212005EF358 /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */; };
 		C3EEDFD92295A213005EF358 /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */; };
 		C3EEDFDB2295A216005EF358 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD72295A1FE005EF358 /* Main.storyboard */; };
@@ -61,8 +53,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B170B98E232C404400665AE8 /* CirrusMDSDK.framework in Embed Frameworks */,
-				B170B98B232C403D00665AE8 /* JWT.framework in Embed Frameworks */,
-				B170B990232C404A00665AE8 /* Base64.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,9 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C3EEDFAC22957B2D005EF358 /* JWT.framework in Embed Frameworks */,
 				C3EEDFAA22957B2D005EF358 /* CirrusMDSDK.framework in Embed Frameworks */,
-				C3EEDFAE22957B2D005EF358 /* Base64.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,8 +130,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B170B98D232C404400665AE8 /* CirrusMDSDK.framework in Frameworks */,
-				B170B98A232C403D00665AE8 /* JWT.framework in Frameworks */,
-				B170B98F232C404A00665AE8 /* Base64.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,9 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3EEDFAB22957B2D005EF358 /* JWT.framework in Frameworks */,
 				C3EEDFA922957B2D005EF358 /* CirrusMDSDK.framework in Frameworks */,
-				C3EEDFAD22957B2D005EF358 /* Base64.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
