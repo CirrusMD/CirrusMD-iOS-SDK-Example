@@ -60,12 +60,8 @@
 		B170B969232C33EB00665AE8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B170B96F232C3FFA00665AE8 /* CirrusMDSDK-Carthage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CirrusMDSDK-Carthage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B170B97F232C3FFB00665AE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3A9000B22939F2600801651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3A9000C22939F2600801651 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C3A9FFD222939E3000801651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3A9FFD322939E3000801651 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
-		C3EEDF90229575B2005EF358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3EEDF91229575B2005EF358 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C3EEDF9C22957AB6005EF358 /* Base64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base64.framework; path = Carthage/Build/iOS/Base64.framework; sourceTree = "<group>"; };
 		C3EEDF9E22957AC6005EF358 /* JWT_iOS_Framework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT_iOS_Framework.framework; path = Carthage/Build/iOS/JWT_iOS_Framework.framework; sourceTree = "<group>"; };
 		C3EEDFA022957AD2005EF358 /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
@@ -98,10 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				C3A9FFAF22939DD200801651 /* Source */,
-				C3A9FFFC22939F2600801651 /* CirrusMDSDK-Pods */,
-				C3EEDF81229575B2005EF358 /* CirrusMDSDK-Carthage */,
-				B170B951232C330A00665AE8 /* CirrusMDSDK-Swift-Pods */,
-				B170B970232C3FFA00665AE8 /* CirrusMDSDK-Swift-Carthage */,
+				B170B951232C330A00665AE8 /* CirrusMDSDK-Pods */,
+				B170B970232C3FFA00665AE8 /* CirrusMDSDK-Carthage */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				E50021A1FDAAFACD5F75FABB /* Pods */,
@@ -138,12 +132,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B170B951232C330A00665AE8 /* CirrusMDSDK-Swift-Pods */ = {
+		B170B951232C330A00665AE8 /* CirrusMDSDK-Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B170B960232C330B00665AE8 /* Info.plist */,
 			);
-			path = "CirrusMDSDK-Swift-Pods";
+			path = "CirrusMDSDK-Pods";
 			sourceTree = "<group>";
 		};
 		B170B965232C335300665AE8 /* Swift */ = {
@@ -157,12 +151,12 @@
 			path = Swift;
 			sourceTree = "<group>";
 		};
-		B170B970232C3FFA00665AE8 /* CirrusMDSDK-Swift-Carthage */ = {
+		B170B970232C3FFA00665AE8 /* CirrusMDSDK-Carthage */ = {
 			isa = PBXGroup;
 			children = (
 				B170B97F232C3FFB00665AE8 /* Info.plist */,
 			);
-			path = "CirrusMDSDK-Swift-Carthage";
+			path = "CirrusMDSDK-Carthage";
 			sourceTree = "<group>";
 		};
 		C3A9FFAF22939DD200801651 /* Source */ = {
@@ -174,24 +168,6 @@
 				C3A9FFD322939E3000801651 /* en.lproj */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		C3A9FFFC22939F2600801651 /* CirrusMDSDK-Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C3A9000B22939F2600801651 /* Info.plist */,
-				C3A9000C22939F2600801651 /* main.m */,
-			);
-			path = "CirrusMDSDK-Pods";
-			sourceTree = "<group>";
-		};
-		C3EEDF81229575B2005EF358 /* CirrusMDSDK-Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				C3EEDF90229575B2005EF358 /* Info.plist */,
-				C3EEDF91229575B2005EF358 /* main.m */,
-			);
-			path = "CirrusMDSDK-Carthage";
 			sourceTree = "<group>";
 		};
 		E50021A1FDAAFACD5F75FABB /* Pods */ = {
@@ -520,12 +496,12 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Swift-Pods/Info.plist";
+				INFOPLIST_FILE = "CirrusMDSDK-Pods/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Swift-Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -551,12 +527,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Swift-Pods/Info.plist";
+				INFOPLIST_FILE = "CirrusMDSDK-Pods/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Swift-Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
@@ -582,12 +558,12 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Swift-Carthage/Info.plist";
+				INFOPLIST_FILE = "CirrusMDSDK-Carthage/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Swift-Carthage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Carthage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -615,12 +591,12 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Swift-Carthage/Info.plist";
+				INFOPLIST_FILE = "CirrusMDSDK-Carthage/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Swift-Carthage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Carthage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
