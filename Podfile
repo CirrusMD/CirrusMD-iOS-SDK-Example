@@ -8,7 +8,3 @@ target 'CirrusMDSDK-Pods' do
   pod 'CirrusMDSDK', '~> 1.7.0'
 end
 
-target 'CirrusMDSDK-Swift-Pods' do
-  pod 'CirrusMDSDK', '~> 1.7.0'
-end
-
