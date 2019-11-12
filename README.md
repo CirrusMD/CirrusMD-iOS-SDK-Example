@@ -28,9 +28,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - iOS 10.0+
-- Xcode 10.3, Swift 5
+- Xcode 11.1, Swift 5.1
 - CirrusMDSDK works in both Swift and Objective-C projects
-- `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
+    - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
 ## Installing CirrusMDSDK in your own project
 
@@ -50,7 +50,7 @@ To integrate CirrusMDSDK into your Xcode project using CocoaPods, specify it in 
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/CirrusMD/podspecs.git' # <-- Make sure to add this line
 
-platform :ios, '11.0' # must be >= 9.0
+platform :ios, '11.0' # must be >= 10.0
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -85,15 +85,15 @@ Run `carthage update` to build the framework and drag the built `CirrusMDSDK.fra
 
 Follow the instructions found on [Carthage](https://github.com/Carthage/Carthage) to add both an Input File and Output File in your `Build Phase` for Carthage.
 
-Add an Import Path to your build settings:
-
-> `Build Settings > Import Paths > Carthage/Build/iOS/CirrusMDSDK.framework/zlib`
-
 ### Manually
 
 If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
 
-#### TODO: DOCUMENT THE STEPS FOR INTEGRATING IT MANUALLY HERE
+Download the desired version of the SDK from [here](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json) (the same place that Carthage pulls from).
+
+Drag and drop the framework into your Xcode project.
+
+Note: If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods or Carthage since you can add the file to gitignore when using a dependency manager.
 
 ## Basic Usage
 
@@ -455,7 +455,7 @@ The payload of the package sent by CirrusMD has the shape shown below, which are
 
 `true` means the notification should be displayed. Either the view is not being shown or a different `streamId` is selected.
 
-`false`means the notification should **not** be displayed. The view is being shown and is on the provided `streamId`.
+`false` means the notification should **not** be displayed. The view is being shown and is on the provided `streamId`.
 ##### Swift
 ```swift
 CirrusMDSDKSession.singleton.shouldShowNotification(streamId: String, eventType: String)
@@ -473,7 +473,9 @@ If the SDK view controller is being displayed, it will switch to the provided `s
 
 If the view controller is not being displayed, the provided `streamId` will be presented when it is shown.
 
-If the provided `streamId` is not found on the current user's profile, no action will be taken. 
+If the provided `streamId` is not found on the current user's profile, no action will be taken.
+
+In addition to these actions, if the notification is for a video session, the video session will be launched once the user is presented with the corresponding stream.
 
 ##### Swift
 ```swift

@@ -1,6 +1,0 @@
-framework module Pods_CirrusMDSDK_Pods {
-  umbrella header "Pods-CirrusMDSDK-Pods-umbrella.h"
-
-  export *
-  module * { export * }
-}
