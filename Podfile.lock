@@ -1,16 +1,16 @@
 PODS:
-  - CirrusMDSDK (1.7.1)
+  - CirrusMDSDK (1.8.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 1.7.1)
+  - CirrusMDSDK
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
     - CirrusMDSDK
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: 2d8a62e484be151f9a3945769b89dfb94bb06548
+  CirrusMDSDK: 6b6007f0864bb789fcbdb71345c3537dfb79b5be
 
-PODFILE CHECKSUM: cf937e23c1a1851c6ce761b5c7ae954220efd1f1
+PODFILE CHECKSUM: 5352446ba3c03b788da991b8fa2871fd90659b10
 
 COCOAPODS: 1.8.4
