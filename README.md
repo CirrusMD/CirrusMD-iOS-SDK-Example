@@ -18,6 +18,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Logout](#logout)
   - [Custom Status Views](#custom-status-views)
   - [Push notifications](#push-notifications)
+  - [External Channels](#external-channels)
   - [Additional API](#additional-api)
 - [License](#license)
 
@@ -486,6 +487,37 @@ CirrusMDSDKSession.singleton.onRemoteNotificationSelected(streamId: String, even
 ```obj-c
 [CirrusMDSDKSession.singleton onRemoteNotificationSelectedWithStreamId:streamId eventType:eventType];
 ```
+
+### External Channels
+
+The SDK allows retrieval of and deep linking into specific channels.
+
+The channels available to the authenticated user can be retrieved using the `channels` function on `CirrusMDSDKSession`.
+
+##### Swift
+```swift
+let channels = CirrusMDSDKSession.singleton.channels()
+```
+
+##### Objective-C
+```obj-c
+NSArray<CirrusMDChannel*>* channels = [CirrusMDSDKSession.singleton channels];
+```
+
+You can force the SDK to navigate (deep link) to one of the channels using the `navigateToChannel` function on `CirrusMDSDKSession`.
+
+##### Swift
+```swift
+let channel = CirrusMDSDKSession.singleton.channels()[index]
+CirrusMDSDKSession.singleton.navigateToChannel(id: channel.id)
+```
+
+##### Objective-C
+```obj-c
+CirrusMDChannel* channel = [CirrusMDSDKSession.singleton channels][index];
+[CirrusMDSDKSession.singleton navigateToChannelWithId: channel.id];
+```
+
 ### Additional API
 
 Access `CirrusMDSDKSession.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
