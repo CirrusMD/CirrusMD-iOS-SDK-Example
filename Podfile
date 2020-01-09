@@ -1,10 +1,13 @@
 source 'https://github.com/CirrusMD/podspecs.git'
-use_frameworks!
-project 'CirrusMDSDK-Example.xcodeproj'
 
 platform :ios, '10.0'
 
+use_frameworks!
+
+workspace 'CirrusMDSDK-Example.xcworkspace'
+
 target 'CirrusMDSDK-Pods' do
+  project 'CirrusMDSDK-Example.xcodeproj'
   pod 'CirrusMDSDK'
 end
 
