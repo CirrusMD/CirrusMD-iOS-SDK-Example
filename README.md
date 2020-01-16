@@ -48,7 +48,7 @@ $ gem install cocoapods
 To integrate CirrusMDSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git' # <-- Make sure to add this line if it's not already in your Podfile
 source 'https://github.com/CirrusMD/podspecs.git' # <-- Make sure to add this line
 
 platform :ios, '11.0' # must be >= 10.0
@@ -65,36 +65,17 @@ Then, run the following command:
 $ pod install
 ```
 
-### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate CirrusMDSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-binary "https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json"
-```
-
-Run `carthage update` to build the framework and drag the built `CirrusMDSDK.framework` into your Xcode project.
-
-Follow the instructions found on [Carthage](https://github.com/Carthage/Carthage) to add both an Input File and Output File in your `Build Phase` for Carthage.
-
 ### Manually
 
 If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
 
-Download the desired version of the SDK from [here](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json) (the same place that Carthage pulls from).
+Download the desired version of the SDK from [here](https://cirrusmd-ios-sdk-release.s3.amazonaws.com/CirrusMDSDK.json).
 
 Drag and drop the framework into your Xcode project.
 
-Note: If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods or Carthage since you can add the file to gitignore when using a dependency manager.
+You will also need to manually add all of the dependencies that are listed in the Podspec for the desired version, which can be found [here](https://github.com/CirrusMD/podspecs/tree/master/CirrusMDSDK).
+
+Note: If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods since you can add the file to gitignore when using a dependency manager.
 
 ## Basic Usage
 
