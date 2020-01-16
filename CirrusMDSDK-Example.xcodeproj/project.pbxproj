@@ -13,32 +13,9 @@
 		B170B966232C338600665AE8 /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */; };
 		B170B968232C338600665AE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD222939E3000801651 /* Assets.xcassets */; };
 		B170B96A232C33EB00665AE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B170B969232C33EB00665AE8 /* Main.storyboard */; };
-		B170B983232C400C00665AE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B952232C330A00665AE8 /* AppDelegate.swift */; };
-		B170B984232C400C00665AE8 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B954232C330A00665AE8 /* ExampleViewController.swift */; };
-		B170B985232C400C00665AE8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B956232C330A00665AE8 /* SecondViewController.swift */; };
-		B170B986232C400C00665AE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B170B969232C33EB00665AE8 /* Main.storyboard */; };
-		B170B987232C401300665AE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD222939E3000801651 /* Assets.xcassets */; };
 		B170B988232C401A00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
-		B170B989232C401B00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
-		B170B98D232C404400665AE8 /* CirrusMDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; };
-		B170B98E232C404400665AE8 /* CirrusMDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B170B992232C414000665AE8 /* CirrusMD-LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */; };
 		D4AFDAA9108DAD82D0D9EAD2 /* Pods_CirrusMDSDK_Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDCC1249C1D5AB2FF1DD124 /* Pods_CirrusMDSDK_Pods.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B170B98C232C403D00665AE8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B170B98E232C404400665AE8 /* CirrusMDSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		14D50BDD1FCC70CD00ECF757 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -59,14 +36,11 @@
 		B170B956232C330A00665AE8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B170B960232C330B00665AE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B170B969232C33EB00665AE8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B170B96F232C3FFA00665AE8 /* CirrusMDSDK-Carthage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CirrusMDSDK-Carthage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B170B97F232C3FFB00665AE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3A9FFD222939E3000801651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3A9FFD322939E3000801651 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		C3EEDF9C22957AB6005EF358 /* Base64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base64.framework; path = Carthage/Build/iOS/Base64.framework; sourceTree = "<group>"; };
 		C3EEDF9E22957AC6005EF358 /* JWT_iOS_Framework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT_iOS_Framework.framework; path = Carthage/Build/iOS/JWT_iOS_Framework.framework; sourceTree = "<group>"; };
 		C3EEDFA022957AD2005EF358 /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
-		C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CirrusMDSDK.framework; path = Carthage/Build/iOS/CirrusMDSDK.framework; sourceTree = "<group>"; };
 		C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "CirrusMD-LaunchScreen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,14 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B170B96C232C3FFA00665AE8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B170B98D232C404400665AE8 /* CirrusMDSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -95,7 +61,6 @@
 			children = (
 				C3A9FFAF22939DD200801651 /* Source */,
 				B170B951232C330A00665AE8 /* CirrusMDSDK-Pods */,
-				B170B970232C3FFA00665AE8 /* CirrusMDSDK-Carthage */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				E50021A1FDAAFACD5F75FABB /* Pods */,
@@ -106,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				B170B950232C330A00665AE8 /* CirrusMDSDK-Pods.app */,
-				B170B96F232C3FFA00665AE8 /* CirrusMDSDK-Carthage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +78,6 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C3EEDFA222957AD7005EF358 /* CirrusMDSDK.framework */,
 				C3EEDFA022957AD2005EF358 /* JWT.framework */,
 				C3EEDF9E22957AC6005EF358 /* JWT_iOS_Framework.framework */,
 				C3EEDF9C22957AB6005EF358 /* Base64.framework */,
@@ -149,14 +112,6 @@
 				B170B969232C33EB00665AE8 /* Main.storyboard */,
 			);
 			path = Swift;
-			sourceTree = "<group>";
-		};
-		B170B970232C3FFA00665AE8 /* CirrusMDSDK-Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				B170B97F232C3FFB00665AE8 /* Info.plist */,
-			);
-			path = "CirrusMDSDK-Carthage";
 			sourceTree = "<group>";
 		};
 		C3A9FFAF22939DD200801651 /* Source */ = {
@@ -201,25 +156,6 @@
 			productReference = B170B950232C330A00665AE8 /* CirrusMDSDK-Pods.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B170B96E232C3FFA00665AE8 /* CirrusMDSDK-Carthage */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B170B982232C3FFB00665AE8 /* Build configuration list for PBXNativeTarget "CirrusMDSDK-Carthage" */;
-			buildPhases = (
-				B170B96B232C3FFA00665AE8 /* Sources */,
-				B170B96C232C3FFA00665AE8 /* Frameworks */,
-				B170B96D232C3FFA00665AE8 /* Resources */,
-				B170B98C232C403D00665AE8 /* Embed Frameworks */,
-				B170B991232C40F200665AE8 /* Carthage Strip Binaries */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "CirrusMDSDK-Carthage";
-			productName = "CirrusMDSDK-Swift-Carthage";
-			productReference = B170B96F232C3FFA00665AE8 /* CirrusMDSDK-Carthage.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -234,10 +170,6 @@
 					B170B94F232C330A00665AE8 = {
 						CreatedOnToolsVersion = 10.3;
 						DevelopmentTeam = C7DYCH58CQ;
-						ProvisioningStyle = Automatic;
-					};
-					B170B96E232C3FFA00665AE8 = {
-						CreatedOnToolsVersion = 10.3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -256,7 +188,6 @@
 			projectRoot = "";
 			targets = (
 				B170B94F232C330A00665AE8 /* CirrusMDSDK-Pods */,
-				B170B96E232C3FFA00665AE8 /* CirrusMDSDK-Carthage */,
 			);
 		};
 /* End PBXProject section */
@@ -273,17 +204,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B170B96D232C3FFA00665AE8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B170B987232C401300665AE8 /* Assets.xcassets in Resources */,
-				B170B989232C401B00665AE8 /* en.lproj in Resources */,
-				B170B986232C400C00665AE8 /* Main.storyboard in Resources */,
-				B170B992232C414000665AE8 /* CirrusMD-LaunchScreen.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -295,37 +215,37 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh",
 				"${PODS_ROOT}/CirrusMDSDK/CirrusMDSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/JTSImageViewController/JTSImageViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/KTVJSONWebToken/KTVJSONWebToken.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/UDF/UDF.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTSImageViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KTVJSONWebToken.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UDF.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B170B991232C40F200665AE8 /* Carthage Strip Binaries */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Base64.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/JWT.framework",
-			);
-			name = "Carthage Strip Binaries";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Base64.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JWT.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		D97EF854EB398E208CE26B9A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -359,16 +279,6 @@
 				B170B957232C330A00665AE8 /* SecondViewController.swift in Sources */,
 				B170B953232C330A00665AE8 /* AppDelegate.swift in Sources */,
 				B170B955232C330A00665AE8 /* ExampleViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B170B96B232C3FFA00665AE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B170B985232C400C00665AE8 /* SecondViewController.swift in Sources */,
-				B170B983232C400C00665AE8 /* AppDelegate.swift in Sources */,
-				B170B984232C400C00665AE8 /* ExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,70 +450,6 @@
 			};
 			name = Release;
 		};
-		B170B980232C3FFB00665AE8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Carthage/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Carthage";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B170B981232C3FFB00665AE8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CirrusMDSDK-Carthage/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Carthage";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -621,15 +467,6 @@
 			buildConfigurations = (
 				B170B962232C330B00665AE8 /* Debug */,
 				B170B963232C330B00665AE8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B170B982232C3FFB00665AE8 /* Build configuration list for PBXNativeTarget "CirrusMDSDK-Carthage" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B170B980232C3FFB00665AE8 /* Debug */,
-				B170B981232C3FFB00665AE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
