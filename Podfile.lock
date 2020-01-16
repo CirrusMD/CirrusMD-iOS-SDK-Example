@@ -1,5 +1,31 @@
 PODS:
-  - CirrusMDSDK (1.8.1)
+  - CirrusMDSDK (1.8.2):
+    - JTSImageViewController (~> 1.5.1)
+    - Kingfisher (~> 5.8.1)
+    - KTVJSONWebToken (~> 2.1.0)
+    - MBProgressHUD (~> 1.1.0)
+    - ObjectMapper (~> 3.5.1)
+    - OpenTok (~> 2.16.3)
+    - ReachabilitySwift (~> 4.3.1)
+    - RNCryptor (~> 5.1.0)
+    - SnapKit (~> 5.0.1)
+    - Starscream (~> 3.1.1)
+    - Then (~> 2.6.0)
+    - UDF (~> 0.7.0)
+  - JTSImageViewController (1.5.1)
+  - Kingfisher (5.8.3):
+    - Kingfisher/Core (= 5.8.3)
+  - Kingfisher/Core (5.8.3)
+  - KTVJSONWebToken (2.1.0)
+  - MBProgressHUD (1.1.0)
+  - ObjectMapper (3.5.1)
+  - OpenTok (2.16.3)
+  - ReachabilitySwift (4.3.1)
+  - RNCryptor (5.1.0)
+  - SnapKit (5.0.1)
+  - Starscream (3.1.1)
+  - Then (2.6.0)
+  - UDF (0.7.0)
 
 DEPENDENCIES:
   - CirrusMDSDK
@@ -7,10 +33,35 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
     - CirrusMDSDK
+    - UDF
+  https://github.com/CocoaPods/Specs.git:
+    - JTSImageViewController
+    - Kingfisher
+    - KTVJSONWebToken
+    - MBProgressHUD
+    - ObjectMapper
+    - OpenTok
+    - ReachabilitySwift
+    - RNCryptor
+    - SnapKit
+    - Starscream
+    - Then
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: b86ec92ad33e4649280c70e2ded275fa2b200312
+  CirrusMDSDK: 59e38b89babe02b89acb8b24c98ab8723c660bdc
+  JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
+  Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
+  KTVJSONWebToken: c3cc06e26876d63c62a5c40c5e89939899de48cf
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  OpenTok: e17e1333108837cf0669be5de8f3155d1eb7ac12
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
+  UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
 
-PODFILE CHECKSUM: e00f8297f4df3f5fcad6b291209ef374004eb958
+PODFILE CHECKSUM: 926ac78c48552659bb0a4d59216735f173aa247f
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.8.4
