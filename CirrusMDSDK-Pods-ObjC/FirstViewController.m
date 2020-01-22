@@ -69,7 +69,6 @@
 }
 
 - (void)setToken:(NSString *)token {
-
     /*
      Loads an SSO user from the provided token.`[CirrusMDSDKSession.singleton setSecret:]`
      must be called prior to calling `[CirrusMDSDKSession.singleton setToken:completion:]`
