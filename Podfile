@@ -12,3 +12,8 @@ target 'CirrusMDSDK-Pods' do
   pod 'CirrusMDSDK'
 end
 
+target 'CirrusMDSDK-Pods-ObjC' do
+  project 'CirrusMDSDK-Example.xcodeproj'
+  pod 'CirrusMDSDK'
+end
+
