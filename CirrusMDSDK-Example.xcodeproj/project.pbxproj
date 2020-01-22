@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A611A385DABF0074E969B804 /* Pods_CirrusMDSDK_Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C0EE24A313F6B30C59E6CE /* Pods_CirrusMDSDK_Pods.framework */; };
 		B170B953232C330A00665AE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B952232C330A00665AE8 /* AppDelegate.swift */; };
 		B170B955232C330A00665AE8 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B954232C330A00665AE8 /* ExampleViewController.swift */; };
 		B170B957232C330A00665AE8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170B956232C330A00665AE8 /* SecondViewController.swift */; };
@@ -14,7 +15,6 @@
 		B170B968232C338600665AE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD222939E3000801651 /* Assets.xcassets */; };
 		B170B96A232C33EB00665AE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B170B969232C33EB00665AE8 /* Main.storyboard */; };
 		B170B988232C401A00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
-		D4AFDAA9108DAD82D0D9EAD2 /* Pods_CirrusMDSDK_Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDCC1249C1D5AB2FF1DD124 /* Pods_CirrusMDSDK_Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +23,8 @@
 		14D50BE11FCC70EE00ECF757 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		14D50BE31FCC70FD00ECF757 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		14D50C001FCC84C900ECF757 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		1CDCC1249C1D5AB2FF1DD124 /* Pods_CirrusMDSDK_Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CirrusMDSDK_Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		358069BA57A328F8A838A41C /* Pods-CirrusMDSDK-Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK-Pods.release.xcconfig"; path = "Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods.release.xcconfig"; sourceTree = "<group>"; };
+		47C0EE24A313F6B30C59E6CE /* Pods_CirrusMDSDK_Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CirrusMDSDK_Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54898862E359055EA85CBF83 /* Pods-CirrusMDSDK-Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK-Pods.debug.xcconfig"; path = "Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4AFDAA9108DAD82D0D9EAD2 /* Pods_CirrusMDSDK_Pods.framework in Frameworks */,
+				A611A385DABF0074E969B804 /* Pods_CirrusMDSDK_Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +59,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				C3A9FFAF22939DD200801651 /* Source */,
-				B170B951232C330A00665AE8 /* CirrusMDSDK-Pods */,
+				C3A9FFAF22939DD200801651 /* CirrusMDSDK-Pods */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				E50021A1FDAAFACD5F75FABB /* Pods */,
@@ -90,39 +89,24 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				1CDCC1249C1D5AB2FF1DD124 /* Pods_CirrusMDSDK_Pods.framework */,
+				47C0EE24A313F6B30C59E6CE /* Pods_CirrusMDSDK_Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B170B951232C330A00665AE8 /* CirrusMDSDK-Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B170B960232C330B00665AE8 /* Info.plist */,
-			);
-			path = "CirrusMDSDK-Pods";
-			sourceTree = "<group>";
-		};
-		B170B965232C335300665AE8 /* Swift */ = {
+		C3A9FFAF22939DD200801651 /* CirrusMDSDK-Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B170B952232C330A00665AE8 /* AppDelegate.swift */,
 				B170B954232C330A00665AE8 /* ExampleViewController.swift */,
 				B170B956232C330A00665AE8 /* SecondViewController.swift */,
 				B170B969232C33EB00665AE8 /* Main.storyboard */,
-			);
-			path = Swift;
-			sourceTree = "<group>";
-		};
-		C3A9FFAF22939DD200801651 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				B170B965232C335300665AE8 /* Swift */,
 				C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */,
 				C3A9FFD222939E3000801651 /* Assets.xcassets */,
+				B170B960232C330B00665AE8 /* Info.plist */,
 				C3A9FFD322939E3000801651 /* en.lproj */,
 			);
-			path = Source;
+			path = "CirrusMDSDK-Pods";
 			sourceTree = "<group>";
 		};
 		E50021A1FDAAFACD5F75FABB /* Pods */ = {

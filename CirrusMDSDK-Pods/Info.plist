@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Access to your photo library allows you to upload photos while messaging.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Access to your microphone allows you to talk to the other person during a video chat.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Access to your camera allows you to take and upload a photo while messaging.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -26,8 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Access to your camera allows you to take and upload a photo while messaging.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Access to your microphone allows you to talk to the other person during a video chat.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Access to your photo library allows you to upload photos while messaging.</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>CirrusMD-LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
