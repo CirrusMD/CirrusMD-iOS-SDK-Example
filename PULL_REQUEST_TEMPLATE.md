@@ -16,3 +16,4 @@
 - [ ] I have added tests to cover my changes.
 - [ ] No tests are required for this change.
 - [ ] My change requires a documentation change.
+- [ ] My change requires a CHANGELOG update.
