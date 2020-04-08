@@ -21,11 +21,16 @@ class ExampleViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        CirrusMDSDKSession.singleton.logLevel = .verbose
+        
         configureSessionDelegate()
         styleNavigationBar()
         loadTokenForPatient(patientId: patientId)
+        
         let root = CirrusMDSDKSession.singleton.messageViewController()
         setViewControllers([root], animated: false)
+        
         addRightBarButtonItem()
         addLeftBarButtonItem()
     }
