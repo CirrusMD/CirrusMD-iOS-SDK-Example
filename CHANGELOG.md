@@ -1,5 +1,15 @@
 # CirrusMD iOS SDK Changelog
 
+# 1.9.0
+
+Built with:
+- Xcode 11.3.1, Swift 5.1
+
+Enhancements:
+
+- Added new logging options. You can now set logLevel on CirrusMDSDKSession to none or verbose. When set to verbose the SDK will print extensive logging to the debugger's console and the device's console for debugging purposes. The logLevel defaults to none.
+- Fixed cases where a stream would automatically be pushed when it wasn't supposed to be.
+
 # 1.8.3
 
 Built with:

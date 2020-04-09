@@ -19,7 +19,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Custom Status Views](#custom-status-views)
   - [Push notifications](#push-notifications)
   - [External Channels](#external-channels)
-  - [Additional API](#additional-api)
+  - [Debugging](#debugging)
 - [License](#license)
 
 ## Example Application
@@ -499,7 +499,25 @@ CirrusMDChannel* channel = [CirrusMDSDKSession.singleton channels][index];
 [CirrusMDSDKSession.singleton navigateToChannelWithId: channel.id];
 ```
 
-### Additional API
+### Debugging
+
+#### Log Level
+
+The default log level is none. For debugging purposes this can be changed to verbose. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level to verbose for debugging purposes it should be done before calling anything other functions on the SDK.
+
+##### Swift
+
+```swift
+CirrusMDSDKSession.singleton.logLevel = .verbose
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKSession.singleton.logLevel = CirrusMDLogLevelVerbose
+```
+
+#### Token State
 
 Access `CirrusMDSDKSession.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
 
