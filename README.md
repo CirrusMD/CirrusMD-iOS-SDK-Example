@@ -514,7 +514,7 @@ CirrusMDSDKSession.singleton.logLevel = .verbose
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKSession.singleton.logLevel = CirrusMDLogLevelVerbose
+CirrusMDSDKSession.singleton.logLevel = CirrusMDLogLevelVerbose;
 ```
 
 #### Token State
