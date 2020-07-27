@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 1.9.2
+
+Built with:
+- Xcode 11.4, Swift 5.2
+
+Enhancements:
+
+- Updated pinned SSL certificates
+
+--- 
+# DEPRECATED: All builds below this line are deprecated and will not work starting on 10/02/2020
+
 # 1.9.1
 
 Built with:
