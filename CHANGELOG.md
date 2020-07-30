@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 1.9.3
+
+Built with:
+- Xcode 11.3.1, Swift 5.1
+
+Note:
+- This is the same change as 1.9.2 but it is built off of 1.9.0 with Xcode 11.3.1 and Swift 5.1
+
+Enhancements:
+
+- Updated pinned SSL certificates
+
 # 1.9.2
 
 Built with:
