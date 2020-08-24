@@ -1,5 +1,14 @@
 # CirrusMD iOS SDK Changelog
 
+# 1.9.4
+
+Built with:
+- Xcode 11.6, Swift 5.2
+
+Enhancements:
+
+- Updated build to Xcode 11.6
+
 # 1.9.3
 
 Built with:
