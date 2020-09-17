@@ -22,13 +22,13 @@ class ExampleViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CirrusMDSDKSession.singleton.logLevel = .verbose
+        configureCirrusMDSDK()
         
         configureSessionDelegate()
         styleNavigationBar()
         loadTokenForPatient(patientId: patientId)
         
-        let root = CirrusMDSDKSession.singleton.messageViewController()
+        let root = CirrusMDSDK.singleton.viewController
         setViewControllers([root], animated: false)
         
         addRightBarButtonItem()
@@ -49,21 +49,16 @@ class ExampleViewController: UINavigationController {
         loggedOutView.backgroundColor = .blue
     }
     
-    private func configureColors() {
-        let config = CirrusMDSDKColorConfig()
-        config.primary = "FF5733"
-        
-        CirrusMDSDKSession.singleton.setColorConfig(config)
-    }
-    
-    private func configureText() {
+    private func configureCirrusMDSDK() {
         let config = CirrusMDSDKConfig()
+        config.logLevel = .verbose
+        config.primaryColor = UIColor(red: 0.01, green: 0.4, blue: 0.62, alpha: 1.0)
         config.title = "Your Custom Title"
-        
-        CirrusMDSDKSession.singleton.setConfig(config)
+        CirrusMDSDK.singleton.config = config
     }
     
     private func styleNavigationBar() {
+        navigationBar.isTranslucent = false
         navigationBar.barTintColor = UIColor(red: 0.01, green: 0.4, blue: 0.62, alpha: 1.0)
         navigationBar.titleTextAttributes = [kCTForegroundColorAttributeName: UIColor.white] as [NSAttributedString.Key : Any]
         navigationBar.tintColor = UIColor.white
@@ -107,7 +102,7 @@ class ExampleViewController: UINavigationController {
     }
     
     func loadTokenForPatient(patientId: Int) {
-        CirrusMDSDKSession.singleton.setSecret(secret)
+        CirrusMDSDK.singleton.setSecret(secret)
         
         guard let url = URL(string: "https://staging.cirrusmd.com/sdk/v1/sandbox/sessions") else { return }
         let postDict = ["patient_id": patientId, "sdk_id": sdkId] as [String : Any]
@@ -132,7 +127,7 @@ class ExampleViewController: UINavigationController {
     }
     
     func resetHistoryForPatient(patientId: Int) {
-        CirrusMDSDKSession.singleton.setSecret(secret)
+        CirrusMDSDK.singleton.setSecret(secret)
         
         guard let url = URL(string: "https://staging.cirrusmd.com/sdk/v1/sandbox/history") else { return }
         let postDict = ["patient_id": patientId, "sdk_id": sdkId] as [String : Any]
@@ -154,10 +149,10 @@ class ExampleViewController: UINavigationController {
     
     func setToken(token: String) {
         /*
-         Loads an SSO user from the provided token.`[CirrusMDSDKSession.singleton setSecret:]`
-         must be called prior to calling `[CirrusMDSDKSession.singleton setToken:completion:]`
+         Loads an SSO user from the provided token.`CirrusMDSDK.singleton.setSecret`
+         must be called prior to calling `CirrusMDSDK.singleton.setToken`
          */
-        CirrusMDSDKSession.singleton.setToken(token) { (result) in
+        CirrusMDSDK.singleton.setToken(token) { (result) in
             switch result {
             case .success:
                 NSLog("Set Token Success")
@@ -175,9 +170,9 @@ class ExampleViewController: UINavigationController {
 
 // MARK: - CirrusMDSKSessionDelegate
 
-extension ExampleViewController: CirrusMDSKSessionDelegate {
+extension ExampleViewController: CirrusMDSDKDelegate {
     
-    func viewForError(code: CirrusMDSDKSessionResult) -> UIView {
+    func viewForError(code: CirrusMDSDKResult) -> UIView {
         return errorView
     }
     
