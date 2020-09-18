@@ -1,5 +1,53 @@
 # CirrusMD iOS SDK Changelog
 
+# 4.X.X
+### 4.0.0
+Built with: Xcode 11.5, Swift 5.2.4
+
+### 4.1.0
+Built with: Xcode 11.6, Swift 5.2.4
+
+### 4.2.0
+Built with: Xcode 11.7, Swift 5.2.4
+
+### New Features:
+
+- Renamed CirrusMDSDKSession to CirrusMDSDK
+- Refactored messagesViewController() to viewController for a cleaner syntax and to better communicate that it is a single view controller that is not recreated when accessing
+- Moved the logLevel setting into CirrusMDSDKConfig
+- Moved all of the color settings into CirrusMDSDKConfig and removed CirrusMDSDKColorConfig 
+- Added a Settings view where the user can edit their profile and see some other options. This is accessed from a button in the navigation bar on channels of care. This is turned on and off by the enableSettings property in the config. This defaults to being disabled.
+- Added a Support section to Settings to allow users to contact support.
+- Added support for dependents. This allows the user to switch to a dependent so that the dependent may communicate with a provider. This feature is turned on and off by the enableDependents property in the config. This defaults to being disabled.
+- Added a userLoggedOut function to CirrusMDSDKDelegate so that the parent app can recieve a call back when the user uses the Settings view to log out.
+- Added a current user header to the channels of care view that shows the current user's image and name. This changes to a dependent's image and name when switching to to a dependent.
+- Added userLoggedIn function to CirrusMDSDKDelegate
+- Added a debugViewController function that returns a view controller that displays debug information
+- Added support for cross channel transfers
+- Added UI styling for multiple action message types such as transfers
+- Added UI to display the inactive message on inactive streams
+- Added support for eVisit messages in streams
+- Changed color settings to be UIColors instead of hex strings
+- Improved the broadcasting of the patient's typing events
+- When presenting any navigation controllers the SDK will match the styling of the navigation controller being used to present the primary view controller of the SDK. If the primary view controller is not presented in a navigation controller the SDK will fall back to standard colors
+- Made the result of onRemoteNotificationSelected discardable
+- Added the SDK version to the User Agent
+- Removed the JTSImageViewController dependency and replaced it with a homegrown solution
+- Minor dependency updates
+
+### Bug Fixes:
+- Fixed empty white space between keyboard and input bar
+- Fixed a race condition that could result in a freeze and/or crash on iPad
+- Fixed a bug that could present an unexpected failure alert when registering for push notifications
+- Fixed attachment icon. It should now be a paperclip, for parity with web. 
+- Fixed an issue where links would not show up in welcome messages if the parent app's global tint was set to white
+- Fixed an issue where the tokentState would report as valid before it had been confirmed for the particular user being loaded
+- Set the date picker used to edit Date of Birth to use the wheels style on iOS 14
+- Fixed an issue where a stream would still show a provider's info in the channels of care view after an encounter had been completed
+- Fixed an issue where a pre-encounter alert could pop up when an encounter is completed and the patient is still viewing the stream
+- Updated the max image size and JPEG quality to match the API
+
+
 # 1.9.4
 
 Built with:
