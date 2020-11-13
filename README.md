@@ -11,14 +11,16 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
 - [Installation](#installing-cirrusmdsdk-in-your-own-project)
 - [Basic Usage](#basic-usage)
 - [Advanced Usage](#advanced-usage)
+  - [Delegate (Custom Status Views and Callbacks)](#delegate)
+  - [Push notifications](#push-notifications)
+  - [Logout](#logout)
   - [CirrusMDSDKConfig](#cirrusmdsdkconfig)
   - [Titles and Colors](#titles-and-colors)
   - [Enable Settings View](#enable-settings-view)
   - [Enable Dependents](#enable-dependents)
-  - [Logout](#logout)
-  - [Delegate (Custom Status Views and Callbacks)](#delegate)
-  - [Push notifications](#push-notifications)
+  - [Enable User Log Out](#enable-user-log-out)
   - [External Channels](#external-channels)
+  - [User Agent Prefix](#user-agent-prefix)
   - [Debugging](#debugging)
 - [License](#license)
 
@@ -219,127 +221,6 @@ If the SDK has been provided with a valid secret and token the SSO user's channe
 
 ## Advanced Usage
 
-### CirrusMDSDKConfig
-
-All custom configuration of the CirrusMDSDK is done via the `CirrusMDSDKConfig`. This allows the configuration of items such as titles, colors, optional features, etc.. All of the exact options are outlined below.
-
-##### Swift
-
-```swift
-let config = CirrusMDSDKConfig()
-// Set the desired properties on the config here
-
-CirrusMDSDK.singleton.setConfig(config)
-```
-
-##### Obective-C
-
-```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
-// Set the desired properties on the config here
-
-[CirrusMDSDK.singleton setConfig:config];
-```
-
-### Titles and Colors
-
-Some of the navigation titles in the SDK are configurable. To override the default set a title on your `CirrusMDSDKConfig` object.
-Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDSDKConfig` object.
-
-```swift
-primary     // defaults to "#1a1a1a", used in avatar outlines and buttons
-offHours    // defaults to "#4a4a4a", used in the Patient Encounter Queue
-unassigned  // defaults to "#0c4c78", used in the Patient Encounter Queue
-assigned    // defaults to "#44db5e", used in the Patient Encounter Queue
-error       // defaults to "#dd0000", will be used in the future
-success     // defaults to "#44db5e", will be used in the future
-warning     // defaults to "#daaf0f", used in the offline banner
-```
-
-##### Swift
-
-```swift
-let config = CirrusMDSDKConfig()
-config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
-config.primary = "FF5733"
-
-CirrusMDSDK.singleton.setConfig(config)
-```
-
-##### Obective-C
-
-```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
-config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
-config.primary = @"FF5733";
-
-[CirrusMDSDK.singleton setConfig:config];
-```
-
-### Enable Settings View
-
-There is an optional Settings view that you can allow your users to have access to. The Settings view, when enabled, is accessed via a button in the navigation bar of the SDK. This Settings view allows the user to view and edit their profile, medical history, dependents, permissions, and Terms of Use / Privacy Policy. The Settings view also allows the user to manually log out of the CirrusMDSDK. The availability of the Settings view is controlled by the `CirrusMDSDKConfig`.
-
-NOTE: The Settings view defaults to be disabled.
-
-##### Swift
-
-```swift
-let config = CirrusMDSDKConfig()
-config.enableSettings = true
-
-CirrusMDSDK.singleton.setConfig(config)
-```
-
-##### Obective-C
-
-```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
-config.enableSettings = YES;
-
-[CirrusMDSDK.singleton setConfig:config];
-```
-
-### Enable Dependents
-
-The CirrusMDSDK can support a user having dependents that can chat under their guarantor's account. When dependents support is enabled and a user has dependents they will see a dependents button that allows them to switch to chatting as that dependent. Support for dependents is controlled by the `CirrusMDSDKConfig`.
-
-Note: Dependent support defaults to being disabled.
-
-##### Swift
-
-```swift
-let config = CirrusMDSDKConfig()
-config.enableDependents = true
-
-CirrusMDSDK.singleton.setConfig(config)
-```
-
-##### Obective-C
-
-```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
-config.enableDependents = YES;
-
-[CirrusMDSDK.singleton setConfig:config];
-```
-
-### Logout
-
-You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.
-
-##### Swift
-
-```swift
-CirrusMDSDK.singleton.logOut()
-```
-
-##### Obective-C
-
-```obj-c
-[CirrusMDSDK.singleton logout];
-```
-
 ### Delegate
 #### Custom Status Views
 
@@ -413,6 +294,22 @@ func userLoggedOut() {
 - (void)userLoggedOut {
     // Handle user logged out of CirrusMDSDK
 }
+```
+
+### Logout
+
+You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.
+
+##### Swift
+
+```swift
+CirrusMDSDK.singleton.logOut()
+```
+
+##### Obective-C
+
+```obj-c
+[CirrusMDSDK.singleton logout];
 ```
 
 ### Push notifications
@@ -533,6 +430,135 @@ CirrusMDSDK.singleton.onRemoteNotificationSelected(streamId: String, eventType: 
 [CirrusMDSDK.singleton onRemoteNotificationSelectedWithStreamId:streamId eventType:eventType];
 ```
 
+### CirrusMDSDKConfig
+
+All custom configuration of the CirrusMDSDK is done via the `CirrusMDSDKConfig`. This allows the configuration of items such as titles, colors, optional features, etc.. All of the exact options are outlined below.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+// Set the desired properties on the config here
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+// Set the desired properties on the config here
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
+### Titles and Colors
+
+Some of the navigation titles in the SDK are configurable. To override the default set a title on your `CirrusMDSDKConfig` object.
+Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDSDKConfig` object.
+
+```swift
+primary     // defaults to "#1a1a1a", used in avatar outlines and buttons
+offHours    // defaults to "#4a4a4a", used in the Patient Encounter Queue
+unassigned  // defaults to "#0c4c78", used in the Patient Encounter Queue
+assigned    // defaults to "#44db5e", used in the Patient Encounter Queue
+error       // defaults to "#dd0000", will be used in the future
+success     // defaults to "#44db5e", will be used in the future
+warning     // defaults to "#daaf0f", used in the offline banner
+```
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
+config.primary = "FF5733"
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
+config.primary = @"FF5733";
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
+### Enable Settings View
+
+There is an optional Settings view that you can allow your users to have access to. The Settings view, when enabled, is accessed via a button in the navigation bar of the SDK. This Settings view allows the user to view and edit their profile, medical history, dependents, permissions, and Terms of Use / Privacy Policy. The Settings view also allows the user to manually log out of the CirrusMDSDK. The availability of the Settings view is controlled by the `CirrusMDSDKConfig`.
+
+NOTE: The Settings view defaults to be disabled.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.enableSettings = true
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.enableSettings = YES;
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
+### Enable Dependents
+
+The CirrusMDSDK can support a user having dependents that can chat under their guarantor's account. When dependents support is enabled and a user has dependents they will see a dependents button that allows them to switch to chatting as that dependent. Support for dependents is controlled by the `CirrusMDSDKConfig`.
+
+Note: Dependent support defaults to being disabled.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.enableDependents = true
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.enableDependents = YES;
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
+### Enable User Log Out
+
+The CirrusMDSDK can support allowing the user to manually log themselves out of the SDK. If enabled a "Sign Out" option will exist in the Settings view as well as some error views. If this is enabled and the user does manually log out the `userLoggedOut` function on `CirrusMDSDKDelegate` will be called. Support for manual user log out is controlled by the `CirrusMDSDKConfig`.
+
+Note: User log out support defaults to being disabled.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.enableUserLogOut = true
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.enableUserLogOut = YES;
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
 ### External Channels
 
 The SDK allows retrieval of and deep linking into specific channels.
@@ -563,6 +589,28 @@ CirrusMDChannel* channel = [CirrusMDSDK.singleton channels][index];
 [CirrusMDSDK.singleton navigateToChannelWithId: channel.id];
 ```
 
+### User Agent Prefix
+
+The CirrusMDSDK allows the addition of a prefix to the User Agent that is sent on network requests.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.userAgentPrefix = "Custom User Agent Prefix"
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.userAgentPrefix = @"Custom User Agent Prefix";
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
 ### Debugging
 
 #### Debug View Controller
@@ -571,28 +619,32 @@ The CirrusMDSDK can you provide you with a view controller that displays various
 
 THIS VIEW CONTROLLER SHOULD NEVER BE PRESENTED TO AN END USER. It is for debugging purposes only.
 
+The debug view controller can be accessed and presented manually or it can be accessed in Settings if `showDebugInSettings` is set to true on your `CirrusMDSDKConfig`
+
 ##### Swift
 
 ```swift
+// Manually accessing and presenting the debug view controller
 let controller = CirrusMDSDK.singleton.debugViewController()
-
 self.navigationController?.pushViewController(controller, animated: true)
 
-// or
-
-self.present(controller, animated: true) {...}
+// Enabling showDebugInSettings on CirrusMDSDKConfig
+let config = CirrusMDSDKConfig()
+config.enableUserLogOut = true
+CirrusMDSDK.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
+// Manually accessing and presenting the debug view controller
 UIViewController *controller = [CirrusMDSDK.singleton debugViewController];
-
 [self.navigationController pushViewController:controller animated:YES];
 
-// or
-
-[self presentViewController:controller animated:YES completion:^{...}];
+// Enabling showDebugInSettings on CirrusMDSDKConfig
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.enableUserLogOut = YES;
+[CirrusMDSDK.singleton setConfig:config];
 ```
 
 #### Log Level
