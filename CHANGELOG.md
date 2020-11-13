@@ -1,5 +1,42 @@
 # CirrusMD iOS SDK Changelog
 
+# 5.X.X
+### 5.0.0
+Built with: Xcode 11.5, Swift 5.2.4
+
+### 5.1.0
+Built with: Xcode 11.6, Swift 5.2.4
+
+### 5.2.0
+Built with: Xcode 11.7, Swift 5.2.4
+
+### 5.3.0
+Built with: Xcode 12.0.1, Swift 5.3
+
+### 5.4.0
+Built with: Xcode 12.1, Swift 5.3
+
+### New Features:
+- Added the enableUserLogOut property to CirrusMDSDKConfig which controls whether the "Sign Out" option exists inside of the SDK which allows the user to manually sign out of the CirrusMDSDK. For example the Sign Out option can exist in the Settings view or in 401 error alerts. The manual user Sign Out actions are what trigger the userLoggedOut function on CirrusMDSDKDelegate. The enableUserLogOut property defaults to false.
+- Added the showDebugInSettings property to CirrusMDSDKConfig which controls whether the "Debug" option shows in the Settings view. This item in Settings presents the same view controller that can be manually accessed at CirrusMDSDK.singleton.debugViewController(). The showDebugInSettings property defaults to false.
+- Implemented a new queue status UI where the all of the information is presented directly in the stream view
+- Add a new queue status to inform patients when there is a queue in a stream and how many patients are in that queue before they send a message
+- Added an "Exit Queue" button to the queue status UI that allows the patient to leave the queue
+- Implemented a new UI to inform the patient when the stream is in off-hours
+- Removed the message input bar when the stream is off-hours so that the patient cannot send a message
+- Improved the UI and UX of the Profile view to make it easier for users to edit their profile
+- Added the patient concern hotline to the Support view under Settings
+- Added the userAgentPrefix property to CirrusMDSDKConfig that allows the addition of a custom prefix to the User Agent that the SDK sends. This defaults to nil which means there will be no custom prefix on the User Agent.
+- Improved/standardized the User Agent sent by the SDK
+- Improved the empty streams state on iPad
+- Improved WebSocket error handling
+
+### Bug Fixes:
+- Fixed a label on the channels of care view getting cut off when the system accessibility was set to larger font sizes (note: fixed for the normal accessibility font sizes. Extra large accessibility font sizes not supported.)
+- Fixed an issue that could cause the same alert to be shown more than once
+- Fixed an issue where a provider's initials could be missing on the channels of care view
+
+
 # 4.X.X
 ### 4.0.0
 Built with: Xcode 11.5, Swift 5.2.4
