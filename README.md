@@ -30,8 +30,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Each release has it's required Xcode and Swift versions documetned in the [CHANGELOG](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/blob/develop/CHANGELOG.md)
-- CirrusMDSDK works in both Swift and Objective-C projects
+- Required Xcode and Swift versions for each release are documented in the [CHANGELOG](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/blob/develop/CHANGELOG.md)
+- Required project language is Swift or Objective-C
     - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
 
 ## Installing CirrusMDSDK in your own project
@@ -192,6 +192,8 @@ CirrusMDSDK.singleton.setToken("RETRIEVED_TOKEN") { result in
 ```
 
 5. Retrieve the CirrusMDSDK viewController and present it.
+
+**_NOTE_** CirrusMDSDK's viewController MUST be embedded within a UINavigationController (either by pushing it onto an existing UINavigationController as demonstrated below or by being added to a new UINavigationController that can be presented modally).
 
 ##### Swift
 
