@@ -1,20 +1,43 @@
 # CirrusMD iOS SDK Changelog
 
+# 6.X.X
+### 6.2.0
+Built with: Xcode 12.2, Swift 5.3.1
+
+### 6.1.0
+Built with: Xcode 12.1, Swift 5.3
+
+### 6.0.0
+Built with: Xcode 12.0.1, Swift 5.3
+
+### New Features:
+- Integrated the Braze SDK and added brazeOptions to CirrusMDSDKConfig to control the Braze SDK. By default brazeOptions is nil and thus the Braze SDK will not be initialized or used in any way.
+- Added "Marketing Messages" opt out in Settings. Only appears if Braze SDK is enabled.
+- Renamed shouldShowRemoteNotification to shouldPresentNotification and onRemoteNotificationSelected to didReceiveNotification to better match the Apple UserNotifications framework patterns.
+- Added additional shouldPresentNotification and didReceiveNotification that allow consumers to pass the exact payloads recieved in their UNUserNotificationCenterDelegate. This simplifies the integration. 
+    - Note: didReceiveNotification(center: UNUserNotificationCenter, response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) should be always be used when the Braze SDK is enabled by setting the brazeOptions on CirrusMDSDKConfig.
+- Added launchOptions to the CirrusMDSDKConfig. This allows the CirrusMDSDK to handle notification that were received while the app was not running and thus were passed to the app on launch. Previously the parent app would have to manually hand these off to the CirrusMDSDK in a non-obvious manner.
+- Added support for messages with headlines.
+
+### Bug Fixes:
+- Fixed an issue where the edit profile picture pop-over on iPad was misplaced and/or empty
+
+
 # 5.X.X
-### 5.0.0
-Built with: Xcode 11.5, Swift 5.2.4
-
-### 5.1.0
-Built with: Xcode 11.6, Swift 5.2.4
-
-### 5.2.0
-Built with: Xcode 11.7, Swift 5.2.4
+### 5.4.0
+Built with: Xcode 12.1, Swift 5.3
 
 ### 5.3.0
 Built with: Xcode 12.0.1, Swift 5.3
 
-### 5.4.0
-Built with: Xcode 12.1, Swift 5.3
+### 5.2.0
+Built with: Xcode 11.7, Swift 5.2.4
+
+### 5.1.0
+Built with: Xcode 11.6, Swift 5.2.4
+
+### 5.0.0
+Built with: Xcode 11.5, Swift 5.2.4
 
 ### New Features:
 - Added the enableUserLogOut property to CirrusMDSDKConfig which controls whether the "Sign Out" option exists inside of the SDK which allows the user to manually sign out of the CirrusMDSDK. For example the Sign Out option can exist in the Settings view or in 401 error alerts. The manual user Sign Out actions are what trigger the userLoggedOut function on CirrusMDSDKDelegate. The enableUserLogOut property defaults to false.
