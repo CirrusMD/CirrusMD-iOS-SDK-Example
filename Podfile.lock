@@ -1,5 +1,23 @@
 PODS:
-  - CirrusMDSDK (5.4.0):
+  - Appboy-iOS-SDK (3.30.0):
+    - Appboy-iOS-SDK/UI (= 3.30.0)
+  - Appboy-iOS-SDK/ContentCards (3.30.0):
+    - Appboy-iOS-SDK/Core
+    - SDWebImage (< 6, >= 5.8.2)
+  - Appboy-iOS-SDK/Core (3.30.0)
+  - Appboy-iOS-SDK/InAppMessage (3.30.0):
+    - Appboy-iOS-SDK/Core
+    - SDWebImage (< 6, >= 5.8.2)
+  - Appboy-iOS-SDK/NewsFeed (3.30.0):
+    - Appboy-iOS-SDK/Core
+    - SDWebImage (< 6, >= 5.8.2)
+  - Appboy-iOS-SDK/UI (3.30.0):
+    - Appboy-iOS-SDK/ContentCards
+    - Appboy-iOS-SDK/Core
+    - Appboy-iOS-SDK/InAppMessage
+    - Appboy-iOS-SDK/NewsFeed
+  - CirrusMDSDK (6.2.0):
+    - Appboy-iOS-SDK (~> 3.30.0)
     - Kingfisher (~> 5.15.3)
     - KTVJSONWebToken (~> 2.1.0)
     - MBProgressHUD (~> 1.2.0)
@@ -20,19 +38,23 @@ PODS:
   - OpenTok (2.18.1)
   - ReachabilitySwift (5.0.0)
   - RNCryptor (5.1.0)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
   - SnapKit (5.0.1)
   - Starscream (3.1.1)
   - Then (2.7.0)
   - UDF (0.7.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 5.4.0)
+  - CirrusMDSDK (~> 6.2.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
     - CirrusMDSDK
     - UDF
   https://github.com/CocoaPods/Specs.git:
+    - Appboy-iOS-SDK
     - Kingfisher
     - KTVJSONWebToken
     - MBProgressHUD
@@ -40,12 +62,14 @@ SPEC REPOS:
     - OpenTok
     - ReachabilitySwift
     - RNCryptor
+    - SDWebImage
     - SnapKit
     - Starscream
     - Then
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: 362c7900707e519fa295314b970020b091d9aa46
+  Appboy-iOS-SDK: b16eca47f70f673c563f4380046fd67323860669
+  CirrusMDSDK: d6b9fa8b450cf9dcc673185ab79dca849a611e13
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
   KTVJSONWebToken: c3cc06e26876d63c62a5c40c5e89939899de48cf
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -53,11 +77,12 @@ SPEC CHECKSUMS:
   OpenTok: 2a816f5d77fbf2e2ebb5aec841bd21fb7dc7737b
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
 
-PODFILE CHECKSUM: ce0898457a1a6d93076c26d4240bbb0d50cce629
+PODFILE CHECKSUM: a0c3f6921e3f326b3e90ad778119ffb36989165a
 
 COCOAPODS: 1.10.0

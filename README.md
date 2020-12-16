@@ -21,6 +21,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Enable User Log Out](#enable-user-log-out)
   - [External Channels](#external-channels)
   - [User Agent Prefix](#user-agent-prefix)
+  - [Braze](#braze)
   - [Debugging](#debugging)
 - [License](#license)
 
@@ -76,7 +77,7 @@ Drag and drop the framework into your Xcode project.
 
 You will also need to manually add all of the dependencies that are listed in the Podspec for the desired version, which can be found [here](https://github.com/CirrusMD/podspecs/tree/master/CirrusMDSDK).
 
-Note: If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods since you can add the file to gitignore when using a dependency manager.
+**_Note_** If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods since you can add the file to gitignore when using a dependency manager.
 
 ## Basic Usage
 
@@ -325,18 +326,19 @@ In order to enable push notifications for your patients you'll need to provide C
 ##### Swift
 
 ```swift
-let settings = UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil)
-UIApplication.shared.registerUserNotificationSettings(settings)
-UIApplication.shared.registerForRemoteNotifications()
+UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+    DispatchQueue.main.async {
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+}
 ```
 
 ##### Obective-C
 
 ```obj-c
-UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
-  (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
-[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-[[UIApplication sharedApplication] registerForRemoteNotifications];
+[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    [UIApplication.sharedApplication registerForRemoteNotifications];
+}];
 ```
 
 Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
@@ -344,27 +346,17 @@ Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemot
 ##### Swift
 
 ```swift
-/*
-    `deviceToken` is the deviceToken provided by Apple when
-    `application(
-      _ application: UIApplication,
-      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    )` is called.
-*/
-
-CirrusMDSDK.singleton.registerforRemoteNotifications(deviceToken)
+func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    CirrusMDSDK.singleton.registerForRemoteNotifications(deviceToken)
+}
 ```
 
 ##### Obective-C
 
 ```obj-c
-/*
-    `deviceToken` is the deviceToken provided by Apple when
-                                `- (void)application:(UIApplication *)application
-    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken` is called.
-*/
-
-[CirrusMDSDK.singleton registerforRemoteNotifications: deviceToken];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [CirrusMDSDK.singleton registerForRemoteNotifications:deviceToken];
+}
 ```
 
 #### Unregistering for remote notifications
@@ -385,7 +377,7 @@ CirrusMDSDK.singleton.unregisterForRemoteNotifications()
 
 The SDK provides methods to help handle push notifications and their interactions.
 
-The payload of the package sent by CirrusMD has the shape shown below, which are the values passed in to these methods:
+The payload of the package sent by CirrusMD has the shape shown below:
 
 ```json
 {
@@ -394,43 +386,79 @@ The payload of the package sent by CirrusMD has the shape shown below, which are
 }
 ```
 
+So the complete push notification payload should look like:
+
+```json
+{
+    "aps": {
+        "alert": "You have a new message.",
+        "badge": 1,
+        "sound": "default"
+    },
+    "data": {
+        "event": "message:new",
+        "stream_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+}
+```
+
 #### Displaying notifications
 
-`shouldShowNotification` returns a bool used to determine if a notification should be displayed based on if the ViewContoller is being shown and which `streamId` is currently selected.
+`shouldPresentNotification` returns a bool used to determine if a notification should be displayed based on if the CirrusMDSDK ViewContoller is being shown and which `streamId` is currently selected. This should be called in the `willPresent` function of `UNUserNotificationCenterDelegate`
 
 `true` means the notification should be displayed. Either the view is not being shown or a different `streamId` is selected.
 
 `false` means the notification should **not** be displayed. The view is being shown and is on the provided `streamId`.
 ##### Swift
 ```swift
-CirrusMDSDK.singleton.shouldShowNotification(streamId: String, eventType: String)
+func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    if CirrusMDSDK.singleton.shouldPresentNotification(notification) {
+        completionHandler([.alert, .sound, .badge])
+    } else {
+        completionHandler([])
+    }
+}
 ```
 
 ##### Objective-C
 ```obj-c
-[CirrusMDSDK.singleton shouldShowNotificationWithStreamId:streamId eventType:eventType];
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    if ([CirrusMDSDK.singleton shouldPresentNotification:notification]) {
+        completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    } else {
+        completionHandler(UNNotificationPresentationOptionNone);
+    }
+}
 ```
-#### Selecting notifications
+#### Responding to tapped notifications
 
-`onPushNotificationSelected` can be called when a user selects a push notification.
+`didReceiveNotification` can be called in `didReceive` of `UNUserNotificationCenterDelegate` when a user taps a push notification.
 
-If the SDK view controller is being displayed, it will switch to the provided `streamId`.
+If the CirrusMDSDK's view controller is being displayed, it will switch to the provided `streamId`.
 
-If the view controller is not being displayed, the provided `streamId` will be presented when it is shown.
+If the CirrusMDSDK's view controller is not being displayed, the provided `streamId` will be presented when it is shown.
 
 If the provided `streamId` is not found on the current user's profile, no action will be taken.
 
 In addition to these actions, if the notification is for a video session, the video session will be launched once the user is presented with the corresponding stream.
 
+**_Note_** You will also need to set the `launchOptions` on your `CirrusMDSDKConfig` if you would like the CirrusMDSDK to respond to push notifications that were tapped by the user when your app is not running. An example of setting the `launchOptions` on your CirrusMDSDKConfig can be seen in the [Braze](#braze) section of the documentation.
+
 ##### Swift
 ```swift
-CirrusMDSDK.singleton.onRemoteNotificationSelected(streamId: String, eventType: String)
+func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    CirrusMDSDK.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
+}
 ```
 
 ##### Objective-C
 ```obj-c
-[CirrusMDSDK.singleton onRemoteNotificationSelectedWithStreamId:streamId eventType:eventType];
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    [CirrusMDSDK.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
+}
 ```
+
+There are alternate versions of the `shouldPresentNotification` and `didReceiveNotification` that take the notification's userInfo payload or raw event and stream ID directly if you wish to implement your push notifications in a different or more custom way.
 
 ### CirrusMDSDKConfig
 
@@ -493,7 +521,7 @@ config.primary = @"FF5733";
 
 There is an optional Settings view that you can allow your users to have access to. The Settings view, when enabled, is accessed via a button in the navigation bar of the SDK. This Settings view allows the user to view and edit their profile, medical history, dependents, permissions, and Terms of Use / Privacy Policy. The Settings view also allows the user to manually log out of the CirrusMDSDK. The availability of the Settings view is controlled by the `CirrusMDSDKConfig`.
 
-NOTE: The Settings view defaults to be disabled.
+**_Note_** The Settings view defaults to be disabled.
 
 ##### Swift
 
@@ -517,7 +545,7 @@ config.enableSettings = YES;
 
 The CirrusMDSDK can support a user having dependents that can chat under their guarantor's account. When dependents support is enabled and a user has dependents they will see a dependents button that allows them to switch to chatting as that dependent. Support for dependents is controlled by the `CirrusMDSDKConfig`.
 
-Note: Dependent support defaults to being disabled.
+**_Note_** Dependent support defaults to being disabled.
 
 ##### Swift
 
@@ -541,7 +569,7 @@ config.enableDependents = YES;
 
 The CirrusMDSDK can support allowing the user to manually log themselves out of the SDK. If enabled a "Sign Out" option will exist in the Settings view as well as some error views. If this is enabled and the user does manually log out the `userLoggedOut` function on `CirrusMDSDKDelegate` will be called. Support for manual user log out is controlled by the `CirrusMDSDKConfig`.
 
-Note: User log out support defaults to being disabled.
+**_Note_** User log out support defaults to being disabled.
 
 ##### Swift
 
@@ -609,6 +637,38 @@ CirrusMDSDK.singleton.setConfig(config)
 ```obj-c
 CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
 config.userAgentPrefix = @"Custom User Agent Prefix";
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
+### Braze
+
+The CirrusMDSDK includes an optional Braze (aka AppBoy) integration that allows for Braze's attribution, push notifications, and in-app messages. In order to enable the Braze integration in the CirrusMDSDK you must populate the `brazeOptions` and `launchOptions` (from your AppDelegate's didFinishLaunchingWithOptions function) on your `CirrusMDSDKConfig`
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+config.launchOptions = launchOptions // from your AppDelegate's didFinishLaunchingWithOptions function
+
+let brazeOptions = CirrusMDBrazeOptions()
+brazeOptions.apiKey = "<Your Braze API Key>"
+brazeOptions.endpoint = "<Your Braze API Endpoint>"
+config.brazeOptions = brazeOptions
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+config.launchOptions = launchOptions; // from your AppDelegate's didFinishLaunchingWithOptions function
+
+CirrusMDBrazeOptions *brazeOptions = [[CirrusMDBrazeOptions alloc] init];
+brazeOptions.apiKey = @"<Your Braze API Key>";
+brazeOptions.endpoint = @"<Your Braze API Endpoint>";
+config.brazeOptions = brazeOptions;
 
 [CirrusMDSDK.singleton setConfig:config];
 ```

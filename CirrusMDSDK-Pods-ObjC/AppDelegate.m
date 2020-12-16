@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import <CirrusMDSDK/CirrusMDSDK.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <UNUserNotificationCenterDelegate>
 
 @end
 
@@ -17,7 +18,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    
+    CirrusMDSDKConfig *config = [[CirrusMDSDKConfig alloc] init];
+    config.logLevel = CirrusMDLogLevelVerbose;
+    config.primaryColor = UIColor.blackColor;
+    config.launchOptions = launchOptions;
+    [CirrusMDSDK.singleton setConfig:config];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        [UIApplication.sharedApplication registerForRemoteNotifications];
+    }];
+    
     return YES;
 }
 
@@ -27,6 +39,20 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [CirrusMDSDK.singleton registerForRemoteNotifications:deviceToken];
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    if ([CirrusMDSDK.singleton shouldPresentNotification:notification]) {
+        completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    } else {
+        completionHandler(UNNotificationPresentationOptionNone);
+    }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    [CirrusMDSDK.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
 }
 
 

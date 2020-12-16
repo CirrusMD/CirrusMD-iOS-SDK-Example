@@ -33,18 +33,8 @@ class ExampleViewController: UIViewController {
         showSdkButton.setTitle("Initializing CirrusMDSDK...", for: .normal)
         showSdkButton.isEnabled = false
         
-        configureCirrusMDSDK()
-        loadTokenForPatient(patientId: patientId)
-    }
-    
-    private func configureCirrusMDSDK() {
-        let config = CirrusMDSDKConfig()
-        config.logLevel = .verbose
-        config.primaryColor = UIColor.black
-        config.title = "Your Custom Title"
-        CirrusMDSDK.singleton.config = config
-        
         CirrusMDSDK.singleton.delegate = self
+        loadTokenForPatient(patientId: patientId)
     }
     
     func loadTokenForPatient(patientId: Int) {
