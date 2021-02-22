@@ -565,6 +565,30 @@ config.enableDependents = YES;
 [CirrusMDSDK.singleton setConfig:config];
 ```
 
+### Right Bar Button Items
+
+The CirrusMDSDK can support custom right bar button items to be shown in the UINavigationController the CirrusMDSDK's view controller is embedded in. For example if you want to present the CirrusMDSDK view controller modally this can be used to add a "Done" button. The right bar button items are controlled by the `rightBarButtonItems` property on `CirrusMDSDKConfig`.
+
+##### Swift
+
+```swift
+let config = CirrusMDSDKConfig()
+let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
+config.rightBarButtonItems = [doneButton]
+
+CirrusMDSDK.singleton.setConfig(config)
+```
+
+##### Obective-C
+
+```obj-c
+CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+CirrusMDSDK.singleton.config.rightBarButtonItems = @[doneButton];
+
+[CirrusMDSDK.singleton setConfig:config];
+```
+
 ### Enable User Log Out
 
 The CirrusMDSDK can support allowing the user to manually log themselves out of the SDK. If enabled a "Sign Out" option will exist in the Settings view as well as some error views. If this is enabled and the user does manually log out the `userLoggedOut` function on `CirrusMDSDKDelegate` will be called. Support for manual user log out is controlled by the `CirrusMDSDKConfig`.

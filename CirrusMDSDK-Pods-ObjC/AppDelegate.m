@@ -27,7 +27,9 @@
     [CirrusMDSDK.singleton setConfig:config];
     
     [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        [UIApplication.sharedApplication registerForRemoteNotifications];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication.sharedApplication registerForRemoteNotifications];
+        });
     }];
     
     return YES;
