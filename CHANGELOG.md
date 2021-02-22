@@ -1,5 +1,42 @@
 # CirrusMD iOS SDK Changelog
 
+# 7.X.X
+### 7.4.0
+Built with: Xcode 12.4, Swift 5.3.2
+
+### 7.3.0
+Built with: Xcode 12.3, Swift 5.3.2
+
+### 7.2.0
+Built with: Xcode 12.2, Swift 5.3.1
+
+### 7.1.0
+Built with: Xcode 12.1, Swift 5.3
+
+### 7.0.0
+Built with: Xcode 12.0.1, Swift 5.3
+
+### New Features:
+- Added rightBarButtonItems property to CirrusMDSDKConfig, which adds right bar button items to the navigation bar that the CirrusMDSDK view controller is presented in. For example this can be used to add a "Done" button when presenting the SDK modally.
+- Moved settings button from the navigation bar down to the user header view to accomdate the new rightBarButtonItems feature
+- Added a confirmation alert when the user is signing out to prevent accidental sign outs
+- Added a security feature that allows the SDK to recover from certificate pinning failures
+- Removed the ReachabilitySwift dependency
+- Removed the 'Then' dependency
+- Removed the RNCrypto dependency
+- Moved to a custom podspec of Starscream with the correct iOS deployment target
+- Moved to a custom podspec of KTVJSONWebToken with the correct iOS deployment target
+- Moved to a custom podspec of MBProgressHUD with the correct iOS deployment target
+- Moved to a custom podspec of ObjectMapper with the correct iOS deployment target and swift version
+- Updated dependencies
+
+### Bug Fixes:
+- Fixed layout issues with extra large accessibility font sizes
+- Fixed an issue where the plan name and/or details could be missing for some channels on the channels of care view
+- Fixed an issue where the red dot (unread message indicator) could appear for a stream on the channels of care view before a provider had been assigned or sent a message, most common when chatting as a dependent
+- Fixed constraint failures in the patient stream and encounter view controllers. This did not impact the user experience but was dirtying the app output logs when developing with the CirrusMDSDK.
+- Fixed an issue where the dependents button could incorrectly show or hide when signing out as one user and then signing in as a different user
+
 # 6.X.X
 ### 6.2.0
 Built with: Xcode 12.2, Swift 5.3.1

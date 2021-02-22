@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CirrusMDSDK/CirrusMDSDK.h>
 
-@interface FirstViewController : UINavigationController
+@interface FirstViewController : UIViewController
 
 
 @end
