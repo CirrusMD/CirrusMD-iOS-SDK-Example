@@ -23,6 +23,8 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [User Agent Prefix](#user-agent-prefix)
   - [Braze](#braze)
   - [Debugging](#debugging)
+- [Module Stability Requirement](#module-stability-requirement)
+- [Objective-C Requirement](#objective-c-requirement)
 - [License](#license)
 
 ## Example Application
@@ -31,9 +33,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Required Xcode and Swift versions for each release are documented in the [CHANGELOG](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/blob/develop/CHANGELOG.md)
+- Requires Xcode 12.0 or later
+- Requires project Swift version to be 5.1 or later
+- Requires `Build Settings > Build Options > Build Libraries for Distribution` to be set to `Yes`. More information on this requirement and a possible workaround can be found in the [Module Stability Requirement](#module-stability-requirement) documentation.
 - Required project language is Swift or Objective-C
-    - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
+    - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`. More information on this requirement can be found in the [Objective-C Requirement](#objective-c-requirement) documentation
 
 ## Installing CirrusMDSDK in your own project
 
@@ -783,9 +787,51 @@ switch (tokenState) {
 }
 ```
 
-## Troubleshooting
 
-1. If you see the following error in an Objective-C project you likely haven't embedded the Swift Standard Libraries. Ensure `Build Settings > Build Options > Always Embed Swift Standard Libraries` is set to `Yes`.
+## Module Stability Requirement
+
+CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. If not set the following error (or something similar) will appear:
+
+    >dyld: Symbol not found: _$s18CMDKTVJSONWebToken16ValidationResultO7successyA2CmFWC
+    >  Referenced from: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMDSDK.framework/ >CirrusMDSDK
+    >  Expected in: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CMDKTVJSONWebToken.    >framework/CMDKTVJSONWebToken
+    > in /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/Containers/Bundle/    >Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
+
+### Workaround
+Although it's not ideal, there is a possible workaround if you cannot set `Build Libraries for Distribution` to `Yes` on your app (or some of its other dependencies) for some reason. The workaround uses the `post_install` hook in your Podfile to set `Build Libraries for Distribution` to `Yes` on ONLY the CirrusMDSDK and it's dependencies and not your app or other dependencies.
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if CIRRUSMD_DEPENDENCIES.include?(target.name)
+      target.build_configurations.each do |build_configuration|
+        build_configuration.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      end
+    end
+  end
+end
+
+CIRRUSMD_DEPENDENCIES = [
+  'CirrusMDSDK',
+  'Appboy-iOS-SDK',
+  'Appboy-iOS-SDK-AppboyUI.ContentCards',
+  'Appboy-iOS-SDK-Appboy',
+  'Appboy-iOS-SDK-AppboyUI.InAppMessage',
+  'Appboy-iOS-SDK-AppboyUI.NewsFeed',
+  'CMDKTVJSONWebToken',
+  'CMDMBProgressHUD',
+  'CMDStarscream',
+  'Kingfisher',
+  'OpenTok',
+  'SDWebImage',
+  'SnapKit',
+  'UDF',
+]
+```
+
+## Objective-C Requirement
+
+Because the CirrusMDSDK is implemented in Swift, when integrating it into an Objective-C project `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`. If not set the following error (or something similar) will appear:
 
    > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
    > Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
