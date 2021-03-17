@@ -36,6 +36,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - Requires Xcode 12.0 or later
 - Requires project Swift version to be 5.1 or later
 - Requires `Build Settings > Build Options > Build Libraries for Distribution` to be set to `Yes`. More information on this requirement and a possible workaround can be found in the [Module Stability Requirement](#module-stability-requirement) documentation.
+- Requires CocoaPods version 1.10.0 or later. This is related to the [Module Stability Requirement](#module-stability-requirement).
 - Required project language is Swift or Objective-C
     - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`. More information on this requirement can be found in the [Objective-C Requirement](#objective-c-requirement) documentation
 
@@ -790,7 +791,7 @@ switch (tokenState) {
 
 ## Module Stability Requirement
 
-CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. If not set the following error (or something similar) will appear:
+CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. Additionally this must be set before running `pod install` (or run `pod install` again after setting) due to how `Build Libraries for Distribution` is handled by [CocoaPods (version 1.10.0 and later)](https://github.com/CocoaPods/CocoaPods/issues/9232). If not set the following error (or something similar) will appear:
 
     >dyld: Symbol not found: _$s18CMDKTVJSONWebToken16ValidationResultO7successyA2CmFWC
     >  Referenced from: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMDSDK.framework/ >CirrusMDSDK
