@@ -167,30 +167,30 @@ CirrusMD.singleton.setToken("RETRIEVED_TOKEN") { result in
 ```obj-c
 /*
     The completion block is retained throughout the life of the SDK. It is called with
-    `CirrusMDSDKResultSuccess` one time after the token is set if successful.
+    `CirrusMDResultSuccess` one time after the token is set if successful.
 
-    The completion block is called with `CirrusMDSDKResultInvalidToken`,
-    `CirrusMDSDKResultNoSecretProvided` or `CirrusMDSDKResultServiceUnavailable`
+    The completion block is called with `CirrusMDResultInvalidToken`,
+    `CirrusMDResultNoSecretProvided` or `CirrusMDResultServiceUnavailable`
     every time the status changes.
 */
 
 [CirrusMD.singleton setToken:"RETRIEVED_TOKEN"
-                            completion:^(CirrusMDSDKResult result)
+                            completion:^(CirrusMDResult result)
 {
     switch (result) {
-        case CirrusMDSDKResultSuccess:
+        case CirrusMDResultSuccess:
             // The token is valid and the patient's profile loaded successfully.
             // Showing a MessageViewController will load properly.
 
-        case CirrusMDSDKResultInvalidToken:
+        case CirrusMDResultInvalidToken:
             // The token is expired, incomplete, invalid and/or the patient was
             // unable to load. You must retrieve a new token before proceeding.
 
-      case CirrusMDSDKResultNoSecretProvided:
+      case CirrusMDResultNoSecretProvided:
           // No secret has been set on the SDK. Set the secret and retry
           // setting the token.
 
-        case CirrusMDSDKResultServiceUnavailable:
+        case CirrusMDResultServiceUnavailable:
             // CirrusMD servers are unreachable
 
     }
@@ -251,12 +251,12 @@ Customization of both the _logged out view_ and _error view_ happens via the `Ci
 ```swift
 // CirrusMDDelegate
 
-func viewForError(code: CirrusMDSDKResult) -> UIView {
+func viewForError(code: CirrusMDResult) -> UIView {
     // return a custom logged out view
 }
 
 func viewForLoggedOut() -> UIView {
-    // return a custom view appropriate for the CirrusMDSDKResult
+    // return a custom view appropriate for the CirrusMDResult
 }
 ```
 
@@ -269,8 +269,8 @@ func viewForLoggedOut() -> UIView {
     // return a custom logged out view
 }
 
-- (UIView *)viewForErrorWithCode:(enum CirrusMDSDKResult)code {
-    // return a custom view appropriate for the CirrusMDSDKResult
+- (UIView *)viewForErrorWithCode:(enum CirrusMDResult)code {
+    // return a custom view appropriate for the CirrusMDResult
 }
 ```
 
