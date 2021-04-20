@@ -20,11 +20,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     
-    CirrusMDSDKConfig *config = [[CirrusMDSDKConfig alloc] init];
+    CirrusMDConfig *config = [[CirrusMDConfig alloc] init];
     config.logLevel = CirrusMDLogLevelVerbose;
     config.primaryColor = UIColor.blackColor;
     config.launchOptions = launchOptions;
-    [CirrusMDSDK.singleton setConfig:config];
+    [CirrusMD.singleton setConfig:config];
     
     [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -40,13 +40,13 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [CirrusMDSDK.singleton registerForRemoteNotifications:deviceToken];
+    [CirrusMD.singleton registerForRemoteNotifications:deviceToken];
 }
 
 #pragma mark - UNUserNotificationCenterDelegate
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-    if ([CirrusMDSDK.singleton shouldPresentNotification:notification]) {
+    if ([CirrusMD.singleton shouldPresentNotification:notification]) {
         completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
     } else {
         completionHandler(UNNotificationPresentationOptionNone);
@@ -54,7 +54,7 @@
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
-    [CirrusMDSDK.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
+    [CirrusMD.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
 }
 
 

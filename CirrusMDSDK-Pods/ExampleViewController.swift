@@ -14,7 +14,7 @@ class ExampleViewController: UIViewController {
     @IBOutlet weak var showSdkButton: UIButton!
     
     @IBAction func showSdk(_ sender: Any) {
-        let cmdViewController = CirrusMDSDK.singleton.viewController
+        let cmdViewController = CirrusMD.singleton.viewController
         navigationController?.pushViewController(cmdViewController, animated: true)
     }
     
@@ -33,12 +33,12 @@ class ExampleViewController: UIViewController {
         showSdkButton.setTitle("Initializing CirrusMDSDK...", for: .normal)
         showSdkButton.isEnabled = false
         
-        CirrusMDSDK.singleton.delegate = self
+        CirrusMD.singleton.delegate = self
         loadTokenForPatient(patientId: patientId)
     }
     
     func loadTokenForPatient(patientId: Int) {
-        CirrusMDSDK.singleton.setSecret(secret)
+        CirrusMD.singleton.setSecret(secret)
         
         guard let url = URL(string: "https://cmd-demo1-app.cirrusmd.com/sdk/v2/sandbox/sessions") else { return }
         let postDict = ["patient_id": patientId, "sdk_id": sdkId] as [String : Any]
@@ -67,7 +67,7 @@ class ExampleViewController: UIViewController {
          Loads an SSO user from the provided token.`CirrusMDSDK.singleton.setSecret`
          must be called prior to calling `CirrusMDSDK.singleton.setToken`
          */
-        CirrusMDSDK.singleton.setToken(token) { [weak self] (result) in
+        CirrusMD.singleton.setToken(token) { [weak self] (result) in
             switch result {
             case .success:
                 NSLog("Set Token Success")
@@ -85,6 +85,10 @@ class ExampleViewController: UIViewController {
                 NSLog("Set Token Service Unavailable")
                 self?.showSdkButton.isEnabled = false
                 self?.showSdkButton.setTitle("Error: Service Unavailable", for: .normal)
+            @unknown default:
+                NSLog("Set Token Invalid Token Error")
+                self?.showSdkButton.isEnabled = false
+                self?.showSdkButton.setTitle("Error: Unknown", for: .normal)
             }
         }
     }
@@ -93,7 +97,7 @@ class ExampleViewController: UIViewController {
 
 // MARK: - CirrusMDSKSessionDelegate
 
-extension ExampleViewController: CirrusMDSDKDelegate {
+extension ExampleViewController: CirrusMDDelegate {
     
     func userLoggedIn(credentialId: Int) {
         NSLog("User Logged In: \(credentialId)")
