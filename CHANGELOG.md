@@ -5,9 +5,12 @@
 ### New Features:
 - Module Stability. No more Xcode/Swift version matching. From now on CirrusMDSDK versions will work with all versions of Xcode (12.0 and up) and Swift (5.1 and up).
 - Renamed CirrusMDSDK to CirrusMD for improved brevity/readability and to better match our Android SDK
+- Removed the ObjectMapper dependency
+- Added patient satisfaction survey capability, after a user completes an encounter
+- Accessibility updates and improvements
 
 ### Bug Fixes:
-
+- Fixed an issue where patients would be pushed all the way back to the channels of care view when ending a video session instead of landing back in the chat view
 
 # 7.X.X
 ### 7.4.0
