@@ -8,7 +8,7 @@
 
 #import "FirstViewController.h"
 
-@interface FirstViewController () <CirrusMDSDKDelegate>
+@interface FirstViewController () <CirrusMDDelegate>
 
 @property NSNumber *patientID;
 @property NSString *sdkID;
@@ -23,14 +23,14 @@
 @implementation FirstViewController
 
 - (IBAction)showSdk:(id)sender {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:CirrusMDSDK.singleton.viewController];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:CirrusMD.singleton.viewController];
     [navigationController.navigationBar setTranslucent:NO];
     [navigationController.navigationBar setBarTintColor:UIColor.blackColor];
     [navigationController.navigationBar setTintColor:UIColor.whiteColor];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
-    CirrusMDSDK.singleton.config.rightBarButtonItems = @[doneButton];
+    CirrusMD.singleton.config.rightBarButtonItems = @[doneButton];
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }
@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CirrusMDSDK.singleton.delegate = self;
+    CirrusMD.singleton.delegate = self;
     
     self.patientID = @63;
     self.sdkID = @"d2f0aa92-3da9-450c-9ba2-854e36a2e277";
@@ -59,7 +59,7 @@
 }
 
 - (void)loadTokenForPatient:(NSNumber *)patientID {
-    [CirrusMDSDK.singleton setSecret: self.secret];
+    [CirrusMD.singleton setSecret: self.secret];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
 
@@ -90,18 +90,18 @@
      Loads an SSO user from the provided token.`[CirrusMDSDKSession.singleton setSecret:]`
      must be called prior to calling `[CirrusMDSDKSession.singleton setToken:completion:]`
      */
-    [CirrusMDSDK.singleton setToken:token
-                         completion:^(CirrusMDSDKResult result)
+    [CirrusMD.singleton setToken:token
+                         completion:^(CirrusMDResult result)
      {
         switch (result) {
-            case CirrusMDSDKResultSuccess:
+            case CirrusMDResultSuccess:
                 // The token is valid and the patient's profile loaded successfully
                 NSLog(@"CirrusMDSDKSessionResultSuccess");
                 [self.showSdkButton setEnabled:YES];
                 [self.showSdkButton setTitle:@"Show CirrusMDSDK!" forState:UIControlStateNormal];
                 break;
                 
-            case CirrusMDSDKResultInvalidToken:
+            case CirrusMDResultInvalidToken:
                 // The token is expired, incomplete, invalid and/or the patient was
                 // unable to load. You must retrieve a new token before proceeding.
                 NSLog(@"CirrusMDSDKSessionResultInvalidToken");
@@ -109,7 +109,7 @@
                 [self.showSdkButton setTitle:@"Error: Invalid Token" forState:UIControlStateNormal];
                 break;
                 
-            case CirrusMDSDKResultNoSecretProvided:
+            case CirrusMDResultNoSecretProvided:
                 // The secret provided is missing or invalid. You must provide
                 // a valid secret before setting a token
                 NSLog(@"CirrusMDSDKSessionResultNoSecretProvided");
@@ -117,7 +117,7 @@
                 [self.showSdkButton setTitle:@"Error: No Sectret Provided" forState:UIControlStateNormal];
                 break;
                 
-            case CirrusMDSDKResultServiceUnavailable:
+            case CirrusMDResultServiceUnavailable:
                 // CirrusMD servers are unreachable, try again later
                 NSLog(@"CirrusMDSDKSessionResultInvalidToken");
                 [self.showSdkButton setEnabled:YES];

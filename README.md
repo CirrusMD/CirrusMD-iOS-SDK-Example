@@ -14,7 +14,7 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [Delegate (Custom Status Views and Callbacks)](#delegate)
   - [Push notifications](#push-notifications)
   - [Logout](#logout)
-  - [CirrusMDSDKConfig](#cirrusmdsdkconfig)
+  - [CirrusMDConfig](#CirrusMDConfig)
   - [Titles and Colors](#titles-and-colors)
   - [Enable Settings View](#enable-settings-view)
   - [Enable Dependents](#enable-dependents)
@@ -23,6 +23,8 @@ CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide th
   - [User Agent Prefix](#user-agent-prefix)
   - [Braze](#braze)
   - [Debugging](#debugging)
+- [Module Stability Requirement](#module-stability-requirement)
+- [Objective-C Requirement](#objective-c-requirement)
 - [License](#license)
 
 ## Example Application
@@ -31,13 +33,16 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Required Xcode and Swift versions for each release are documented in the [CHANGELOG](https://github.com/CirrusMD/CirrusMD-iOS-SDK-Example/blob/develop/CHANGELOG.md)
+- Requires Xcode 12.0 or later
+- Requires project Swift version to be 5.1 or later
+- Requires `Build Settings > Build Options > Build Libraries for Distribution` to be set to `Yes`. More information on this requirement and a possible workaround can be found in the [Module Stability Requirement](#module-stability-requirement) documentation.
+- Requires CocoaPods version 1.10.0 or later. This is related to the [Module Stability Requirement](#module-stability-requirement).
 - Required project language is Swift or Objective-C
-    - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`
+    - If the project is Objective-C `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`. More information on this requirement can be found in the [Objective-C Requirement](#objective-c-requirement) documentation
 
 ## Installing CirrusMDSDK in your own project
 
-The CirrusMDSDK installs as a prebuilt framework, `CirrusMDSDK.framework`.
+The CirrusMDSDK installs as a prebuilt framework, `CirrusMD.framework`.
 
 ### CocoaPods
 
@@ -71,7 +76,7 @@ $ pod install
 
 If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
 
-Download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMDSDK.framework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v4.0.0/CirrusMDSDK.framework.zip.
+Download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMD.framework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v4.0.0/CirrusMD.framework.zip.
 
 Drag and drop the framework into your Xcode project.
 
@@ -114,13 +119,13 @@ import CirrusMDSDK
 ##### Swift
 
 ```swift
-CirrusMDSDK.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
+CirrusMD.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
 ```
 
 ##### Obective-C
 
 ```obj-c
-[CirrusMDSDK.singleton setSecret: @"CIRRUSMD-PROVIDED-SECRET"];
+[CirrusMD.singleton setSecret: @"CIRRUSMD-PROVIDED-SECRET"];
 ```
 
 4. **_AFTER_** setting the secret on the SDK, set the token. This is your opportunity to verify that the token provided to the SDK is able to load a patient.
@@ -136,7 +141,7 @@ CirrusMDSDK.singleton.setSecret("CIRRUSMD-PROVIDED-SECRET")
     `.serviceUnavailable` every time the status changes.
 */
 
-CirrusMDSDK.singleton.setToken("RETRIEVED_TOKEN") { result in
+CirrusMD.singleton.setToken("RETRIEVED_TOKEN") { result in
     switch result {
     case .success:
         // The token is valid and the patient's profile loaded successfully.
@@ -162,30 +167,30 @@ CirrusMDSDK.singleton.setToken("RETRIEVED_TOKEN") { result in
 ```obj-c
 /*
     The completion block is retained throughout the life of the SDK. It is called with
-    `CirrusMDSDKResultSuccess` one time after the token is set if successful.
+    `CirrusMDResultSuccess` one time after the token is set if successful.
 
-    The completion block is called with `CirrusMDSDKResultInvalidToken`,
-    `CirrusMDSDKResultNoSecretProvided` or `CirrusMDSDKResultServiceUnavailable`
+    The completion block is called with `CirrusMDResultInvalidToken`,
+    `CirrusMDResultNoSecretProvided` or `CirrusMDResultServiceUnavailable`
     every time the status changes.
 */
 
-[CirrusMDSDK.singleton setToken:"RETRIEVED_TOKEN"
-                            completion:^(CirrusMDSDKResult result)
+[CirrusMD.singleton setToken:"RETRIEVED_TOKEN"
+                            completion:^(CirrusMDResult result)
 {
     switch (result) {
-        case CirrusMDSDKResultSuccess:
+        case CirrusMDResultSuccess:
             // The token is valid and the patient's profile loaded successfully.
             // Showing a MessageViewController will load properly.
 
-        case CirrusMDSDKResultInvalidToken:
+        case CirrusMDResultInvalidToken:
             // The token is expired, incomplete, invalid and/or the patient was
             // unable to load. You must retrieve a new token before proceeding.
 
-      case CirrusMDSDKResultNoSecretProvided:
+      case CirrusMDResultNoSecretProvided:
           // No secret has been set on the SDK. Set the secret and retry
           // setting the token.
 
-        case CirrusMDSDKResultServiceUnavailable:
+        case CirrusMDResultServiceUnavailable:
             // CirrusMD servers are unreachable
 
     }
@@ -199,7 +204,7 @@ CirrusMDSDK.singleton.setToken("RETRIEVED_TOKEN") { result in
 ##### Swift
 
 ```swift
-let controller = CirrusMDSDK.singleton.viewController
+let controller = CirrusMD.singleton.viewController
 
 self.navigationController?.pushViewController(controller, animated: true)
 
@@ -211,7 +216,7 @@ self.present(controller, animated: true) {...}
 ##### Obective-C
 
 ```obj-c
-UIViewController *controller = CirrusMDSDK.singleton.viewController;
+UIViewController *controller = CirrusMD.singleton.viewController;
 
 [self.navigationController pushViewController:controller animated:YES];
 
@@ -227,55 +232,55 @@ If the SDK has been provided with a valid secret and token the SSO user's channe
 ### Delegate
 #### Custom Status Views
 
-Ideally, your patients always see a working view when you present `CirrusMDSDK.singleton.viewController`. However, there are certain times when we're unable to show the normal experience.
+Ideally, your patients always see a working view when you present `CirrusMD.singleton.viewController`. However, there are certain times when we're unable to show the normal experience.
 
 The first is when you have explicity called `logout()` or, if you have the Settings view enabled, when the user taps the Sign Out button in Settings. We recommend calling logout, _only_ when your patient logs out of your appication and correctly handling a user logging out as noted in [Other Delegate Callbacks](#other-delegate-callbacks). In that case they will not see the _logged out view_ because they will be logged out of your application as well. You should log them back into the SDK when they next log back into your application.
 
-The second is when the SDK is unable to verify the secret and/or token or encounters a network error. In either case, an _error view_ is shown. We recommend you handle all errors passed to the last argument of `CirrusMDSDK.singleton.setToken`'s completion handler prior to showing the `CirrusMDSDK.singleton.viewController` if possible. Doing so will provide a better experience for your user. Some errors may happen after the `CirrusMDSDK.singleton.viewController` is already on screen. In that case, _error view_ is displayed.
+The second is when the SDK is unable to verify the secret and/or token or encounters a network error. In either case, an _error view_ is shown. We recommend you handle all errors passed to the last argument of `CirrusMD.singleton.setToken`'s completion handler prior to showing the `CirrusMD.singleton.viewController` if possible. Doing so will provide a better experience for your user. Some errors may happen after the `CirrusMD.singleton.viewController` is already on screen. In that case, _error view_ is displayed.
 
-Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. We strongly recommend that you provide your own custom views for both cases. Because the CirrusMDSDK uses SSO to authenticate your patients, we are unable to provide logged out UI that helps the patient log back in. By providing your patients with a custom _logout out view_ you can, for example, provide relevant messaging and a button to log back in using the same SSO you implemented to log them in originally. Every time the _error view_ is shown the resolution is retrieving a new SSO token and setting it via `CirrusMDSDK.singleton.setToken(:)`. Providing a custom _error view_ gives you the ability to display relevant messaging and interactions the user can take, most likely a button to re-attempt SSO.
+Two screens displayed by the SDK have default values that can be customized. The _logged out view_ and _error view_. We strongly recommend that you provide your own custom views for both cases. Because the CirrusMDSDK uses SSO to authenticate your patients, we are unable to provide logged out UI that helps the patient log back in. By providing your patients with a custom _logout out view_ you can, for example, provide relevant messaging and a button to log back in using the same SSO you implemented to log them in originally. Every time the _error view_ is shown the resolution is retrieving a new SSO token and setting it via `CirrusMD.singleton.setToken(:)`. Providing a custom _error view_ gives you the ability to display relevant messaging and interactions the user can take, most likely a button to re-attempt SSO.
 
-Customization of both the _logged out view_ and _error view_ happens via the `CirrusMDSDKDelegate`.
+Customization of both the _logged out view_ and _error view_ happens via the `CirrusMDDelegate`.
 
-1. Implement `CirrusMDSDKDelegate`
+1. Implement `CirrusMDDelegate`
 2. Provide custom views for any or all of the optional delegates.
 3. Set a frame on the view you provide and it will be centered in the yellow area of the screen below.
 
 ##### Swift
 
 ```swift
-// CirrusMDSDKDelegate
+// CirrusMDDelegate
 
-func viewForError(code: CirrusMDSDKResult) -> UIView {
+func viewForError(code: CirrusMDResult) -> UIView {
     // return a custom logged out view
 }
 
 func viewForLoggedOut() -> UIView {
-    // return a custom view appropriate for the CirrusMDSDKResult
+    // return a custom view appropriate for the CirrusMDResult
 }
 ```
 
 ##### Obective-C
 
 ```obj-c
-// CirrusMDSDKDelegate
+// CirrusMDDelegate
 
 - (UIView *)viewForLoggedOut {
     // return a custom logged out view
 }
 
-- (UIView *)viewForErrorWithCode:(enum CirrusMDSDKResult)code {
-    // return a custom view appropriate for the CirrusMDSDKResult
+- (UIView *)viewForErrorWithCode:(enum CirrusMDResult)code {
+    // return a custom view appropriate for the CirrusMDResult
 }
 ```
 
 #### Delegate Callbacks
 
-There are callbacks on `CirrusMDSDKDelegate` for when a user is logged in or logged out of the SDK (for example when a user uses the Sign Out button in settings). These callbacks can be used to correcetly handle the CirrusMDSDK in your application. For example you can dismiss `CirrusMDSDK.singleton.viewController` when a user logs out.
+There are callbacks on `CirrusMDDelegate` for when a user is logged in or logged out of the SDK (for example when a user uses the Sign Out button in settings). These callbacks can be used to correcetly handle the CirrusMDSDK in your application. For example you can dismiss `CirrusMD.singleton.viewController` when a user logs out.
 
 ##### Swift
 ```swift
-// CirrusMDSDKDelegate
+// CirrusMDDelegate
 
 func userLoggedIn(credentialId: Int) {
     // Handle user logged into CirrusMDSDK
@@ -288,7 +293,7 @@ func userLoggedOut() {
 
 ##### Obective-C
 ```obj-c
-// CirrusMDSDKDelegate
+// CirrusMDDelegate
 
 - (void)userLoggedInCredentialId:(NSInteger)credentialId {
     // Handle user logged into CirrusMDSDK
@@ -306,13 +311,13 @@ You may wish to log the user out of the SDK when they sign out of your applicati
 ##### Swift
 
 ```swift
-CirrusMDSDK.singleton.logOut()
+CirrusMD.singleton.logOut()
 ```
 
 ##### Obective-C
 
 ```obj-c
-[CirrusMDSDK.singleton logout];
+[CirrusMD.singleton logout];
 ```
 
 ### Push notifications
@@ -347,7 +352,7 @@ Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemot
 
 ```swift
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    CirrusMDSDK.singleton.registerForRemoteNotifications(deviceToken)
+    CirrusMD.singleton.registerForRemoteNotifications(deviceToken)
 }
 ```
 
@@ -355,7 +360,7 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 
 ```obj-c
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [CirrusMDSDK.singleton registerForRemoteNotifications:deviceToken];
+    [CirrusMD.singleton registerForRemoteNotifications:deviceToken];
 }
 ```
 
@@ -364,13 +369,13 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 ##### Swift
 
 ```swift
-CirrusMDSDK.singleton.unregisterForRemoteNotifications()
+CirrusMD.singleton.unregisterForRemoteNotifications()
 ```
 
 ##### Obective-C
 
 ```obj-c
-[CirrusMDSDK.singleton unregisterForRemoteNotifications];
+[CirrusMD.singleton unregisterForRemoteNotifications];
 ```
 
 ### Handling remote notifications
@@ -412,7 +417,7 @@ So the complete push notification payload should look like:
 ##### Swift
 ```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    if CirrusMDSDK.singleton.shouldPresentNotification(notification) {
+    if CirrusMD.singleton.shouldPresentNotification(notification) {
         completionHandler([.alert, .sound, .badge])
     } else {
         completionHandler([])
@@ -423,7 +428,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent noti
 ##### Objective-C
 ```obj-c
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-    if ([CirrusMDSDK.singleton shouldPresentNotification:notification]) {
+    if ([CirrusMD.singleton shouldPresentNotification:notification]) {
         completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
     } else {
         completionHandler(UNNotificationPresentationOptionNone);
@@ -442,50 +447,50 @@ If the provided `streamId` is not found on the current user's profile, no action
 
 In addition to these actions, if the notification is for a video session, the video session will be launched once the user is presented with the corresponding stream.
 
-**_Note_** You will also need to set the `launchOptions` on your `CirrusMDSDKConfig` if you would like the CirrusMDSDK to respond to push notifications that were tapped by the user when your app is not running. An example of setting the `launchOptions` on your CirrusMDSDKConfig can be seen in the [Braze](#braze) section of the documentation.
+**_Note_** You will also need to set the `launchOptions` on your `CirrusMDConfig` if you would like the CirrusMDSDK to respond to push notifications that were tapped by the user when your app is not running. An example of setting the `launchOptions` on your CirrusMDConfig can be seen in the [Braze](#braze) section of the documentation.
 
 ##### Swift
 ```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    CirrusMDSDK.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
+    CirrusMD.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
 }
 ```
 
 ##### Objective-C
 ```obj-c
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
-    [CirrusMDSDK.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
+    [CirrusMD.singleton didReceiveNotificationWithCenter:center response:response withCompletionHandler:completionHandler];
 }
 ```
 
 There are alternate versions of the `shouldPresentNotification` and `didReceiveNotification` that take the notification's userInfo payload or raw event and stream ID directly if you wish to implement your push notifications in a different or more custom way.
 
-### CirrusMDSDKConfig
+### CirrusMDConfig
 
-All custom configuration of the CirrusMDSDK is done via the `CirrusMDSDKConfig`. This allows the configuration of items such as titles, colors, optional features, etc.. All of the exact options are outlined below.
+All custom configuration of the CirrusMDSDK is done via the `CirrusMDConfig`. This allows the configuration of items such as titles, colors, optional features, etc.. All of the exact options are outlined below.
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 // Set the desired properties on the config here
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 // Set the desired properties on the config here
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Titles and Colors
 
-Some of the navigation titles in the SDK are configurable. To override the default set a title on your `CirrusMDSDKConfig` object.
-Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDSDKConfig` object.
+Some of the navigation titles in the SDK are configurable. To override the default set a title on your `CirrusMDConfig` object.
+Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDConfig` object.
 
 ```swift
 primary     // defaults to "#1a1a1a", used in avatar outlines and buttons
@@ -500,147 +505,147 @@ warning     // defaults to "#daaf0f", used in the offline banner
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
 config.primary = "FF5733"
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
 config.primary = @"FF5733";
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Enable Settings View
 
-There is an optional Settings view that you can allow your users to have access to. The Settings view, when enabled, is accessed via a button in the navigation bar of the SDK. This Settings view allows the user to view and edit their profile, medical history, dependents, permissions, and Terms of Use / Privacy Policy. The Settings view also allows the user to manually log out of the CirrusMDSDK. The availability of the Settings view is controlled by the `CirrusMDSDKConfig`.
+There is an optional Settings view that you can allow your users to have access to. The Settings view, when enabled, is accessed via a button in the navigation bar of the SDK. This Settings view allows the user to view and edit their profile, medical history, dependents, permissions, and Terms of Use / Privacy Policy. The Settings view also allows the user to manually log out of the CirrusMD. The availability of the Settings view is controlled by the `CirrusMDConfig`.
 
 **_Note_** The Settings view defaults to be disabled.
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.enableSettings = true
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.enableSettings = YES;
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Enable Dependents
 
-The CirrusMDSDK can support a user having dependents that can chat under their guarantor's account. When dependents support is enabled and a user has dependents they will see a dependents button that allows them to switch to chatting as that dependent. Support for dependents is controlled by the `CirrusMDSDKConfig`.
+The CirrusMDSDK can support a user having dependents that can chat under their guarantor's account. When dependents support is enabled and a user has dependents they will see a dependents button that allows them to switch to chatting as that dependent. Support for dependents is controlled by the `CirrusMDConfig`.
 
 **_Note_** Dependent support defaults to being disabled.
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.enableDependents = true
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.enableDependents = YES;
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Right Bar Button Items
 
-The CirrusMDSDK can support custom right bar button items to be shown in the UINavigationController the CirrusMDSDK's view controller is embedded in. For example if you want to present the CirrusMDSDK view controller modally this can be used to add a "Done" button. The right bar button items are controlled by the `rightBarButtonItems` property on `CirrusMDSDKConfig`.
+The CirrusMDSDK can support custom right bar button items to be shown in the UINavigationController the CirrusMDSDK's view controller is embedded in. For example if you want to present the CirrusMDSDK view controller modally this can be used to add a "Done" button. The right bar button items are controlled by the `rightBarButtonItems` property on `CirrusMDConfig`.
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
 config.rightBarButtonItems = [doneButton]
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
-CirrusMDSDK.singleton.config.rightBarButtonItems = @[doneButton];
+CirrusMD.singleton.config.rightBarButtonItems = @[doneButton];
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Enable User Log Out
 
-The CirrusMDSDK can support allowing the user to manually log themselves out of the SDK. If enabled a "Sign Out" option will exist in the Settings view as well as some error views. If this is enabled and the user does manually log out the `userLoggedOut` function on `CirrusMDSDKDelegate` will be called. Support for manual user log out is controlled by the `CirrusMDSDKConfig`.
+The CirrusMDSDK can support allowing the user to manually log themselves out of the SDK. If enabled a "Sign Out" option will exist in the Settings view as well as some error views. If this is enabled and the user does manually log out the `userLoggedOut` function on `CirrusMDDelegate` will be called. Support for manual user log out is controlled by the `CirrusMDConfig`.
 
 **_Note_** User log out support defaults to being disabled.
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.enableUserLogOut = true
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.enableUserLogOut = YES;
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### External Channels
 
 The SDK allows retrieval of and deep linking into specific channels.
 
-The channels available to the authenticated user can be retrieved using the `channels` function on `CirrusMDSDK`.
+The channels available to the authenticated user can be retrieved using the `channels` function on `CirrusMD`.
 
 ##### Swift
 ```swift
-let channels = CirrusMDSDK.singleton.channels()
+let channels = CirrusMD.singleton.channels()
 ```
 
 ##### Objective-C
 ```obj-c
-NSArray<CirrusMDChannel*>* channels = [CirrusMDSDK.singleton channels];
+NSArray<CirrusMDChannel*>* channels = [CirrusMD.singleton channels];
 ```
 
-You can force the SDK to navigate (deep link) to one of the channels using the `navigateToChannel` function on `CirrusMDSDK`.
+You can force the SDK to navigate (deep link) to one of the channels using the `navigateToChannel` function on `CirrusMD`.
 
 ##### Swift
 ```swift
-let channel = CirrusMDSDK.singleton.channels()[index]
-CirrusMDSDK.singleton.navigateToChannel(id: channel.id)
+let channel = CirrusMD.singleton.channels()[index]
+CirrusMD.singleton.navigateToChannel(id: channel.id)
 ```
 
 ##### Objective-C
 ```obj-c
-CirrusMDChannel* channel = [CirrusMDSDK.singleton channels][index];
-[CirrusMDSDK.singleton navigateToChannelWithId: channel.id];
+CirrusMDChannel* channel = [CirrusMD.singleton channels][index];
+[CirrusMD.singleton navigateToChannelWithId: channel.id];
 ```
 
 ### User Agent Prefix
@@ -650,29 +655,29 @@ The CirrusMDSDK allows the addition of a prefix to the User Agent that is sent o
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.userAgentPrefix = "Custom User Agent Prefix"
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.userAgentPrefix = @"Custom User Agent Prefix";
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Braze
 
-The CirrusMDSDK includes an optional Braze (aka AppBoy) integration that allows for Braze's attribution, push notifications, and in-app messages. In order to enable the Braze integration in the CirrusMDSDK you must populate the `brazeOptions` and `launchOptions` (from your AppDelegate's didFinishLaunchingWithOptions function) on your `CirrusMDSDKConfig`
+The CirrusMDSDK includes an optional Braze (aka AppBoy) integration that allows for Braze's attribution, push notifications, and in-app messages. In order to enable the Braze integration in the CirrusMDSDK you must populate the `brazeOptions` and `launchOptions` (from your AppDelegate's didFinishLaunchingWithOptions function) on your `CirrusMDConfig`
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.launchOptions = launchOptions // from your AppDelegate's didFinishLaunchingWithOptions function
 
 let brazeOptions = CirrusMDBrazeOptions()
@@ -680,13 +685,13 @@ brazeOptions.apiKey = "<Your Braze API Key>"
 brazeOptions.endpoint = "<Your Braze API Endpoint>"
 config.brazeOptions = brazeOptions
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.launchOptions = launchOptions; // from your AppDelegate's didFinishLaunchingWithOptions function
 
 CirrusMDBrazeOptions *brazeOptions = [[CirrusMDBrazeOptions alloc] init];
@@ -694,7 +699,7 @@ brazeOptions.apiKey = @"<Your Braze API Key>";
 brazeOptions.endpoint = @"<Your Braze API Endpoint>";
 config.brazeOptions = brazeOptions;
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 ### Debugging
@@ -705,64 +710,64 @@ The CirrusMDSDK can you provide you with a view controller that displays various
 
 THIS VIEW CONTROLLER SHOULD NEVER BE PRESENTED TO AN END USER. It is for debugging purposes only.
 
-The debug view controller can be accessed and presented manually or it can be accessed in Settings if `showDebugInSettings` is set to true on your `CirrusMDSDKConfig`
+The debug view controller can be accessed and presented manually or it can be accessed in Settings if `showDebugInSettings` is set to true on your `CirrusMDConfig`
 
 ##### Swift
 
 ```swift
 // Manually accessing and presenting the debug view controller
-let controller = CirrusMDSDK.singleton.debugViewController()
+let controller = CirrusMD.singleton.debugViewController()
 self.navigationController?.pushViewController(controller, animated: true)
 
-// Enabling showDebugInSettings on CirrusMDSDKConfig
-let config = CirrusMDSDKConfig()
+// Enabling showDebugInSettings on CirrusMDConfig
+let config = CirrusMDConfig()
 config.enableUserLogOut = true
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
 // Manually accessing and presenting the debug view controller
-UIViewController *controller = [CirrusMDSDK.singleton debugViewController];
+UIViewController *controller = [CirrusMD.singleton debugViewController];
 [self.navigationController pushViewController:controller animated:YES];
 
-// Enabling showDebugInSettings on CirrusMDSDKConfig
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+// Enabling showDebugInSettings on CirrusMDConfig
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.enableUserLogOut = YES;
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 #### Log Level
 
-The default log level is none. For debugging purposes this can be changed to verbose. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level to verbose for debugging purposes it should be done before calling anything other functions on the SDK. The logLevel is set on the `CirrusMDSDKConfig`
+The default log level is none. For debugging purposes this can be changed to verbose. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level to verbose for debugging purposes it should be done before calling anything other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
 
 ##### Swift
 
 ```swift
-let config = CirrusMDSDKConfig()
+let config = CirrusMDConfig()
 config.logLevel = .verbose
 
-CirrusMDSDK.singleton.setConfig(config)
+CirrusMD.singleton.setConfig(config)
 ```
 
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKConfig* config = [[CirrusMDSDKConfig alloc] init];
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.logLevel = CirrusMDLogLevelVerbose;
 
-[CirrusMDSDK.singleton setConfig:config];
+[CirrusMD.singleton setConfig:config];
 ```
 
 #### Token State
 
-Access `CirrusMDSDK.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
+Access `CirrusMD.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
 
 ##### Swift
 
 ```swift
-let tokenState = CirrusMDSDK.singleton.tokenState
+let tokenState = CirrusMD.singleton.tokenState
 
 switch tokenState {
 case .invalid:
@@ -774,21 +779,63 @@ case .valid
 ##### Obective-C
 
 ```obj-c
-CirrusMDSDKTokenState tokenState = CirrusMDSDK.singleton.tokenState;
+CirrusMDTokenState tokenState = CirrusMD.singleton.tokenState;
 
 switch (tokenState) {
-    case CirrusMDSDKTokenStateInvalid:
-    case CirrusMDSDKTokenStateUnknown:
-    case CirrusMDSDKTokenStateValid:
+    case CirrusMDTokenStateInvalid:
+    case CirrusMDTokenStateUnknown:
+    case CirrusMDTokenStateValid:
 }
 ```
 
-## Troubleshooting
 
-1. If you see the following error in an Objective-C project you likely haven't embedded the Swift Standard Libraries. Ensure `Build Settings > Build Options > Always Embed Swift Standard Libraries` is set to `Yes`.
+## Module Stability Requirement
+
+CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. Additionally this must be set before running `pod install` (or run `pod install` again after setting) due to how `Build Libraries for Distribution` is handled by [CocoaPods (version 1.10.0 and later)](https://github.com/CocoaPods/CocoaPods/issues/9232). If not set the following error (or something similar) will appear:
+
+    >dyld: Symbol not found: _$s18CMDKTVJSONWebToken16ValidationResultO7successyA2CmFWC
+    >  Referenced from: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMD.framework/ >CirrusMDSDK
+    >  Expected in: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CMDKTVJSONWebToken.    >framework/CMDKTVJSONWebToken
+    > in /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/Containers/Bundle/    >Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMD.framework/CirrusMDSDK
+
+### Workaround
+Although it's not ideal, there is a possible workaround if you cannot set `Build Libraries for Distribution` to `Yes` on your app (or some of its other dependencies) for some reason. The workaround uses the `post_install` hook in your Podfile to set `Build Libraries for Distribution` to `Yes` on ONLY the CirrusMDSDK and it's dependencies and not your app or other dependencies.
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if CIRRUSMD_DEPENDENCIES.include?(target.name)
+      target.build_configurations.each do |build_configuration|
+        build_configuration.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      end
+    end
+  end
+end
+
+CIRRUSMD_DEPENDENCIES = [
+  'CirrusMDSDK',
+  'Appboy-iOS-SDK',
+  'Appboy-iOS-SDK-AppboyUI.ContentCards',
+  'Appboy-iOS-SDK-Appboy',
+  'Appboy-iOS-SDK-AppboyUI.InAppMessage',
+  'Appboy-iOS-SDK-AppboyUI.NewsFeed',
+  'CMDKTVJSONWebToken',
+  'CMDMBProgressHUD',
+  'CMDStarscream',
+  'Kingfisher',
+  'OpenTok',
+  'SDWebImage',
+  'SnapKit',
+  'UDF',
+]
+```
+
+## Objective-C Requirement
+
+Because the CirrusMDSDK is implemented in Swift, when integrating it into an Objective-C project `Build Settings > Build Options > Always Embed Swift Standard Libraries` must be set to `Yes`. If not set the following error (or something similar) will appear:
 
    > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
-   > Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMDSDK.framework/CirrusMDSDK
+   > Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMD.framework/CirrusMDSDK
    > Reason: image not found
 
 ## Author
@@ -798,5 +845,3 @@ CirrusMD
 ## License
 
 CirrusMD-iOS-SDK-Example is available under the MIT license. See the LICENSE file for more info.
-
-CirrusMDSDK is available under the XXXX license. See the LICENSE file for more info.

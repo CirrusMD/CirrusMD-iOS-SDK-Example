@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
         
-        let config = CirrusMDSDKConfig()
+        let config = CirrusMDConfig()
         config.logLevel = .verbose
         config.primaryColor = UIColor.black
         config.title = "Your Custom Title"
         config.launchOptions = launchOptions
-        CirrusMDSDK.singleton.config = config
+        CirrusMD.singleton.config = config
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             DispatchQueue.main.async {
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        CirrusMDSDK.singleton.registerForRemoteNotifications(deviceToken)
+        CirrusMD.singleton.registerForRemoteNotifications(deviceToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //MARK: UNUserNotificationCenterDelegate
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        if CirrusMDSDK.singleton.shouldPresentNotification(notification) {
+        if CirrusMD.singleton.shouldPresentNotification(notification) {
             completionHandler([.alert, .sound, .badge])
         } else {
             completionHandler([])
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        CirrusMDSDK.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
+        CirrusMD.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
     }
     
 }

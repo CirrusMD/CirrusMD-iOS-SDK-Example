@@ -16,11 +16,10 @@ PODS:
     - Appboy-iOS-SDK/Core
     - Appboy-iOS-SDK/InAppMessage
     - Appboy-iOS-SDK/NewsFeed
-  - CirrusMDSDK (7.4.0):
+  - CirrusMDSDK (8.0.0):
     - Appboy-iOS-SDK (~> 3.32.0)
     - CMDKTVJSONWebToken (~> 2.1.0)
     - CMDMBProgressHUD (~> 1.2.0)
-    - CMDObjectMapper (~> 4.2.0)
     - CMDStarscream (~> 3.1.1)
     - Kingfisher (~> 5.15.8)
     - OpenTok (~> 2.18.1)
@@ -28,7 +27,6 @@ PODS:
     - UDF (~> 0.7.0)
   - CMDKTVJSONWebToken (2.1.0)
   - CMDMBProgressHUD (1.2.0)
-  - CMDObjectMapper (4.2.0)
   - CMDStarscream (3.1.1)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
@@ -41,14 +39,13 @@ PODS:
   - UDF (0.7.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 7.4.0)
+  - CirrusMDSDK (~> 8.0.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
     - CirrusMDSDK
     - CMDKTVJSONWebToken
     - CMDMBProgressHUD
-    - CMDObjectMapper
     - CMDStarscream
     - UDF
   https://github.com/CocoaPods/Specs.git:
@@ -60,10 +57,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Appboy-iOS-SDK: 6d3016581cb5306e26826ec7333f0c5ae59e2a2f
-  CirrusMDSDK: 48ea38a887600d955b2018315e8cc540c52d93a1
+  CirrusMDSDK: 0cea66e68498e2b93a857883860c70ea1aa73752
   CMDKTVJSONWebToken: bb69c614202fddb946644202ca3bedb0c2fbe648
   CMDMBProgressHUD: ba79c6445bd58c9588d10c18d9dc0fe844a3e1d0
-  CMDObjectMapper: 99b5e1954218837cfb31117d2b6f41b5726e8f28
   CMDStarscream: 5a1bdbce0aea1db47cc418e248cadf9dc30eee89
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   OpenTok: 2a816f5d77fbf2e2ebb5aec841bd21fb7dc7737b
@@ -71,6 +67,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
 
-PODFILE CHECKSUM: bac4df8f57c47ea22deeb1b24f6c3f8343ae0b9e
+PODFILE CHECKSUM: 8bb7b85e3b4b29697cbe544336d28fa758109905
 
 COCOAPODS: 1.10.0
