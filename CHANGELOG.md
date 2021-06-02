@@ -1,5 +1,10 @@
 # CirrusMD iOS SDK Changelog
 
+# 8.0.1
+
+### Changes:
+- Updated the Appboy (aka Braze) dependency to version 4.0.2
+
 # 8.0.0
 
 ### New Features:
