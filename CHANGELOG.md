@@ -9,7 +9,7 @@
 - Updated OpenTok dependency.
 
 ### New Features:
-- Changed design on the stream picker view to navigatio to My Family view.
+- Changed design on the stream picker view to navigate to My Family view.
 -  Added a 'Add Minor Dependent' button to My Family Settings view, which is enabled/disabled in Manage. This new button navigates the user to a form that allows the user to add a minor dependent.
 - Added Minor Dependent form to allow users to add their minor dependents, using first name, last name, DOB, and zipcode.
 
