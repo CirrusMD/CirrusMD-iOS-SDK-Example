@@ -1,45 +1,22 @@
 PODS:
-  - Appboy-iOS-SDK (4.0.2):
-    - Appboy-iOS-SDK/UI (= 4.0.2)
-  - Appboy-iOS-SDK/ContentCards (4.0.2):
-    - Appboy-iOS-SDK/Core
-    - SDWebImage (< 6, >= 5.8.2)
-  - Appboy-iOS-SDK/Core (4.0.2)
-  - Appboy-iOS-SDK/InAppMessage (4.0.2):
-    - Appboy-iOS-SDK/Core
-    - SDWebImage (< 6, >= 5.8.2)
-  - Appboy-iOS-SDK/NewsFeed (4.0.2):
-    - Appboy-iOS-SDK/Core
-    - SDWebImage (< 6, >= 5.8.2)
-  - Appboy-iOS-SDK/UI (4.0.2):
-    - Appboy-iOS-SDK/ContentCards
-    - Appboy-iOS-SDK/Core
-    - Appboy-iOS-SDK/InAppMessage
-    - Appboy-iOS-SDK/NewsFeed
-  - CirrusMDSDK (8.0.1):
-    - Appboy-iOS-SDK (~> 4.0.2)
+  - CirrusMDSDK (9.0.0):
     - CMDKTVJSONWebToken (~> 2.1.0)
     - CMDMBProgressHUD (~> 1.2.0)
     - CMDStarscream (~> 3.1.1)
-    - Kingfisher (~> 5.15.8)
-    - OpenTok (~> 2.18.1)
+    - Kingfisher (~> 6.3.0)
+    - OpenTok (~> 2.20.0)
     - SnapKit (~> 5.0.1)
     - UDF (~> 0.7.0)
   - CMDKTVJSONWebToken (2.1.0)
   - CMDMBProgressHUD (1.2.0)
   - CMDStarscream (3.1.1)
-  - Kingfisher (5.15.8):
-    - Kingfisher/Core (= 5.15.8)
-  - Kingfisher/Core (5.15.8)
-  - OpenTok (2.18.1)
-  - SDWebImage (5.11.1):
-    - SDWebImage/Core (= 5.11.1)
-  - SDWebImage/Core (5.11.1)
+  - Kingfisher (6.3.0)
+  - OpenTok (2.20.0)
   - SnapKit (5.0.1)
   - UDF (0.7.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 8.0.1)
+  - CirrusMDSDK (~> 9.0.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
@@ -49,24 +26,20 @@ SPEC REPOS:
     - CMDStarscream
     - UDF
   https://github.com/CocoaPods/Specs.git:
-    - Appboy-iOS-SDK
     - Kingfisher
     - OpenTok
-    - SDWebImage
     - SnapKit
 
 SPEC CHECKSUMS:
-  Appboy-iOS-SDK: a423c382ef27ff998c8aa7b6ee81541c35687341
-  CirrusMDSDK: 0020b5fa12dac5b40135b9550cafb9cbe751cf07
+  CirrusMDSDK: 3af89f1d8ba9621e6929175cb376ea9f05d50940
   CMDKTVJSONWebToken: bb69c614202fddb946644202ca3bedb0c2fbe648
   CMDMBProgressHUD: ba79c6445bd58c9588d10c18d9dc0fe844a3e1d0
   CMDStarscream: 5a1bdbce0aea1db47cc418e248cadf9dc30eee89
-  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  OpenTok: 2a816f5d77fbf2e2ebb5aec841bd21fb7dc7737b
-  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
+  OpenTok: 414c2c1dc6486f1897015e4d1703558d5eed48c3
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
 
-PODFILE CHECKSUM: b157c584b937bb3e75c28b47c967a888f37cb5fe
+PODFILE CHECKSUM: d8138f09b6452833affcc191e08c0d6a78fc5810
 
 COCOAPODS: 1.10.1
