@@ -1,5 +1,25 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.0.0
+
+### Changes:
+- Removed Starscream dependency.
+- Removed Appboy-iOS-SDK (aka Braze) dependency.
+- Removed brazeOptions from CirrusMDConfig.
+- Updated OpenTok dependency.
+
+### New Features:
+- Changed design on the stream picker view to navigate to My Family view.
+-  Added a 'Add Minor Dependent' button to My Family Settings view, which is enabled/disabled in Manage. This new button navigates the user to a form that allows the user to add a minor dependent.
+- Added Minor Dependent form to allow users to add their minor dependents, using first name, last name, DOB, and zipcode.
+
+### Bug Fixes:
+- Fixed an issue with parsing metadata on streams.
+- Fixed an issue where the patient sat survey done button may not show for users with slow connections.
+- Fixed an isse where dark mode could cause white on white text in patient satisfaction survey.
+- Fixed an issue where an erroneous error message could display when exiting a queue.
+- Fixed an issue with the handling of streams with image uploads disabled.
+
 # 8.0.1
 
 ### Changes:

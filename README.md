@@ -670,38 +670,6 @@ config.userAgentPrefix = @"Custom User Agent Prefix";
 [CirrusMD.singleton setConfig:config];
 ```
 
-### Braze
-
-The CirrusMDSDK includes an optional Braze (aka AppBoy) integration that allows for Braze's attribution, push notifications, and in-app messages. In order to enable the Braze integration in the CirrusMDSDK you must populate the `brazeOptions` and `launchOptions` (from your AppDelegate's didFinishLaunchingWithOptions function) on your `CirrusMDConfig`
-
-##### Swift
-
-```swift
-let config = CirrusMDConfig()
-config.launchOptions = launchOptions // from your AppDelegate's didFinishLaunchingWithOptions function
-
-let brazeOptions = CirrusMDBrazeOptions()
-brazeOptions.apiKey = "<Your Braze API Key>"
-brazeOptions.endpoint = "<Your Braze API Endpoint>"
-config.brazeOptions = brazeOptions
-
-CirrusMD.singleton.setConfig(config)
-```
-
-##### Obective-C
-
-```obj-c
-CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
-config.launchOptions = launchOptions; // from your AppDelegate's didFinishLaunchingWithOptions function
-
-CirrusMDBrazeOptions *brazeOptions = [[CirrusMDBrazeOptions alloc] init];
-brazeOptions.apiKey = @"<Your Braze API Key>";
-brazeOptions.endpoint = @"<Your Braze API Endpoint>";
-config.brazeOptions = brazeOptions;
-
-[CirrusMD.singleton setConfig:config];
-```
-
 ### Debugging
 
 #### Debug View Controller
