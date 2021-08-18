@@ -1,5 +1,25 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.1.0
+
+## Built with:
+Xcode 12.5
+
+## Changes:
+
+### Changes:
+- Updated to Xcode 12.5
+- Removed support for Buoy pre-encounter messages 
+
+### New Features:
+- Added support for Segment analytic events, sent via the sdk/v2 API
+
+### Bug Fixes:
+- Larger font accessibility improvements to patient satisfaction survey
+- Added is_patient_settings_visible and is_settings_editable flags to customer parsing
+- Changed 'dependent' verbiage to 'minor dependent'
+- The Avatar, patient name, and the chevron icon (shown on the Channels of care) should now be one clickable unit that will navigate the user to the patient selector
+
 # 9.0.0
 
 ### Changes:
