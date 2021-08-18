@@ -2,11 +2,6 @@
 
 # 9.1.0
 
-## Built with:
-Xcode 12.5
-
-## Changes:
-
 ### Changes:
 - Updated to Xcode 12.5
 - Removed support for Buoy pre-encounter messages 
