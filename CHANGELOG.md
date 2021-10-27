@@ -1,5 +1,21 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.2.0
+
+### Changes:
+- Updates for Xcode 13 and iOS 15
+- Updated the Kingfisher dependency to 6.3.1
+- Updated the OpenTok dependency to 2.20.1
+- Should now gracefully handle provider-deleted messages in the Event Stream (chat view)
+- Done button now displays when patient initially reaches the final survey screen regardless of if the required questions are answered
+- Added an 'ask location' feature that will allow users to select the US State in which they currently are located, in order to get matched up with a provider
+- Email field in the technical support section of settings is dynamic
+- Support tab in settings only displays when email or hotline data is present
+
+### Bug Fixes:
+- Fixed layout bug's caused by iOS 15
+- Fixed Patient Satisfaction Survey reopening after completion caused by iOS 15
+
 # 9.1.0
 
 ### Changes:
