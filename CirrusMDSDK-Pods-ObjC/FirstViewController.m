@@ -24,6 +24,7 @@
 
 - (IBAction)showSdk:(id)sender {
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:CirrusMD.singleton.viewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     [navigationController.navigationBar setTranslucent:NO];
     [navigationController.navigationBar setBarTintColor:UIColor.blackColor];
     [navigationController.navigationBar setTintColor:UIColor.whiteColor];
