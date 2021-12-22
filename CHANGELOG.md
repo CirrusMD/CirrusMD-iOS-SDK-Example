@@ -1,5 +1,15 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.3.0
+
+### Changes:
+- Added the ability for the user to set a preferred name, preferred pronouns, and gender Identity, in profile settings
+- Preferred name for Patient (not Dependent) is now displayed in the chat, stream picker, and family picker.
+- Added pronouns text to event stream message author label
+
+### Bug Fixes:
+- Fixed bug in Patient Satisfaction Survey where the text input question would not grow with multi line feedback text
+
 # 9.2.0
 
 ### Changes:
