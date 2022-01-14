@@ -1,5 +1,10 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.3.1
+
+### Bug Fixes:
+- Fixed bug in settings where a patient was limited in the number of characters they could enter for important patient medical fields
+
 # 9.3.0
 
 ### Changes:
