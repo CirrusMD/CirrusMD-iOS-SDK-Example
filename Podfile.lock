@@ -1,5 +1,5 @@
 PODS:
-  - CirrusMDSDK (9.3.1):
+  - CirrusMDSDK (9.4.0):
     - CMDKTVJSONWebToken (~> 2.1.0)
     - CMDMBProgressHUD (~> 1.2.0)
     - CMDStarscream (~> 3.1.1)
@@ -16,7 +16,7 @@ PODS:
   - UDF (0.7.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 9.3.1)
+  - CirrusMDSDK (~> 9.4.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
@@ -31,7 +31,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: a02b334896976c3c557241cfdb0129cc55a4dd47
+  CirrusMDSDK: aeaecdbf130ba0968d640f15c9e5b81b07f87c8c
   CMDKTVJSONWebToken: bb69c614202fddb946644202ca3bedb0c2fbe648
   CMDMBProgressHUD: ba79c6445bd58c9588d10c18d9dc0fe844a3e1d0
   CMDStarscream: 5a1bdbce0aea1db47cc418e248cadf9dc30eee89
@@ -40,6 +40,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
 
-PODFILE CHECKSUM: 8fcc2407c104f8d2b502016e9cce23f03b3e46c7
+PODFILE CHECKSUM: d00941d2abe044eddd418348f4f4f8fce9b3b62b
 
 COCOAPODS: 1.11.2
