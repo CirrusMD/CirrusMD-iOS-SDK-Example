@@ -304,6 +304,25 @@ func userLoggedOut() {
 }
 ```
 
+### Error handling
+
+The SDK reports errors through the errorRecieved() delegate function. Currently this is just being used to report video errors. Expect further error reporting in the future.
+
+### Swift
+
+```swift
+func errorReceived(error: NSError, attributes: [AnyHashable: String]?) {
+    // Handle error and attributes
+}
+```
+
+### Objective-C
+```obj-c
+- (void)errorReceivedWithError:(NSError *)error attributes:(NSDictionary<id<NSCopying>,NSString *> *)attributes {
+    // Handle error and attributes
+}
+```
+
 ### Logout
 
 You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.

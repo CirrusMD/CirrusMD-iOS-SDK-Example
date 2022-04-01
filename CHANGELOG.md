@@ -1,5 +1,18 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.4.0
+
+## Built with:
+
+### Changes:
+- Added Payor Plans to Patient to support Insurance verification
+- Added Insurance verification capability
+- Improvements to video error reporting
+
+### Bug Fixes:
+- Improvements to button handling of larger font accessibility
+- Improved layout of Queue Status and State Selection stream elements
+
 # 9.3.1
 
 ### Bug Fixes:
