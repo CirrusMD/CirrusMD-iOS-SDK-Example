@@ -309,7 +309,6 @@ func userLoggedOut() {
 The SDK reports errors through the errorRecieved() delegate function. Currently this is just being used to report video errors. Expect further error reporting in the future.
 
 ### Swift
-
 ```swift
 func errorReceived(error: NSError, attributes: [AnyHashable: String]?) {
     // Handle error and attributes
@@ -320,6 +319,24 @@ func errorReceived(error: NSError, attributes: [AnyHashable: String]?) {
 ```obj-c
 - (void)errorReceivedWithError:(NSError *)error attributes:(NSDictionary<id<NSCopying>,NSString *> *)attributes {
     // Handle error and attributes
+}
+```
+
+### Video connection status
+
+The SDK reports the video session connection status, this can be used to report video related events. 
+
+### Swift
+```swift
+func videoSessionConnectionStatus(attributes: [AnyHashable: String]?) {
+    // Handle attributes
+}
+```
+
+### Objective-C
+```objc-c
+- (void)videoSessionConnectionStatusWithAttributes:(NSDictionary<id<NSCopying>,NSString *> *)attributes {
+    // Handle attributes
 }
 ```
 
