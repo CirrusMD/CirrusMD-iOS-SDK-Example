@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 9.5.0
+
+## Built with:
+
+### Changes:
+- Added account delete feature, which enables users to disable their account, and request that their account be deleted. NOTE: This is used internally for the CirrusMD developer team. We DO NOT recommend setting this flag to true, without consent from CirrusMD. Please talk to your CirrusMD Account Manager before enabling this feature
+- Added New DE&I fields can be updated in user's profile settings. DE&I can now be controlled via CirrusMD's manage
+- Cross channel transfer feature allows users to transfer to new chat, if and when the provider transfers the patient.
+- Video chat/call requests now appear as an in-chat message, so users can now join a video call effortlessly.
+
+### Bug Fixes:
+
 # 9.4.0
 
 ## Built with:
