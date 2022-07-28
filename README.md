@@ -58,7 +58,7 @@ To integrate CirrusMDSDK into your Xcode project using CocoaPods, specify it in 
 source 'https://github.com/CocoaPods/Specs.git' # <-- Make sure to add this line if it's not already in your Podfile
 source 'https://github.com/CirrusMD/podspecs.git' # <-- Make sure to add this line
 
-platform :ios, '11.0'
+platform :ios, '13.0'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -543,7 +543,7 @@ warning     // defaults to "#daaf0f", used in the offline banner
 ```swift
 let config = CirrusMDConfig()
 config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
-config.primary = "FF5733"
+config.primary = UIColor.black
 
 CirrusMD.singleton.setConfig(config)
 ```
@@ -553,7 +553,7 @@ CirrusMD.singleton.setConfig(config)
 ```obj-c
 CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
-config.primary = @"FF5733";
+config.primary = @UIColor.blackColor;
 
 [CirrusMD.singleton setConfig:config];
 ```

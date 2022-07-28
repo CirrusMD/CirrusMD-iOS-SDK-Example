@@ -1,5 +1,14 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.0.0
+
+## Built with: Xcode 13.3.1
+
+### Changes:
+- Added assessments feature, which will allow patients to receive and submit GAD7, PHQ9, and ACT questionnaires. Mobile Clients that are on 10.0.0+ will receive a native experience questionnaire, while older versions will receive a URL link to complete the assessment outside of the SDK experience.
+
+### Bug Fixes:
+
 # 9.5.0
 
 ## Built with:

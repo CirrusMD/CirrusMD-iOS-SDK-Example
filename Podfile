@@ -9,10 +9,10 @@ workspace 'CirrusMDSDK-Example.xcworkspace'
 
 target 'CirrusMDSDK-Pods' do
   project 'CirrusMDSDK-Example.xcodeproj'
-  pod 'CirrusMDSDK', '~> 9.5.0'
+  pod 'CirrusMDSDK', '~> 10.0.0'
 end
 
 target 'CirrusMDSDK-Pods-ObjC' do
   project 'CirrusMDSDK-Example.xcodeproj'
-  pod 'CirrusMDSDK', '~> 9.5.0'
+  pod 'CirrusMDSDK', '~> 10.0.0'
 end
