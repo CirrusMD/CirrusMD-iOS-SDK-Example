@@ -21,6 +21,7 @@
 		B170B96A232C33EB00665AE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B170B969232C33EB00665AE8 /* Main.storyboard */; };
 		B170B988232C401A00665AE8 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C3A9FFD322939E3000801651 /* en.lproj */; };
 		CB1B0567D041AC96B01EB1DE /* Pods_CirrusMDSDK_Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AE7FD4C0BAD46AEB3A02022 /* Pods_CirrusMDSDK_Pods.framework */; };
+		E5182A1C2911D5A000547BFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5182A1E2911D5A000547BFA /* Localizable.strings */; };
 		F3ACD216BFC02D41B42D7785 /* Pods_CirrusMDSDK_Pods_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31CAAF0E7CD2B6B23320516 /* Pods_CirrusMDSDK_Pods_ObjC.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,10 @@
 		C3EEDFA022957AD2005EF358 /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
 		C3EEDFD62295A1FD005EF358 /* CirrusMD-LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "CirrusMD-LaunchScreen.xib"; sourceTree = "<group>"; };
 		DEE5138E96A85C30F89B9BF9 /* Pods-CirrusMDSDK-Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirrusMDSDK-Pods.debug.xcconfig"; path = "Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E5182A162911D52900547BFA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E5182A172911D52900547BFA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E5182A1D2911D5A000547BFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E5182A1F2911D5A200547BFA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,7 @@
 		C3A9FFAF22939DD200801651 /* CirrusMDSDK-Pods */ = {
 			isa = PBXGroup;
 			children = (
+				E5182A192911D58100547BFA /* Localizable */,
 				B170B952232C330A00665AE8 /* AppDelegate.swift */,
 				B170B954232C330A00665AE8 /* ExampleViewController.swift */,
 				B170B969232C33EB00665AE8 /* Main.storyboard */,
@@ -167,6 +173,14 @@
 				792458EBD19222BC2BAE4D25 /* Pods-CirrusMDSDK-Pods-ObjC.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5182A192911D58100547BFA /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				E5182A1E2911D5A000547BFA /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 6003F581195388D10070C39A;
 			productRefGroup = 6003F58B195388D20070C39A /* Products */;
@@ -267,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5182A1C2911D5A000547BFA /* Localizable.strings in Resources */,
 				B170B988232C401A00665AE8 /* en.lproj in Resources */,
 				B170B96A232C33EB00665AE8 /* Main.storyboard in Resources */,
 				B170B966232C338600665AE8 /* CirrusMD-LaunchScreen.xib in Resources */,
@@ -306,9 +322,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods-ObjC/Pods-CirrusMDSDK-Pods-ObjC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CMDKTVJSONWebToken/CMDKTVJSONWebToken.framework",
 				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/CMDStarscream/CMDStarscream.framework",
 				"${PODS_ROOT}/CirrusMDSDK/CirrusMDSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -316,9 +330,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDKTVJSONWebToken.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDStarscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -336,9 +348,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CMDKTVJSONWebToken/CMDKTVJSONWebToken.framework",
 				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/CMDStarscream/CMDStarscream.framework",
 				"${PODS_ROOT}/CirrusMDSDK/CirrusMDSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -346,9 +356,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDKTVJSONWebToken.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDStarscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -411,6 +419,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B112769E23D8EFD200E51F4C /* Base */,
+				E5182A162911D52900547BFA /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -419,8 +428,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				B11276A323D8EFD200E51F4C /* Base */,
+				E5182A172911D52900547BFA /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E5182A1E2911D5A000547BFA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5182A1D2911D5A000547BFA /* en */,
+				E5182A1F2911D5A200547BFA /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
