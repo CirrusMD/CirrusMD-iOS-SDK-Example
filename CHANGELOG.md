@@ -1,5 +1,27 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.1.1
+
+## Built with: Xcode 13.4.1
+
+### Changes:
+- Removed `CMDKTVJSONWebToken` dependency and replaced it with a native solution
+
+### Bug Fixes:
+
+# 10.1.0
+
+## Built with: Xcode 13.4.1
+
+### Changes:
+- Added Spanish Localization support
+- Added `Language` button in settings that deeplinks to CirrusMD settings page where the user can update their preferred language
+- Added a Spanish translations confirmation alert to SDK landing view for when user changes their preferred language to Spanish from English
+- Translated messages appear in chat stream if a message has been translated
+
+### Bug Fixes:
+- Fixed issue where action buttons stay active when encounter is dismissed by provider
+
 # 10.0.0
 
 ## Built with: Xcode 13.3.1

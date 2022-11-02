@@ -793,13 +793,17 @@ switch (tokenState) {
 ```
 
 
+## Localization Requirement
+
+The CirrusMDSDK (version 10.1.0 and later) supports spanish translations if the presenting application does as well. Instructions on localizing your application can be found [here](https://developer.apple.com/localization/).
+
 ## Module Stability Requirement
 
-CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. Additionally this must be set before running `pod install` (or run `pod install` again after setting) due to how `Build Libraries for Distribution` is handled by [CocoaPods (version 1.10.0 and later)](https://github.com/CocoaPods/CocoaPods/issues/9232). If not set the following error (or something similar) will appear:
+CirrusMDSDK is built using [Swift Module Stability](https://swift.org/blog/abi-stability-and-more/) so that it can be integrated into projects that are built with different versions of Swift, as long as that Swift version is 5.1 or later. Because of this `Build Settings > Build Options > Build Libraries for Distribution` must be set to `Yes`. Additionally this must be set before running `pod install` (or run `pod install` again after setting) due to how `Build Libraries for Distribution` is handled by [CocoaPods (version 1.10.0 and later)](https://github.com/CocoaPods/CocoaPods/issues/9232). If not set, the following error (or something similar) will appear:
 
-    >dyld: Symbol not found: _$s18CMDKTVJSONWebToken16ValidationResultO7successyA2CmFWC
+    >dyld: Symbol not found: _$s18Kingfisher16ValidationResultO7successyA2CmFWC
     >  Referenced from: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMD.framework/ >CirrusMDSDK
-    >  Expected in: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CMDKTVJSONWebToken.    >framework/CMDKTVJSONWebToken
+    >  Expected in: /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/   >Containers/Bundle/Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/Kingfisher.    >framework/Kingfished
     > in /Users/taylor-case/Library/Developer/CoreSimulator/Devices/E0BE558B-8E22-4554-9449-7B38089DB250/data/Containers/Bundle/    >Application/EBC8F562-9C70-4F58-9B71-B4AAC73E3B78/CirrusMDSDK-Pods.app/Frameworks/CirrusMD.framework/CirrusMDSDK
 
 ### Workaround
@@ -823,9 +827,7 @@ CIRRUSMD_DEPENDENCIES = [
   'Appboy-iOS-SDK-Appboy',
   'Appboy-iOS-SDK-AppboyUI.InAppMessage',
   'Appboy-iOS-SDK-AppboyUI.NewsFeed',
-  'CMDKTVJSONWebToken',
   'CMDMBProgressHUD',
-  'CMDStarscream',
   'Kingfisher',
   'OpenTok',
   'SDWebImage',

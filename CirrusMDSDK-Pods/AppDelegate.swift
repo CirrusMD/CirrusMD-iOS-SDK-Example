@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         config.primaryColor = UIColor.black
         config.title = "Your Custom Title"
         config.launchOptions = launchOptions
+        config.enableSettings = true
         CirrusMD.singleton.config = config
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
