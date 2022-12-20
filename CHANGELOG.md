@@ -1,5 +1,14 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.2.0
+
+## Built with: Xcode 13.4.1
+
+### Changes:
+- Spanish translation improvements
+
+### Bug Fixes:
+
 # 10.1.1
 
 ## Built with: Xcode 13.4.1
