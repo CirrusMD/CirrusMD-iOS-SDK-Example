@@ -23,6 +23,9 @@
 @implementation FirstViewController
 
 - (IBAction)showSdk:(id)sender {
+    
+    // Design the Navigation Controller any way you would like
+    
     UIBarAppearance *barAppearance = [[UIBarAppearance alloc] init];
     [barAppearance configureWithOpaqueBackground];
     [barAppearance setBackgroundColor:UIColor.blackColor];
