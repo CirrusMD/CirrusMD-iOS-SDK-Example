@@ -751,16 +751,12 @@ The default log level is none. For debugging purposes this can be changed to one
 
 The levels add to each other with verbose showing all available logging.
 
-```
-public enum CirrusMDLogLevel: Int {
-  case none       // Shows no logs
-  case error      // Shows only errors marked by :bangbang:
-  case info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
-  case debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
-  case networking // Adds in all networking calls, both requests and responses marked by :umbrella:
-  case verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
-}
-```
+  .none       // Shows no logs
+  .error      // Shows only errors marked by :bangbang:
+  .info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
+  .debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
+  .networking // Adds in all networking calls, both requests and responses marked by :umbrella:
+  .verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
 
 ##### Swift
 
