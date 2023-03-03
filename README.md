@@ -754,10 +754,10 @@ The levels add to each other with verbose showing all available logging.
 ```
 public enum CirrusMDLogLevel: Int {
   case none       // Shows no logs
-  case error      // Shows only errors marked by ‼️
+  case error      // Shows only errors marked by :bangbang:
   case info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
   case debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
-  case networking // Adds in all networking calls, both requests and responses marked by ☂️
+  case networking // Adds in all networking calls, both requests and responses marked by :umbrella:
   case verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
 }
 ```
