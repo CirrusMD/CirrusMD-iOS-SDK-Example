@@ -23,12 +23,22 @@
 @implementation FirstViewController
 
 - (IBAction)showSdk:(id)sender {
+    UIBarAppearance *barAppearance = [[UIBarAppearance alloc] init];
+    [barAppearance configureWithOpaqueBackground];
+    [barAppearance setBackgroundColor:UIColor.blackColor];
+    
+    UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] initWithBarAppearance: barAppearance];
+    [navBarAppearance configureWithOpaqueBackground];
+    [navBarAppearance setBackgroundColor:UIColor.blackColor];
+    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:CirrusMD.singleton.viewController];
     navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [navigationController.navigationBar setTranslucent:NO];
     [navigationController.navigationBar setBarTintColor:UIColor.blackColor];
     [navigationController.navigationBar setTintColor:UIColor.whiteColor];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+    navigationController.navigationBar.standardAppearance = navBarAppearance;
+    [navigationController.navigationBar setTranslucent: NO];
+    navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
     CirrusMD.singleton.config.rightBarButtonItems = @[doneButton];

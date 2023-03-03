@@ -1,5 +1,5 @@
 PODS:
-  - CirrusMDSDK (10.2.0):
+  - CirrusMDSDK (10.3.0):
     - CMDMBProgressHUD (~> 1.2.1)
     - Kingfisher (~> 6.3.1)
     - OpenTok (~> 2.23.1)
@@ -14,7 +14,7 @@ PODS:
   - VonageWebRTC (84.0.21)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 10.2.0)
+  - CirrusMDSDK (~> 10.3.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
@@ -28,7 +28,7 @@ SPEC REPOS:
     - VonageWebRTC
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: 9982af97e7540fd6bd78087c37d69b125a814ae7
+  CirrusMDSDK: 176f23617ecf8688d52253a52e55d1d2de8c8452
   CMDMBProgressHUD: 7a120f51806bf1a496a660a12b6296fa60d46784
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   OpenTok: 1d5737dd4df87cc77094adeaeb3b82b25a23ed3e
@@ -36,6 +36,6 @@ SPEC CHECKSUMS:
   UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
   VonageWebRTC: cfa7aefc3fe6e95bcbd778e8973af90fe9bfd497
 
-PODFILE CHECKSUM: 4bd6e664e367cc01469049feda9f3df3da4abe63
+PODFILE CHECKSUM: ba69dd873ab288cd4dcf23d2c3e801d2df26e356
 
 COCOAPODS: 1.11.3

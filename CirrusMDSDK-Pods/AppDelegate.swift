@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let config = CirrusMDConfig()
         config.logLevel = .verbose
         config.primaryColor = UIColor.black
+        config.primaryColorDarkMode = UIColor.purple
         config.title = "Your Custom Title"
         config.launchOptions = launchOptions
         config.enableSettings = true

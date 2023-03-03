@@ -529,13 +529,14 @@ Some of the navigation titles in the SDK are configurable. To override the defau
 Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDConfig` object.
 
 ```swift
-primary     // defaults to "#1a1a1a", used in avatar outlines and buttons
-offHours    // defaults to "#4a4a4a", used in the Patient Encounter Queue
-unassigned  // defaults to "#0c4c78", used in the Patient Encounter Queue
-assigned    // defaults to "#44db5e", used in the Patient Encounter Queue
-error       // defaults to "#dd0000", will be used in the future
-success     // defaults to "#44db5e", will be used in the future
-warning     // defaults to "#daaf0f", used in the offline banner
+primary         // defaults to "#1a1a1a", used in avatar outlines and buttons
+primaryDarkMode // defaults to primary, used in avatar outlines and buttons
+offHours        // defaults to "#4a4a4a", used in the Patient Encounter Queue
+unassigned      // defaults to "#0c4c78", used in the Patient Encounter Queue
+assigned        // defaults to "#44db5e", used in the Patient Encounter Queue
+error           // defaults to "#dd0000", will be used in the future
+success         // defaults to "#44db5e", will be used in the future
+warning         // defaults to "#daaf0f", used in the offline banner
 ```
 
 ##### Swift
@@ -544,6 +545,7 @@ warning     // defaults to "#daaf0f", used in the offline banner
 let config = CirrusMDConfig()
 config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
 config.primary = UIColor.black
+config.primaryColorDarkMode = UIColor.purple
 
 CirrusMD.singleton.setConfig(config)
 ```
@@ -554,6 +556,7 @@ CirrusMD.singleton.setConfig(config)
 CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
 config.primary = @UIColor.blackColor;
+config.primaryColorDarkMode = UIColor.purpleColor;
 
 [CirrusMD.singleton setConfig:config];
 ```
@@ -744,7 +747,20 @@ config.enableUserLogOut = YES;
 
 #### Log Level
 
-The default log level is none. For debugging purposes this can be changed to verbose. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level to verbose for debugging purposes it should be done before calling anything other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
+The default log level is none. For debugging purposes this can be changed to one of five different logging levels. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level for debugging purposes it should be done before calling any other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
+
+The levels add to each other with verbose showing all available logging.
+
+```
+public enum CirrusMDLogLevel: Int {
+  case none       // Shows no logs
+  case error      // Shows only errors marked by ‼️
+  case info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
+  case debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
+  case networking // Adds in all networking calls, both requests and responses marked by ☂️
+  case verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
+}
+```
 
 ##### Swift
 
@@ -795,7 +811,7 @@ switch (tokenState) {
 
 ## Localization Requirement
 
-The CirrusMDSDK (version 10.1.0 and later) supports spanish translations if the presenting application does as well. Instructions on localizing your application can be found [here](https://developer.apple.com/localization/).
+The CirrusMDSDK (version 10.1.0 and later) supports Spanish translations if the presenting application does as well. Instructions on localizing your application can be found [here](https://developer.apple.com/localization/).
 
 ## Module Stability Requirement
 
@@ -822,11 +838,6 @@ end
 
 CIRRUSMD_DEPENDENCIES = [
   'CirrusMDSDK',
-  'Appboy-iOS-SDK',
-  'Appboy-iOS-SDK-AppboyUI.ContentCards',
-  'Appboy-iOS-SDK-Appboy',
-  'Appboy-iOS-SDK-AppboyUI.InAppMessage',
-  'Appboy-iOS-SDK-AppboyUI.NewsFeed',
   'CMDMBProgressHUD',
   'Kingfisher',
   'OpenTok',
