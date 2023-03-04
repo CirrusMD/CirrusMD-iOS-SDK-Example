@@ -750,6 +750,16 @@ config.enableUserLogOut = YES;
 The default log level is none. For debugging purposes this can be changed to one of five different logging levels. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level for debugging purposes it should be done before calling any other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
 
 The levels add to each other with verbose showing all available logging.
+```
+public enum CirrusMDLogLevel: Int {
+  case none
+  case error
+  case info
+  case debug
+  case networking
+  case verbose
+}
+```
 
   - .none       // Shows no logs
   - .error      // Shows only errors marked by :bangbang:
