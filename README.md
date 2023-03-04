@@ -755,7 +755,7 @@ The levels add to each other with verbose showing all available logging.
   - .error      // Shows only errors marked by :bangbang:
   - .info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
   - .debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
-  - .networking // Adds in all networking calls, both requests and responses marked by :umbrella:
+  - .networking // Adds in all networking calls, both requests and responses marked by :open_umbrella:
   - .verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
 
 ##### Swift
