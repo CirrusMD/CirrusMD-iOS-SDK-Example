@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.3.0
+
+## Built with: Xcode 14.2.0
+
+### Changes:
+- Full support for Dark Mode
+- New Logging system with multiple log levels and more readable logs
+- The SDK is now shipped as an XCFrameowrk, resulting in a much smaller install size
+
+### Bug Fixes:
+- Some fixes to accessibility
+
 # 10.2.0
 
 ## Built with: Xcode 13.4.1

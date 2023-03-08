@@ -23,6 +23,7 @@
     CirrusMDConfig *config = [[CirrusMDConfig alloc] init];
     config.logLevel = CirrusMDLogLevelVerbose;
     config.primaryColor = UIColor.blackColor;
+    config.primaryColorDarkMode = UIColor.purpleColor;
     config.launchOptions = launchOptions;
     [CirrusMD.singleton setConfig:config];
     

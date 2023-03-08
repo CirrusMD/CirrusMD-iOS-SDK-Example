@@ -33,7 +33,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Requires Xcode 12.0 or later
+- Requires Xcode 14.0 or later
 - Requires project Swift version to be 5.1 or later
 - Requires `Build Settings > Build Options > Build Libraries for Distribution` to be set to `Yes`. More information on this requirement and a possible workaround can be found in the [Module Stability Requirement](#module-stability-requirement) documentation.
 - Requires CocoaPods version 1.10.0 or later. This is related to the [Module Stability Requirement](#module-stability-requirement).
@@ -42,7 +42,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installing CirrusMDSDK in your own project
 
-The CirrusMDSDK installs as a prebuilt framework, `CirrusMD.framework`.
+The CirrusMDSDK installs as a prebuilt framework, `CirrusMDSDK.xcframework`.
 
 ### CocoaPods
 
@@ -276,7 +276,7 @@ func viewForLoggedOut() -> UIView {
 
 #### Delegate Callbacks
 
-There are callbacks on `CirrusMDDelegate` for when a user is logged in or logged out of the SDK (for example when a user uses the Sign Out button in settings). These callbacks can be used to correcetly handle the CirrusMDSDK in your application. For example you can dismiss `CirrusMD.singleton.viewController` when a user logs out.
+There are callbacks on `CirrusMDDelegate` for when a user is logged in or logged out of the SDK (for example when a user uses the Sign Out button in settings). These callbacks can be used to correctly handle the CirrusMDSDK in your application. For example you can dismiss `CirrusMD.singleton.viewController` when a user logs out.
 
 ##### Swift
 ```swift
@@ -523,19 +523,44 @@ CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 [CirrusMD.singleton setConfig:config];
 ```
 
+### Dark Mode
+  
+The CirrusMDSDK fully supports iOS dark mode. By default the views in the SDK will switch between light and dark based on the users settings in iOS. However if you have a specific app design or a switch in your apps settings to allow a user to lock the design of your app to light mode or dark mode only you will want to set the following configuration option. To override the default behavior and lock the SDK to a specific style use the `overrideUserInterfaceStyle` setting on the `CirrusMDConfig` object. As outlined below you can also set a separate primary color for both light and dark mode.
+  
+##### Swift
+  
+```swift
+let config = CirrusMDConfig()
+config.overrideUserInterfaceStyle = .light //To lock the SDK views to light mode design only.
+// Use .dark for dark mode. The default is .unspecified
+  
+CirrusMD.singleton.setConfig(config)
+```
+  
+##### Obective-C
+  
+```obj-c
+CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
+config.overrideUserInterfaceStyle = UIUserInterfaceStyleLight; //To lock the SDK views to light mode design only.
+// Use UIUserInterfaceStyleDark for dark mode.
+
+[CirrusMD.singleton setConfig:config];
+```
+  
 ### Titles and Colors
 
 Some of the navigation titles in the SDK are configurable. To override the default set a title on your `CirrusMDConfig` object.
 Many of the colors in the SDK are configurable. To override the colors set them in on your `CirrusMDConfig` object.
 
 ```swift
-primary     // defaults to "#1a1a1a", used in avatar outlines and buttons
-offHours    // defaults to "#4a4a4a", used in the Patient Encounter Queue
-unassigned  // defaults to "#0c4c78", used in the Patient Encounter Queue
-assigned    // defaults to "#44db5e", used in the Patient Encounter Queue
-error       // defaults to "#dd0000", will be used in the future
-success     // defaults to "#44db5e", will be used in the future
-warning     // defaults to "#daaf0f", used in the offline banner
+primary         // defaults to "#1a1a1a", used in avatar outlines and buttons
+primaryDarkMode // defaults to primary, used in avatar outlines and buttons
+offHours        // defaults to "#4a4a4a", used in the Patient Encounter Queue
+unassigned      // defaults to "#0c4c78", used in the Patient Encounter Queue
+assigned        // defaults to "#44db5e", used in the Patient Encounter Queue
+error           // defaults to "#dd0000", will be used in the future
+success         // defaults to "#44db5e", will be used in the future
+warning         // defaults to "#daaf0f", used in the offline banner
 ```
 
 ##### Swift
@@ -544,6 +569,7 @@ warning     // defaults to "#daaf0f", used in the offline banner
 let config = CirrusMDConfig()
 config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
 config.primary = UIColor.black
+config.primaryColorDarkMode = UIColor.purple
 
 CirrusMD.singleton.setConfig(config)
 ```
@@ -554,6 +580,7 @@ CirrusMD.singleton.setConfig(config)
 CirrusMDConfig* config = [[CirrusMDConfig alloc] init];
 config.title = @"Custom Title Here"; // defaults to "My Healthcare Services" if this is not set
 config.primary = @UIColor.blackColor;
+config.primaryColorDarkMode = @UIColor.purpleColor;
 
 [CirrusMD.singleton setConfig:config];
 ```
@@ -744,7 +771,26 @@ config.enableUserLogOut = YES;
 
 #### Log Level
 
-The default log level is none. For debugging purposes this can be changed to verbose. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level to verbose for debugging purposes it should be done before calling anything other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
+The default log level is none. For debugging purposes this can be changed to one of five different logging levels. When set to verbose the SDK will print extensive logging around network requests, network responses, state changes, and other useful information to the debugger's console and the device's console. When setting the log level for debugging purposes it should be done before calling any other functions on the SDK. The logLevel is set on the `CirrusMDConfig`
+
+The levels add to each other with verbose showing all available logging.
+```
+public enum CirrusMDLogLevel: Int {
+  case none
+  case error
+  case info
+  case debug
+  case networking
+  case verbose
+}
+```
+
+  - .none       // Shows no logs
+  - .error      // Shows only errors marked by :bangbang:
+  - .info       // Adds in info logs like Web Socket connection and Reachability marked by ℹ️
+  - .debug      // Adds in debug information for specific views, actions, and push notifications marked by 🦋
+  - .networking // Adds in all networking calls, both requests and responses marked by :open_umbrella:
+  - .verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
 
 ##### Swift
 
@@ -795,7 +841,7 @@ switch (tokenState) {
 
 ## Localization Requirement
 
-The CirrusMDSDK (version 10.1.0 and later) supports spanish translations if the presenting application does as well. Instructions on localizing your application can be found [here](https://developer.apple.com/localization/).
+The CirrusMDSDK (version 10.1.0 and later) supports Spanish translations if the presenting application does as well. Instructions on localizing your application can be found [here](https://developer.apple.com/localization/).
 
 ## Module Stability Requirement
 
@@ -822,11 +868,6 @@ end
 
 CIRRUSMD_DEPENDENCIES = [
   'CirrusMDSDK',
-  'Appboy-iOS-SDK',
-  'Appboy-iOS-SDK-AppboyUI.ContentCards',
-  'Appboy-iOS-SDK-Appboy',
-  'Appboy-iOS-SDK-AppboyUI.InAppMessage',
-  'Appboy-iOS-SDK-AppboyUI.NewsFeed',
   'CMDMBProgressHUD',
   'Kingfisher',
   'OpenTok',
@@ -843,6 +884,20 @@ Because the CirrusMDSDK is implemented in Swift, when integrating it into an Obj
    > dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
    > Referenced from: ../<YOUR-APP>.app/Frameworks/CirrusMD.framework/CirrusMDSDK
    > Reason: image not found
+    
+## Building on a simulator using an ARM Mac
+  
+If you have an M1 or M2 mac and want to build the SDK to a simulator add the following to the end of your Podfile. This is only needed to build to the simulator and is due to a dependency. We are working to remove this requirement.
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+    end
+  end
+end
+```
 
 ## Author
 
