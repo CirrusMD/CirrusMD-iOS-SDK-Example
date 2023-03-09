@@ -76,7 +76,7 @@ $ pod install
 
 If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
 
-Download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMD.framework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v4.0.0/CirrusMD.framework.zip.
+Download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMDSDK.xcframework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v10.3.0/CirrusMDSDK.xcframework.zip.
 
 Drag and drop the framework into your Xcode project.
 
