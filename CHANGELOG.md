@@ -1,5 +1,18 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.4.0
+
+## Built with: Xcode 14.2.0
+
+### Changes:
+- Enhanced patient address capture
+- Assessments now show required fields text and all required fields in assessments are now marked with `*`
+- Updated all dependancies
+- Display `no_stream_access_message` when there are no active streams over the Patient Stream Picker
+
+### Bug Fixes:
+- Fix to scrolling of assessments on iPad
+
 # 10.3.0
 
 ## Built with: Xcode 14.2.0
