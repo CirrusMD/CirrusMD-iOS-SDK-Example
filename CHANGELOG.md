@@ -1,5 +1,14 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.4.1
+
+## Built with: Xcode 14.2.0
+
+### Changes:
+- Rolled back OpenTok pod to `2.23.1`, the latest was causing intermittent issues with video
+
+### Bug Fixes:
+
 # 10.4.0
 
 ## Built with: Xcode 14.2.0
