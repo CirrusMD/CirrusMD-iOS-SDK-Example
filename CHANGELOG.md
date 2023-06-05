@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 10.5.0
+
+## Built with: Xcode 14.2.0
+
+### Changes:
+- Adds Pharmacy search module to assessments
+- Removed UDF dependency
+
+### Bug Fixes:
+
+# 10.4.0
+
 # 10.4.1
 
 ## Built with: Xcode 14.2.0
