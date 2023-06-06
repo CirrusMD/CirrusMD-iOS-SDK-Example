@@ -1,26 +1,23 @@
 PODS:
-  - CirrusMDSDK (10.4.1):
+  - CirrusMDSDK (10.5.0):
     - CMDMBProgressHUD (~> 1.2.1)
     - Kingfisher (~> 7.6.2)
     - OpenTok (~> 2.23.1)
     - SnapKit (~> 5.6.0)
-    - UDF (~> 0.7.0)
   - CMDMBProgressHUD (1.2.1)
   - Kingfisher (7.6.2)
   - OpenTok (2.23.1):
     - VonageWebRTC (= 84.0.21)
   - SnapKit (5.6.0)
-  - UDF (0.7.0)
   - VonageWebRTC (84.0.21)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 10.4.1)
+  - CirrusMDSDK (~> 10.5.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
     - CirrusMDSDK
     - CMDMBProgressHUD
-    - UDF
   https://github.com/CocoaPods/Specs.git:
     - Kingfisher
     - OpenTok
@@ -28,14 +25,13 @@ SPEC REPOS:
     - VonageWebRTC
 
 SPEC CHECKSUMS:
-  CirrusMDSDK: 06f31bb543db8f3e744a2f8efe7bcac173b98967
+  CirrusMDSDK: 89dbed7f1b7c1e38bea92684272181b492e82ab7
   CMDMBProgressHUD: 7a120f51806bf1a496a660a12b6296fa60d46784
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   OpenTok: 1d5737dd4df87cc77094adeaeb3b82b25a23ed3e
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  UDF: fe8d48fbc2187db4a0d888e29427a5916cc062f7
   VonageWebRTC: cfa7aefc3fe6e95bcbd778e8973af90fe9bfd497
 
-PODFILE CHECKSUM: 827f67e7595db1eb77a7494c067148ee48e86ced
+PODFILE CHECKSUM: 34954d9a15bd70ad4d6968db28e15eef3cb3aaad
 
 COCOAPODS: 1.12.0

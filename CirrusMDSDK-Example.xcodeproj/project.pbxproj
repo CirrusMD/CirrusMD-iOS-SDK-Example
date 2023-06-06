@@ -327,7 +327,6 @@
 				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/UDF/UDF.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CirrusMDSDK/CirrusMDSDK.framework/CirrusMDSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -335,7 +334,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UDF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +351,6 @@
 				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/UDF/UDF.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CirrusMDSDK/CirrusMDSDK.framework/CirrusMDSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -361,7 +358,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UDF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
