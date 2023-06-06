@@ -10,8 +10,6 @@
 
 ### Bug Fixes:
 
-# 10.4.0
-
 # 10.4.1
 
 ## Built with: Xcode 14.2.0
