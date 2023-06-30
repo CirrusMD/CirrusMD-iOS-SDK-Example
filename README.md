@@ -887,7 +887,7 @@ Because the CirrusMDSDK is implemented in Swift, when integrating it into an Obj
     
 ## Building on a simulator using an ARM Mac
   
-If you have an M1 or M2 mac and want to build the SDK to a simulator add the following to the end of your Podfile. This is only needed to build to the simulator and is due to a dependency. We are working to remove this requirement.
+If you have an M1 or M2 mac, are running on version 10.5 or lower of the SDK, and want to build the SDK to a simulator add the following to the end of your Podfile. This is only needed to build to the simulator and is due to a dependency. We are working to remove this requirement.
 
 ```ruby
 post_install do |installer|

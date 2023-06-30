@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.0.0
+
+## Built with: Xcode 14.3.0
+
+### Changes:
+- CMDMBProgressHUD dependency has been removed
+- OpenTok dependency has been replaced with AmazonChimeSDK-No-Bitcode for enhanced reliability and compliance
+- CirrusMD SDK and it's dependancies now fully support ARM Mac simulators natively starting with this release
+
+### Bug Fixes:
+- Fix for larger font accessibility
+
 # 10.5.0
 
 ## Built with: Xcode 14.2.0

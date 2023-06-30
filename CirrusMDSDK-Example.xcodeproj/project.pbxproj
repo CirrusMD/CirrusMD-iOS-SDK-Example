@@ -324,16 +324,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods-ObjC/Pods-CirrusMDSDK-Pods-ObjC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK-No-Bitcode/AmazonChimeSDK.framework/AmazonChimeSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia-No-Bitcode/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CirrusMDSDK/CirrusMDSDK.framework/CirrusMDSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AmazonChimeSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AmazonChimeSDKMedia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,16 +350,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CirrusMDSDK-Pods/Pods-CirrusMDSDK-Pods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CMDMBProgressHUD/CMDMBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK-No-Bitcode/AmazonChimeSDK.framework/AmazonChimeSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia-No-Bitcode/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CirrusMDSDK/CirrusMDSDK.framework/CirrusMDSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMDMBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AmazonChimeSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AmazonChimeSDKMedia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CirrusMDSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
