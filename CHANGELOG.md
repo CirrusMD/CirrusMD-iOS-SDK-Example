@@ -1,5 +1,17 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.1.0
+
+## Built with: Xcode 14.3.1
+
+### Changes:
+- Updated Home Screen UI to make starting a chat more clear
+- `SnapKit` dependency has been removed
+- iPad navigation enhancements
+
+### Bug Fixes:
+
+
 # 11.0.0
 
 ## Built with: Xcode 14.3.0
