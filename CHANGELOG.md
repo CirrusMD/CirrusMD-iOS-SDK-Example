@@ -5,19 +5,17 @@
 ## Built with: Xcode 14.3.1
 
 ### Changes:
-- Added `patient_goals_enabled` to `sdk/v2/customer` object parsing
-- if `patient_goals_enabled` is true, show patient goals cell below stream cells
-- Added Patient Goal cell type to the chat stream as a new design for universal card
-- Added `sdk/v2/patients/{patient_id}/goals` request
-- Created PatientGoals data object to represents patient goals
-- created `PatientGoalsViewController` that lists all patient goals arranged by status and in order returned by back end
-- Created an empty state for `PatientGoalsViewController` and an empty state for each goal section
-- localized patient goal associated hard coded strings
-- modified `UniversalCardCell` for right aligned bar layout
-- Update and refactor for Stream Info View to allow inactive to grow and shrink for lots of text
+- Added a new Patient Health Goal feature:
+    - Added a new message view for Patient Health Goals, that show up in the chat stream.
+    - New scrollable Patient Health Goals screen, where patients can see all Active, Upcoming, and Completed goals.
+- Updated AmazonChimeSDK-No-Bitcode to 0.23.3
 
 ### Bug Fixes:
+- Fixed issue where inactive stream messages can consume the entire screen (when message is long, or accessibility font is being used), causing a bad user experience. The new behavior involves having a collapsable message, which the user can expand and collapse.
 - Fixes animations with Stream Info to reduce flashing and clean up execution order
+
+### Known Issues:
+- We are currently tracking an issue when building this SDK on Xcode 15.0 related to dark mode. Any customer planning to build on Xcode 15 should wait for 11.3.0 of our SDK.
 
 # 11.1.0
 
