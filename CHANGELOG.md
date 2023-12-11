@@ -1,7 +1,8 @@
 # CirrusMD iOS SDK Changelog
 
 # 11.3.0
-Xcode 15.0.1
+
+## Built with: Xcode 15.0.1
 
 ## Changes:
 
