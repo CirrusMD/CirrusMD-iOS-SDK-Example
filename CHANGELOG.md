@@ -1,5 +1,23 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.3.0
+Xcode 15.0.1
+
+## Changes:
+
+### Changes:
+- Updated Pods:
+  - Kingfisher 7.9.1 (Xcode compatibility)
+- Added Maestro test to project
+- Adds Transcription Feature and Closed Captions for video chat
+- Adds an api call to turn on transcription
+- Adds new buttons and menu to the bottom bar for video chat to facilitate the new features.
+- Updated Pods:
+  - AmazonChimeSDK-No-Bitcode 0.23.3 (Xcode compatibility)
+  
+### Bug Fixes:
+- Fixed Photo Picker permissions bug
+
 # 11.2.0
 
 ## Built with: Xcode 14.3.1
