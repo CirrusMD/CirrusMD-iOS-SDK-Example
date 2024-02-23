@@ -68,8 +68,15 @@
 
     [self.showSdkButton setTitle:@"Initializing CirrusMDSDK..." forState:UIControlStateNormal];
     [self.showSdkButton setEnabled:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.showSdkButton setEnabled:NO];
     
-    [self loadTokenForPatient:self.patientID];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadTokenForPatient:self.patientID];
+    });
 }
 
 - (void)loadTokenForPatient:(NSNumber *)patientID {
