@@ -17,6 +17,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *showSdkButton;
+@property (weak, nonatomic) IBOutlet UIButton *getSDKTokenButton;
 
 @end
 
@@ -49,6 +50,11 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+- (IBAction)getSDKTokenTapped:(id)sender {
+    [self.showSdkButton setEnabled:NO];
+    [self loadTokenForPatient:self.patientID];
+}
+
 - (void)done {
     [self dismissViewControllerAnimated:true completion:nil];
 }
@@ -68,15 +74,9 @@
 
     [self.showSdkButton setTitle:@"Initializing CirrusMDSDK..." forState:UIControlStateNormal];
     [self.showSdkButton setEnabled:NO];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.showSdkButton setEnabled:NO];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadTokenForPatient:self.patientID];
-    });
+    [self.getSDKTokenButton setTitle:@"Get SDK Token" forState:UIControlStateNormal];
+    [self.getSDKTokenButton setEnabled:YES];
 }
 
 - (void)loadTokenForPatient:(NSNumber *)patientID {
