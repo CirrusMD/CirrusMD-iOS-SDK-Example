@@ -33,7 +33,6 @@ class ExampleViewController: UIViewController {
         showSdkButton.isEnabled = false
         
         CirrusMD.singleton.delegate = self
-        loadTokenForPatient(patientId: patientId)
         
         // Design the Navigation Controller any way you would like
         
@@ -53,6 +52,15 @@ class ExampleViewController: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
             navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let thisPatientId = patientId
+        showSdkButton.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { [weak self] in
+            self?.loadTokenForPatient(patientId: thisPatientId)
+        })
     }
     
     func loadTokenForPatient(patientId: Int) {

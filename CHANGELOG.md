@@ -1,5 +1,20 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.4.0
+
+## Built with: Xcode 15.2.0
+
+## Changes:
+
+### Changes:
+- Dropped iOS 13 support
+- Adds the ability to support lab orders and lab results as PDF files
+- Adds support for iOS Share sheet for images and PDFs so users can save files
+- Adds new gesturers to image view like double tap to zoom, single tap to hide UI, and swipe down to close image
+- Upgraded image picker to support latest iOS version as popover
+
+### Bug Fixes:
+
 # 11.3.0
 
 ## Built with: Xcode 15.0.1
