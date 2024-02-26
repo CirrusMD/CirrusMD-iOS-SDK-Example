@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if CirrusMD.singleton.shouldPresentNotification(notification) {
-            completionHandler([.alert, .sound, .badge])
+            completionHandler([.list, .banner, .sound, .badge])
         } else {
             completionHandler([])
         }

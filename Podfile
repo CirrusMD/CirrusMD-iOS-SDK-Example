@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/CirrusMD/podspecs.git'
 
-platform :ios, '13.0'
+platform :ios, '14.0'
 
 use_frameworks!
 
