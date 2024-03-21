@@ -362,7 +362,7 @@ In order to enable push notifications for your patients you'll need to provide C
 
 #### Registering for remote notifications
 
-**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
+**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications. Before registering your device token with the CirrusMD system you must authenticate to the SDK; This means that before you call the registration code below you need to have successfully called `CirrusMD.setSessionToken(token: String)` and received a `CirrusDataEvents.Success` event in the `CirrusMD.CirrusDataEventListener.onDataEvent` interface. So that we can properly save the device token for that specific user.
 
 ##### Swift
 
