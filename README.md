@@ -93,7 +93,7 @@ The code and XCFramework downloads for these dependancies can be found here:
 
 Once downloaded it is recommended that you create a folder in your project directory to put the XCFrameworks in for all your statically linked frameworks. This way you can drag and drop future versions without having to re-link the files.
 
-In order to get the CirrusMDSDK working while statically linked like this you must open your project to the main project screen(the same screen that has you app's name and target version) then scroll down to the `Frameworks, Libraries, and Embedded Content` section and click the `+` to add a new Framework. When the modal window opens select `Add Other` from the bottom and `Add Files...` off the menu that pops up. You will have to do this 4 times to add the 4 required framesworks, two of which are AWS Chime related. All of the XCFrameworks can be downloaded from the URLs above.
+In order to get the CirrusMDSDK working while statically linked like this you must open your project to the main project screen(the same screen that has you app's name and target version) then scroll down to the `Frameworks, Libraries, and Embedded Content` section and click the `+` to add a new Framework. When the modal window opens select `Add Other` from the bottom and `Add Files...` off the menu that pops up. You will have to do this 4 times to add the 4 required frameworks, two of which are AWS Chime related. All of the XCFrameworks can be downloaded from the URLs above.
 
 And They are:
 - CirrusMDSDK.xcframework
