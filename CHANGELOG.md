@@ -1,10 +1,20 @@
 # CirrusMD iOS SDK Changelog
 
-# 11.4.0
+# 11.5.0
 
 ## Built with: Xcode 15.2.0
 
-## Changes:
+### Changes:
+- Added remote notification support for lab results
+- Added `Find Local Care` card to stream picker view
+- `Find Local Care` feature implemented to find in network local medical resources 
+
+### Bug Fixes:
+- Fixed bug in pin code view where the information label was not being updated properly
+
+# 11.4.0
+
+## Built with: Xcode 15.2.0
 
 ### Changes:
 - Dropped iOS 13 support
@@ -18,8 +28,6 @@
 # 11.3.0
 
 ## Built with: Xcode 15.0.1
-
-## Changes:
 
 ### Changes:
 - Updated Pods:

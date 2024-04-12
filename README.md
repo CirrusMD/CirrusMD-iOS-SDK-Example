@@ -74,15 +74,34 @@ $ pod install
 
 ### Manually (Not Suggested)
 
-If you prefer not to use any of the aforementioned dependency managers, you can integrate CirrusMDSDK into your project manually.
+If you prefer not to use any of the aforementioned dependency managers, or you would like to use Swift Package Manager(SPM does not currently support binary targets with dependancies so manual install is the best way for CirrusMD and it's dependancies and then you can use SPM for the rest of your dependancies), you can integrate CirrusMDSDK into your project manually quite easily.
 
-Download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMDSDK.xcframework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v10.3.0/CirrusMDSDK.xcframework.zip.
+First download the desired version of the SDK from https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v{VERSION}/CirrusMDSDK.xcframework.zip where {VERSION} is replaced by the desired version. For example https://cirrusmd-ios-sdk-release.s3.amazonaws.com/artifacts/v10.4.0/CirrusMDSDK.xcframework.zip.
 
-Drag and drop the framework into your Xcode project.
+Then you will need to download the proper dependancies for that version. Keep in mind this will only work well for the XCFramewrok versions of the SDK and dependancies so versions older than 11.0.0 will not work well and should not be installed manually. To find the dependancies you need for a specific version of the SDK please refer to the Podspec for that version. You can find our Podspec files located at https://github.com/CirrusMD/podspecs/tree/master/CirrusMDSDK look for the latest version and then you will find the `s.dependency` entries in that file list the specific versions required for a manual install of that version of the SDK. Then the XCFrameworks for those libraries can be download from the releases section of their respective repositories. For proper linking if you decide to manually install the CirrusMD SDK then it's dependancies must be included manually as well.
 
-You will also need to manually add all of the dependencies that are listed in the Podspec for the desired version, which can be found [here](https://github.com/CirrusMD/podspecs/tree/master/CirrusMDSDK).
+Here is an example of the dependancies required for the 11.4.0 version of the CirrusMD SDK.
 
-**_Note_** If you install manually you may need to use [Git LFS](https://git-lfs.github.com/) or something similar in order to store the framework in your repository. This is because in it's raw form (before it is stripped and compiled) it is a fat framework that contains symbols and bitcode for all of the architectures (including simulator) so the framework file can be large (over 100mb). This is avoided when using Cocoapods since you can add the file to gitignore when using a dependency manager.
+```ruby
+  s.dependency 'Kingfisher', '~> 7.9.1'
+  s.dependency 'AmazonChimeSDK-No-Bitcode', '~> 0.23.3'
+```
+
+The code and XCFramework downloads for these dependancies can be found here:
+- https://github.com/onevcat/Kingfisher
+- https://github.com/aws/amazon-chime-sdk-ios
+
+Once downloaded it is recommended that you create a folder in your project directory to put the XCFrameworks in for all your statically linked frameworks. This way you can drag and drop future versions without having to re-link the files.
+
+In order to get the CirrusMDSDK working while statically linked like this you must open your project to the main project screen(the same screen that has you app's name and target version) then scroll down to the `Frameworks, Libraries, and Embedded Content` section and click the `+` to add a new Framework. When the modal window opens select `Add Other` from the bottom and `Add Files...` off the menu that pops up. You will have to do this 4 times to add the 4 required frameworks, two of which are AWS Chime related. All of the XCFrameworks can be downloaded from the URLs above.
+
+And They are:
+- CirrusMDSDK.xcframework
+- AmazonChimeSDK.xcframework
+- AmazonChimeSDKMedia.xcframework
+- Kingfisher.xcframework
+
+Once all 4 of those are linked here you should see them show up on the `Frameworks, Libraries, and Embedded Content` list as blue tool boxes. Then all you have to do is clean and build and you can start using the CirrusMDSDK as normal.
 
 ## Basic Usage
 
@@ -362,7 +381,7 @@ In order to enable push notifications for your patients you'll need to provide C
 
 #### Registering for remote notifications
 
-**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications.
+**_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications. Before registering your device token with the CirrusMD system you must authenticate to the SDK; This means that before you call the registration code below you need to have successfully called `CirrusMD.setSessionToken(token: String)` and received a `CirrusDataEvents.Success` event in the `CirrusMD.CirrusDataEventListener.onDataEvent` interface. So that we can properly save the device token for that specific user.
 
 ##### Swift
 
