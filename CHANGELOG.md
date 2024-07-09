@@ -1,5 +1,25 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.6.0
+
+## Built with: Xcode 15.2.0
+
+### Changes:
+- Updated Pods:
+  - AmazonChimeSDK 0.25.0 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - AmazonChimeSDKMedia 0.20.0 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - Kingfisher 7.11.0 (https://github.com/onevcat/Kingfisher/releases)
+  - Removed AmazonChimeSDK-No-Bitcode
+  - Removed AmazonChimeSDKMedia-No-Bitcode
+- Integrated Markdown Parsing
+- Added support for in app Appstore review prompt
+- Added ability to change data sharing preference from settings `Data Sharing` view
+
+### Bug Fixes:
+- Updated landscape rotational support for SDK
+- Improved settings profile, medical and family design to get closer to parity with Android
+- Fixed iPad navigation for family dependent profile settings
+
 # 11.5.0
 
 ## Built with: Xcode 15.2.0
