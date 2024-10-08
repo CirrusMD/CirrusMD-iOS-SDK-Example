@@ -2,13 +2,13 @@ PODS:
   - AmazonChimeSDK (0.25.2):
     - AmazonChimeSDKMedia (= 0.21.0)
   - AmazonChimeSDKMedia (0.21.0)
-  - CirrusMDSDK (11.6.0):
-    - AmazonChimeSDK (~> 0.25.0)
-    - Kingfisher (~> 7.11.0)
-  - Kingfisher (7.11.0)
+  - CirrusMDSDK (11.7.0):
+    - AmazonChimeSDK (~> 0.25.2)
+    - Kingfisher (~> 7.12.0)
+  - Kingfisher (7.12.0)
 
 DEPENDENCIES:
-  - CirrusMDSDK (~> 11.6.0)
+  - CirrusMDSDK (~> 11.7.0)
 
 SPEC REPOS:
   https://github.com/CirrusMD/podspecs.git:
@@ -21,9 +21,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AmazonChimeSDK: bdb9479c634afbee3e3a36a70a2a8ebb40742e5b
   AmazonChimeSDKMedia: e5cfbc52926d864c03a86bf07caea4b33c745517
-  CirrusMDSDK: cb3b4808d90ffc3dd2fe3a18fcd1d7316c712d73
-  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
+  CirrusMDSDK: ffc96c77eda51ccfdfb8032750768eb2f34436a3
+  Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
 
-PODFILE CHECKSUM: 75c3cf5829faf676cee898ad3bb094ff5714ca23
+PODFILE CHECKSUM: d1cb9b5d38348ddf02332d88df834c7a657019f3
 
 COCOAPODS: 1.14.2
