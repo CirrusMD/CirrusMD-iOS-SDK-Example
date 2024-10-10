@@ -1,5 +1,27 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.7.0
+
+## Built with: Xcode 15.4.0
+
+### Changes:
+- Updated Pods:
+  - AmazonChimeSDK 0.25.2 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - AmazonChimeSDKMedia 0.21.0 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - Kingfisher 7.12.0 (https://github.com/onevcat/Kingfisher/releases)
+- Added `CirrusMDPinnedBanner`, `CirrusMDActionModal`, `CirrusMDContactOption`, and `CirrusMDContactIcon` to SDK configuration
+- Added Pinned banner view to `EventStreamViewController`, `PatientStreamPickerViewController`, and `SettingsTableViewController`
+- Added Pinned Banner Action Modal for when the banner is tapped
+- Redesigned `PatientGoalsViewController` to show goals by status updated via a `UISegmentedControl`
+- Added the `Inactive` goal status to the `PatientGoalsViewController`
+- Added design tweaks for past due goals
+- Added `PatientGoalDetailViewController` that opens when tapping on a goal
+- Added `ActionMessage` functionality to `PatientGoalDetailViewController`
+- Adds the above to the Support UI in settings and will use these strings if they are available and if not fall back to the current configuration.
+
+### Bug Fixes:
+
+
 # 11.6.0
 
 ## Built with: Xcode 15.2.0
