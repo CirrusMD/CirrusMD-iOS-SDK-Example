@@ -1,5 +1,19 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.8.0
+
+## Built with: Xcode 15.4.0
+
+### Changes:
+- Updated Pods:
+  - AmazonChimeSDK 0.26.1 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - AmazonChimeSDKMedia 0.23.0 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+- Added change audio source to video chat for dealing with headphones, it also asks when audio source changes
+
+### Bug Fixes:
+- Better goals handling
+- Some updated Spanish translation
+
 # 11.7.0
 
 ## Built with: Xcode 15.4.0
