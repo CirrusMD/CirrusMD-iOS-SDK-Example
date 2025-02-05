@@ -1,5 +1,20 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.9.0
+
+## Built with: Xcode 15.4.0
+
+## Changes:
+- Updated Pods:
+  - Kingfisher 8.1.3 (https://github.com/onevcat/Kingfisher/releases)
+  - AmazonChimeSDK 0.26.2 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+- Added Security section to the App Settings using SecuritySettingsVC
+  - Added Email Display to Security Settings
+  - Added change MFA phone number to Security Settings
+
+### Bug Fixes:
+
+
 # 11.8.0
 
 ## Built with: Xcode 15.4.0
