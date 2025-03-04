@@ -1,5 +1,19 @@
 # CirrusMD iOS SDK Changelog
 
+# 11.10.0
+
+## Built with: Xcode 15.4.0
+
+## Changes:
+- Updated Pods:
+  - Kingfisher 8.1.4 (https://github.com/onevcat/Kingfisher/releases)
+- Added in app notification system
+    - Added notification badge button to stream picker user header
+    - Added in app notification center view controller to list pending notification
+
+### Bug Fixes:
+
+
 # 11.9.0
 
 ## Built with: Xcode 15.4.0
