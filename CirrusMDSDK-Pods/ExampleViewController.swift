@@ -35,6 +35,17 @@ class ExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // SDK Configuration can now be called anytime between startup and calling configureWithToken.
+        //  If you previously implimented below version 12.0.0:
+        //  Moving the CirrusMDConfig out of the app delegate can speed up app start, depending on how much configuration you do.
+        let config = CirrusMDConfig()
+        config.logLevel = .verbose
+        config.primaryColor = UIColor.black
+        config.primaryColorDarkMode = UIColor.purple
+        config.title = "Your Custom Title"
+        config.enableSettings = true
+        CirrusMD.singleton.setSDKConfiguration(config)
+        
         showSdkButton.setTitle("Initializing CirrusMDSDK...", for: .normal)
         showSdkButton.isEnabled = false
         
@@ -68,8 +79,6 @@ class ExampleViewController: UIViewController {
     }
     
     func loadTokenForPatient(patientId: Int) {
-        CirrusMD.singleton.setSecret(secret)
-        
         guard let url = URL(string: "https://cmd-demo1-app.cirrusmd.com/sdk/v2/sandbox/sessions") else { return }
         let postDict = ["patient_id": patientId, "sdk_id": sdkId] as [String : Any]
         guard let postData = try? JSONSerialization.data(withJSONObject: postDict, options: []) else { return }
@@ -87,36 +96,41 @@ class ExampleViewController: UIViewController {
             guard let responseDict = responseObject as? [String: Any] else { return }
             guard let serverToken = responseDict["token"] as? String else { return }
             self.serverToken = serverToken
-            self.setToken(token: serverToken)
+            Task { @MainActor in
+                self.setToken(token: serverToken)
+            }
         }
         postDataTask.resume()
     }
     
+    @MainActor
     func setToken(token: String) {
-        /*
-         Loads an SSO user from the provided token.`CirrusMDSDK.singleton.setSecret`
-         must be called prior to calling `CirrusMDSDK.singleton.setToken`
-         */
-        CirrusMD.singleton.setToken(token) { [weak self] (result) in
+        // We require that this configuration of the patient be called from the main thread.
+        CirrusMD.singleton.configureWithToken(token, andSecret: secret) { [weak self] (result) in
             switch result {
             case .success:
-                NSLog("Set Token Success")
+                print("Set Token Success")
                 self?.showSdkButton.isEnabled = true
                 self?.showSdkButton.setTitle("Show CirrusMDSDK!", for: .normal)
             case .invalidToken:
-                NSLog("Set Token Invalid Token Error")
+                print("Set Token Invalid Token Error")
                 self?.showSdkButton.isEnabled = false
                 self?.showSdkButton.setTitle("Error: Invalid Token", for: .normal)
             case .noSecretProvided:
-                NSLog("Set Token No Secret Provided")
+                print("Set Token No Secret Provided")
                 self?.showSdkButton.isEnabled = false
                 self?.showSdkButton.setTitle("Error: No Sectret Provided", for: .normal)
             case .serviceUnavailable:
-                NSLog("Set Token Service Unavailable")
+                print("Set Token Service Unavailable")
                 self?.showSdkButton.isEnabled = false
                 self?.showSdkButton.setTitle("Error: Service Unavailable", for: .normal)
+            case .sdkAlreadyConfiguredMustCallLogout:
+                print("Sdk already configured this is sent if a patient is already configured and you try another one")
+                // You can just log out here and try again
+                self?.showSdkButton.isEnabled = false
+                self?.showSdkButton.setTitle("Error: Patient already logged in", for: .normal)
             @unknown default:
-                NSLog("Set Token Invalid Token Error")
+                print("Set Token Invalid Token Error")
                 self?.showSdkButton.isEnabled = false
                 self?.showSdkButton.setTitle("Error: Unknown", for: .normal)
             }
@@ -128,13 +142,38 @@ class ExampleViewController: UIViewController {
 // MARK: - CirrusMDSKSessionDelegate
 
 extension ExampleViewController: CirrusMDDelegate {
+    func viewForError(code: CirrusMDSDK.CirrusMDResult) -> UIView? {
+        print("View for error")
+        return nil
+    }
+    
+    func viewForLoggedOut() -> UIView? {
+        print("View for logout")
+        return nil
+    }
+    
+    func userLoggedIn(credentialId: Int, analyticsId: String) {
+        print("User logged in for analyticsId: \(analyticsId)")
+    }
+    
+    func errorReceived(error: NSError, attributes: [AnyHashable : String]?) {
+        print("Error received \(error.localizedDescription)")
+    }
+    
+    func videoSessionConnectionStatus(attributes: [AnyHashable : String]?) {
+        print("Video Session Connection Status")
+    }
+    
+    func requestInAppReview() {
+        print("Request In App Review")
+    }
     
     func userLoggedIn(credentialId: Int) {
-        NSLog("User Logged In: \(credentialId)")
+        print("User Logged In: \(credentialId)")
     }
     
     func userLoggedOut() {
-        NSLog("User Logged Out.")
+        print("User Logged Out.")
     }
     
 }

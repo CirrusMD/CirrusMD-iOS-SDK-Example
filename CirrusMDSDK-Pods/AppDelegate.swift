@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
         
-        let config = CirrusMDConfig()
-        config.logLevel = .verbose
-        config.primaryColor = UIColor.black
-        config.primaryColorDarkMode = UIColor.purple
-        config.title = "Your Custom Title"
-        config.launchOptions = launchOptions
-        config.enableSettings = true
-        CirrusMD.singleton.config = config
+        // The new low memeory overhead SDK start function that can help make your app load faster
+        CirrusMD.singleton.startSDK(withLuanchOptions: launchOptions)
+        
+        // Configuration can be set multiple times after start but before setting a patient token
+        //  This small configuration just turns on logging earlier if you run into issues just un-comment to try
+//        let config = CirrusMDConfig()
+//        config.logLevel = .verbose
+//        CirrusMD.singleton.setSDKConfiguration(config)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             DispatchQueue.main.async {

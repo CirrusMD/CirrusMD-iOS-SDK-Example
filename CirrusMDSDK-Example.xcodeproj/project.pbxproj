@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E14469F2DAD775A005A3642 /* CMDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14469E2DAD774B005A3642 /* CMDWrapper.swift */; };
 		B112769323D8EFD200E51F4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B112769223D8EFD200E51F4C /* AppDelegate.m */; };
 		B112769623D8EFD200E51F4C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B112769523D8EFD200E51F4C /* SceneDelegate.m */; };
 		B112769923D8EFD200E51F4C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B112769823D8EFD200E51F4C /* FirstViewController.m */; };
@@ -31,6 +32,8 @@
 		14D50BE11FCC70EE00ECF757 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		14D50BE31FCC70FD00ECF757 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		14D50C001FCC84C900ECF757 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		1E14469E2DAD774B005A3642 /* CMDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMDWrapper.swift; sourceTree = "<group>"; };
+		1E1446A02DAD775D005A3642 /* CirrusMDSDK-Pods-ObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CirrusMDSDK-Pods-ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		1EDA4C8229B16370001B9FC8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +139,7 @@
 		B112769023D8EFD200E51F4C /* CirrusMDSDK-Pods-ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				1E14469E2DAD774B005A3642 /* CMDWrapper.swift */,
 				B112769123D8EFD200E51F4C /* AppDelegate.h */,
 				B112769223D8EFD200E51F4C /* AppDelegate.m */,
 				B112769423D8EFD200E51F4C /* SceneDelegate.h */,
@@ -147,6 +151,7 @@
 				B11276A223D8EFD200E51F4C /* LaunchScreen.storyboard */,
 				B11276A523D8EFD200E51F4C /* Info.plist */,
 				B11276A623D8EFD200E51F4C /* main.m */,
+				1E1446A02DAD775D005A3642 /* CirrusMDSDK-Pods-ObjC-Bridging-Header.h */,
 			);
 			path = "CirrusMDSDK-Pods-ObjC";
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 					B112768E23D8EFD200E51F4C = {
 						CreatedOnToolsVersion = 11.3.1;
 						DevelopmentTeam = C7DYCH58CQ;
+						LastSwiftMigration = 1620;
 						ProvisioningStyle = Automatic;
 					};
 					B170B94F232C330A00665AE8 = {
@@ -395,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B11276A723D8EFD200E51F4C /* main.m in Sources */,
+				1E14469F2DAD775A005A3642 /* CMDWrapper.swift in Sources */,
 				B112769323D8EFD200E51F4C /* AppDelegate.m in Sources */,
 				B112769923D8EFD200E51F4C /* FirstViewController.m in Sources */,
 				B112769623D8EFD200E51F4C /* SceneDelegate.m in Sources */,
@@ -556,20 +563,25 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CirrusMDSDK-Pods-ObjC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Pods-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK-Pods-ObjC/CirrusMDSDK-Pods-ObjC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -582,21 +594,25 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CirrusMDSDK-Pods-ObjC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cirrusmd.CirrusMDSDK-Pods-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CirrusMDSDK-Pods-ObjC/CirrusMDSDK-Pods-ObjC-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -619,7 +635,7 @@
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CirrusMDSDK-Pods/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -651,7 +667,7 @@
 				DEVELOPMENT_TEAM = C7DYCH58CQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CirrusMDSDK-Pods/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
