@@ -286,7 +286,7 @@ CirrusMD.singleton.logOut()
 
 ### Push notifications
 
-In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. Contact your account representative at CirrusMD to enable CirrusMD push notification delivery.
+In order to enable push notifications for your patients you'll need to provide CirrusMD with the APNS certificate used for the Bundle Identifier associated with your application. Contact your account representative at CirrusMD to enable CirrusMD push notification delivery. CirrusMD does not currently support Sandbox APNS Certificates, as a result APNS testing will need to be conducted on an AdHoc Build downloaded to the test phone or an AppStore build released through TestFlight.
 
 #### Registering for remote notifications
 
