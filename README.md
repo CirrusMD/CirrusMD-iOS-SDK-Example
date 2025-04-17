@@ -115,8 +115,6 @@ Basic usage of of the CirrusMDSDK is very simple.
 
 1. import CirrusMDSDK
 
-##### Swift
-
 ```swift
 import CirrusMDSDK
 ```
@@ -127,15 +125,11 @@ import CirrusMDSDK
 
 3. Start the SDK in `func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool`. This is a very low overhead function that sets up the SDK's memory and passes launchOptions for push notification and other features. Any time after this function is called but before you call `configureWithToken` you can use the `CirrusMDConfig` class to configre the look and feel of the SDK.
 
-##### Swift
-
 ```swift
 CirrusMD.singleton.startSDK(withLaunchOptions: launchOptions)
 ```
 
 4. **_AFTER_** starting up and (optionally configuring) the SDK, Set the CirrusMD provided secret and the API provided token. The secret is unique to your organization. To receive a valid client secret contact your account representative at CirrusMD. This is your opportunity to verify that the token and secret provided to the SDK are able to load a patient.
-
-##### Swift
 
 ```swift
 /*
@@ -174,8 +168,6 @@ CirrusMD.singleton.configureWithToken("RETRIEVED_TOKEN", andSecret: "CIRRUSMD-PR
 
 **_NOTE_** CirrusMDSDK's viewController MUST be embedded within a UINavigationController (either by pushing it onto an existing UINavigationController as demonstrated below or by being added to a new UINavigationController that can be presented modally). We do call pop to root view controller as part of the SDK. You should keep that in mind when deciding how to configure the Navigation contrller you use and how you impliment the view.
 
-##### Swift
-
 ```swift
 let controller = CirrusMD.singleton.viewController
 
@@ -207,8 +199,6 @@ Customization of both the _logged out view_ and _error view_ happens via the `Ci
 2. Provide custom views for any or all of the optional delegates.
 3. Set a frame on the view you provide and it will be centered in the yellow area of the screen below.
 4. It is important to note that all delegate methods must be included to conform to the protocol when implimenting the `CirrusMDDelegate`.
-
-##### Swift
 
 ```swift
 // CirrusMDDelegate
@@ -254,7 +244,6 @@ func userLoggedOut() {
 
 There are callbacks on `CirrusMDDelegate` for when a user is logged in or logged out of the SDK (for example when a user uses the Sign Out button in settings). These callbacks can be used to correctly handle the CirrusMDSDK in your application. For example you can dismiss `CirrusMD.singleton.viewController` when a user logs out.
 
-##### Swift
 ```swift
 // CirrusMDDelegate
 
@@ -271,7 +260,6 @@ func userLoggedOut() {
 
 The SDK reports errors through the errorRecieved() delegate function. Currently this is just being used to report video errors. Expect further error reporting in the future.
 
-### Swift
 ```swift
 func errorReceived(error: NSError, attributes: [AnyHashable: String]?) {
     // Handle error and attributes
@@ -282,7 +270,6 @@ func errorReceived(error: NSError, attributes: [AnyHashable: String]?) {
 
 The SDK reports the video session connection status, this can be used to report video related events. 
 
-### Swift
 ```swift
 func videoSessionConnectionStatus(attributes: [AnyHashable: String]?) {
     // Handle attributes
@@ -292,8 +279,6 @@ func videoSessionConnectionStatus(attributes: [AnyHashable: String]?) {
 ### Logout
 
 You may wish to log the user out of the SDK when they sign out of your application. Logging the user out destroys the associated CirrusMD server session and unregisters the device from CirrusMD delivered push notifications if previously registred.
-
-##### Swift
 
 ```swift
 CirrusMD.singleton.logOut()
@@ -307,8 +292,6 @@ In order to enable push notifications for your patients you'll need to provide C
 
 **_AFTER_** providing CirrusMD with your APNS Certificate, register for push notifications. Before registering your device token with the CirrusMD system you must authenticate to the SDK; This means that before you call the registration code below you need to have successfully called `CirrusMD.setSessionToken(token: String)` and received a `CirrusDataEvents.Success` event in the `CirrusMD.CirrusDataEventListener.onDataEvent` interface. So that we can properly save the device token for that specific user.
 
-##### Swift
-
 ```swift
 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
     DispatchQueue.main.async {
@@ -319,8 +302,6 @@ UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound
 
 Use the `deviceToken` provided by Apple when [application(\_:didRegisterForRemoteNotificationsWithDeviceToken:))](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) is called.
 
-##### Swift
-
 ```swift
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     CirrusMD.singleton.registerForRemoteNotifications(deviceToken)
@@ -328,8 +309,6 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 ```
 
 #### Unregistering for remote notifications
-
-##### Swift
 
 ```swift
 CirrusMD.singleton.unregisterForRemoteNotifications()
@@ -371,7 +350,7 @@ So the complete push notification payload should look like:
 `true` means the notification should be displayed. Either the view is not being shown or a different `streamId` is selected.
 
 `false` means the notification should **not** be displayed. The view is being shown and is on the provided `streamId`.
-##### Swift
+
 ```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     if CirrusMD.singleton.shouldPresentNotification(notification) {
@@ -394,7 +373,6 @@ If the provided `streamId` is not found on the current user's profile, no action
 
 In addition to these actions, if the notification is for a video session, the video session will be launched once the user is presented with the corresponding stream.
 
-##### Swift
 ```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
     CirrusMD.singleton.didReceiveNotification(center: center, response: response, withCompletionHandler: completionHandler)
@@ -407,8 +385,6 @@ There are alternate versions of the `shouldPresentNotification` and `didReceiveN
 
 All custom configuration of the CirrusMDSDK is done via the `CirrusMDConfig`. This allows the configuration of items such as titles, colors, optional features, etc.. All of the exact options are outlined below.
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 // Set the desired properties on the config here
@@ -419,8 +395,6 @@ CirrusMD.singleton.setSDKConfiguration(config)
 ### Dark Mode
   
 The CirrusMDSDK fully supports iOS dark mode. By default the views in the SDK will switch between light and dark based on the users settings in iOS. However if you have a specific app design or a switch in your apps settings to allow a user to lock the design of your app to light mode or dark mode only you will want to set the following configuration option. To override the default behavior and lock the SDK to a specific style use the `overrideUserInterfaceStyle` setting on the `CirrusMDConfig` object. As outlined below you can also set a separate primary color for both light and dark mode.
-  
-##### Swift
   
 ```swift
 let config = CirrusMDConfig()
@@ -446,8 +420,6 @@ success         // defaults to "#44db5e", will be used in the future
 warning         // defaults to "#daaf0f", used in the offline banner
 ```
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 config.title = "Custom Title Here" // defaults to "My Healthcare Services" if this is not set
@@ -463,8 +435,6 @@ There is an optional Settings view that you can allow your users to have access 
 
 **_Note_** The Settings view defaults to be disabled.
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 config.enableSettings = true
@@ -478,8 +448,6 @@ The CirrusMDSDK can support a user having dependents that can chat under their g
 
 **_Note_** Dependent support defaults to being disabled.
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 config.enableDependents = true
@@ -490,8 +458,6 @@ CirrusMD.singleton.setSDKConfiguration(config)
 ### Right Bar Button Items
 
 The CirrusMDSDK can support custom right bar button items to be shown in the UINavigationController the CirrusMDSDK's view controller is embedded in. For example if you want to present the CirrusMDSDK view controller modally this can be used to add a "Done" button. The right bar button items are controlled by the `rightBarButtonItems` property on `CirrusMDConfig`.
-
-##### Swift
 
 ```swift
 let config = CirrusMDConfig()
@@ -510,8 +476,6 @@ This banner was originally conceived for crisis hotlines to provide patients wit
 <img src="screens/streamSelectorWithBanner.png" width=328 alt="screenshot of banner in SDK" />          <img src="screens/bannerActionModal.png" width=328 alt="screenshot of banner action modal" />
 
 The code below is an example of how to achieve the above images. You can optionally decide not to add an `infoBannerMessage` and it will not be displayed, or you can decide not to add an `actionModal` and the tappable banner will not be displayed. It is important to note that the banner is added to the screen when it is first constructed so the pinned banner object should be added to the config when the SDK is first initialized to make sure it displays on the home scree.
-
-##### Swift
 
 ```swift
 let phone = CirrusMDContactOption(icon: .phone, contactText: "Call support center", contactURL: URL(string: "tel:9999999999"))
@@ -541,8 +505,6 @@ The CirrusMDSDK can support allowing the user to manually log themselves out of 
 
 **_Note_** User log out support defaults to being disabled.
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 config.enableUserLogOut = true
@@ -556,14 +518,12 @@ The SDK allows retrieval of and deep linking into specific channels.
 
 The channels available to the authenticated user can be retrieved using the `channels` function on `CirrusMD`.
 
-##### Swift
 ```swift
 let channels = CirrusMD.singleton.channels()
 ```
 
 You can force the SDK to navigate (deep link) to one of the channels using the `navigateToChannel` function on `CirrusMD`.
 
-##### Swift
 ```swift
 let channel = CirrusMD.singleton.channels()[index]
 CirrusMD.singleton.navigateToChannel(id: channel.id)
@@ -572,8 +532,6 @@ CirrusMD.singleton.navigateToChannel(id: channel.id)
 ### User Agent Prefix
 
 The CirrusMDSDK allows the addition of a prefix to the User Agent that is sent on network requests.
-
-##### Swift
 
 ```swift
 let config = CirrusMDConfig()
@@ -591,8 +549,6 @@ The CirrusMDSDK can you provide you with a view controller that displays various
 THIS VIEW CONTROLLER SHOULD NEVER BE PRESENTED TO AN END USER. It is for debugging purposes only.
 
 The debug view controller can be accessed and presented manually or it can be accessed in Settings if `showDebugInSettings` is set to true on your `CirrusMDConfig`
-
-##### Swift
 
 ```swift
 // Manually accessing and presenting the debug view controller
@@ -628,8 +584,6 @@ public enum CirrusMDLogLevel: Int {
   - .networking // Adds in all networking calls, both requests and responses marked by :open_umbrella:
   - .verbose    // Shows all logs including the ping back and forth to the Web Socket marked by 🗯️
 
-##### Swift
-
 ```swift
 let config = CirrusMDConfig()
 config.logLevel = .verbose
@@ -640,8 +594,6 @@ CirrusMD.singleton.setSDKConfiguration(config)
 #### Token State
 
 Access `CirrusMD.singleton.tokenState` for the state of the token. The possible values are `invalid`, `valid`, and `unknown`. The `tokenState` can be used to troubleshoot issues with the SDK, `invalid` and `unknown` require retrieving a new token from the server. `unknown` usually indicates that a token has not yet been set.
-
-##### Swift
 
 ```swift
 let tokenState = CirrusMD.singleton.tokenState
