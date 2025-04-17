@@ -475,7 +475,7 @@ This banner was originally conceived for crisis hotlines to provide patients wit
 
 <img src="screens/streamSelectorWithBanner.png" width=328 alt="screenshot of banner in SDK" />          <img src="screens/bannerActionModal.png" width=328 alt="screenshot of banner action modal" />
 
-The code below is an example of how to achieve the above images. You can optionally decide not to add an `infoBannerMessage` and it will not be displayed, or you can decide not to add an `actionModal` and the tappable banner will not be displayed. It is important to note that the banner is added to the screen when it is first constructed so the pinned banner object should be added to the config when the SDK is first initialized to make sure it displays on the home scree.
+The code below is an example of how to achieve the above images. You can optionally decide not to add an `infoBannerMessage` and it will not be displayed, or you can decide not to add an `actionModal` and the tappable banner will not be displayed. It is important to note that the banner is added to the screen when it is first constructed so the pinned banner object should be added to the config when the SDK is first initialized to make sure it displays on the home screen.
 
 ```swift
 let phone = CirrusMDContactOption(icon: .phone, contactText: "Call support center", contactURL: URL(string: "tel:9999999999"))
