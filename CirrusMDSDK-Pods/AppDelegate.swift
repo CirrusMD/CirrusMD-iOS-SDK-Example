@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         
         // The new low memeory overhead SDK start function that can help make your app load faster
-        CirrusMD.singleton.startSDK(withLuanchOptions: launchOptions)
+        CirrusMD.singleton.startSDK(withLaunchOptions: launchOptions)
         
         // Configuration can be set multiple times after start but before setting a patient token
         //  This small configuration just turns on logging earlier if you run into issues just un-comment to try
