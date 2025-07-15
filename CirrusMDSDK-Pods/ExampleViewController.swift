@@ -142,6 +142,11 @@ class ExampleViewController: UIViewController {
 // MARK: - CirrusMDSKSessionDelegate
 
 extension ExampleViewController: CirrusMDDelegate {
+
+    func userViewedScreen(screenName: String) {
+        // NO-OP
+    }
+    
     func viewForError(code: CirrusMDSDK.CirrusMDResult) -> UIView? {
         print("View for error")
         return nil

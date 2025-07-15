@@ -238,6 +238,10 @@ func userLoggedIn(credentialId: Int) {
 func userLoggedOut() {
     print("User Logged Out.")
 }
+
+func userViewedScreen(screenName: String) {
+    print("User visited Screen: \(screenName)")
+}
 ```
 
 #### Delegate Callbacks

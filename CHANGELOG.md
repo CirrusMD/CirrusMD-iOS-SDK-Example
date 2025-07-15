@@ -1,5 +1,26 @@
 # CirrusMD iOS SDK Changelog
 
+# 12.1.0
+Xcode 16.4.0
+
+## Changes:
+- Updated Pods:
+  - Kingfisher 8.3.2 (https://github.com/onevcat/Kingfisher/releases)
+  - AmazonChimeSDK 0.27.1 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+- Turned on Swift 6 concurrency warnings for the compiler.
+- Updated all API calls for Swift 6
+- Updated all API return data to be struct instead of class types
+- Updated all `[String: Any]` args to `[String: any Sendable]`
+
+# 12.0.0
+Xcode 16.2.0
+
+## Changes:
+- Minimum iOS Target changed to 15.6 for SDK and all white labels
+- Added `PreEncounterActionMessageView` that is shown in an uninitiated encounter if `pre_encounter_action_message_name` is set on the plan
+- Added `startSDK(withLaunchOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)` to allow for deffered configuration and faster startup.
+- Reset password has been added to security in settings
+
 # 11.10.0
 
 ## Built with: Xcode 15.4.0
