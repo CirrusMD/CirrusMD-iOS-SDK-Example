@@ -1,5 +1,24 @@
 # CirrusMD iOS SDK Changelog
 
+# 12.2.0
+Xcode 16.4.0
+
+## Changes:
+- Updated Pods:
+  - Kingfisher 8.5.0 (https://github.com/onevcat/Kingfisher/releases)
+- Added `enableSecuritySettings` to CirrusMDConfig to show or hide the security cell in the Settings list
+- Added Delete Photo option for image picker for use on the patient profile
+- Refactor Provider Profile into a SwiftUI view
+- Refactor Support into a SwiftUI view
+- Rebuild of the Red Dot back button to work better in iOS 26 and be easier to see on older versions of iOS
+- Bug Fix for the text color of Cancel buttons in iOS 26
+- Added Medical Card Details and Medical Card selector screens
+- Added API calls and image handling for Medical Cards
+- Added share warning to all shares to warn patients they are sharing PHI
+- Added Don't remind me to share warning
+- Renamed Labs to Medical Documents and updated design to allow for Labs and Imaging tabs
+- Added navigation button to Medical Documents cells to navigate to stream
+
 # 12.1.0
 Xcode 16.4.0
 
