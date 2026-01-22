@@ -55,18 +55,23 @@ class ExampleViewController: UIViewController {
         CirrusMD.singleton.delegate = self
         
         // Design the Navigation Controller any way you would like
-        
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
-        navigationController?.navigationBar.barStyle = .black
-        
-        if #available(iOS 15.0, *) {
+        // This is the old style of Navbar before iOS 26, it still works but does not look very iOS 26
+        // However we have updated all screens to work with a translucent nav bar designed for iOS 26
+        if #available(iOS 26.0, *) {
+            navigationController?.navigationBar.isTranslucent = true
+            navigationController?.navigationBar.tintColor = UIColor.black
+        } else {
+            // Pre iOS 26 Nav bar style
+            navigationController?.navigationBar.barTintColor = UIColor.black
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.tintColor = .white
+            navigationController?.navigationBar.isTranslucent = false
+            navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
+            navigationController?.navigationBar.barStyle = .black
+            
             let appearance = UINavigationBarAppearance()
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            appearance.backgroundColor = UIColor.black
+            appearance.backgroundColor =  UIColor.black
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.compactAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
