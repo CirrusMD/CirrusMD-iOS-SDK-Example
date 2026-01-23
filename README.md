@@ -31,7 +31,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Requires Xcode 16.0 or later
+- Requires Xcode 17.0 or later
 - Requires project Swift version to be 5.2 or later
 - Requires `Build Settings > Build Options > Build Libraries for Distribution` to be set to `Yes`. More information on this requirement and a possible workaround can be found in the [Module Stability Requirement](#module-stability-requirement) documentation.
 - Requires CocoaPods version 1.16.0 or later. This is related to the [Module Stability Requirement](#module-stability-requirement).
@@ -56,7 +56,7 @@ To integrate CirrusMDSDK into your Xcode project using CocoaPods, specify it in 
 source 'https://github.com/CocoaPods/Specs.git' # <-- Make sure to add this line if it's not already in your Podfile
 source 'https://github.com/CirrusMD/podspecs.git' # <-- Make sure to add this line
 
-platform :ios, '15.6'
+platform :ios, '16.6'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -432,6 +432,10 @@ config.primaryColorDarkMode = UIColor.purple
 
 CirrusMD.singleton.setSDKConfiguration(config)
 ```
+
+### Nav Bar design
+  
+As part of our continuing effort to support the very latest of iOS design, we have gone through the entire SDK and updated every screen to fully support the transparent Nav Bar style used in iOS 26. However we still want to support app designs that use a solid color Nav bar. This was done by expanding the capabilities we already had using the Nav bar provided by the hosting app as the design basis for the SDK. As you can see in the example when you put the CirrusMD SDK view into a translucent nav bar, subsequent bars created by our SDK will use the same design provided by the hosting app. This should not require any changes to your code, we just now properly support a translucent Nav bar being passed in and allowing views and feeds to flow under those bars where it makes sense. If you run into any bugs as you design your app for iOS 26 and start passing in a translucent Nav bar, please do not hesitate to reach out so we can resolve these in future releases.
 
 ### Enable Settings View
 
