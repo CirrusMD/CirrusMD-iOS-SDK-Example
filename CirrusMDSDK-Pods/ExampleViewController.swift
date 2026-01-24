@@ -58,6 +58,7 @@ class ExampleViewController: UIViewController {
         // This is the old style of Navbar before iOS 26, it still works but does not look very iOS 26
         // However we have updated all screens to work with a translucent nav bar designed for iOS 26
         if #available(iOS 26.0, *) {
+            // Try on iOS 26 to see translucent Nav bar
             navigationController?.navigationBar.isTranslucent = true
             navigationController?.navigationBar.tintColor = UIColor.black
         } else {
