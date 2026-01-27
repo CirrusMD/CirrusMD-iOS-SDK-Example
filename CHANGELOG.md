@@ -20,7 +20,6 @@ Xcode 26.1.1
 - Commented out and removed upload to Box for Fastlane
 - Updated UINavigationController for iOS 26, Nav Bar is now translucent for iOS 26 and above.
 - We still respect the design of the Nav bar passed by an App that uses our SDK.
-- Update Cert Pinning Certs with AWS Root Cert
 
 - Updated design of the ProfileViewController to use insetGrouped tableView.
 - Adds Chat History feature to settings.
