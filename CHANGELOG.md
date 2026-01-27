@@ -1,5 +1,41 @@
 # CirrusMD iOS SDK Changelog
 
+# 12.3.1
+Xcode 26.1.1
+
+## Changes:
+
+- Bug Fix: 
+  - Fixed bug where upload document button was showing in stream when feature is disabled
+  - Fixed bug where delete document uploads were not disabled in encounter
+
+# 12.3.0
+Xcode 26.1.1
+
+## Changes:
+
+- Updated Pods:
+  - Kingfisher 8.6.0 (https://github.com/onevcat/Kingfisher/releases)
+- Deployment Target was changed to 16.6 (Dropped iOS 15 support)
+- Commented out and removed upload to Box for Fastlane
+- Updated UINavigationController for iOS 26, Nav Bar is now translucent for iOS 26 and above.
+- We still respect the design of the Nav bar passed by an App that uses our SDK.
+- Update Cert Pinning Certs with AWS Root Cert
+
+- Updated design of the ProfileViewController to use insetGrouped tableView.
+- Adds Chat History feature to settings.
+- Chat History includes Encounter History List and Chat Messages.
+- Added `Other documents` tab to medical documents.
+- Added `FileUploaderVC` to upload files of type pdf, png or jpeg.
+- Added button to upload files in the `Other documents` tab in medical documents.
+
+- Bug Fix: 
+  - API calls in Action Message Forms(HIE Consent) now use the HUD to block taps during the call
+  - Med Card share button now places the card images above and below rather than side by side
+  - Data Sharing Controller no longer cuts off long text strings in the top header cell
+  - Fixed a crash in collection Diff for large data sets switching to Apple's solution
+  - Fixed an issue where Assessments could send duplicate answers for multi select questions
+
 # 12.2.0
 Xcode 16.4.0
 
