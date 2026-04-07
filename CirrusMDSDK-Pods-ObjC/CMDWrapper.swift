@@ -14,8 +14,8 @@ import UIKit
 
 public class CMDWrapper: NSObject {
     
-    @objc func startSDK(withLuanchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        CirrusMD.singleton.startSDK(withLuanchOptions: withLuanchOptions)
+    @objc func startSDK(withLuanchOptions: [UIApplication.LaunchOptionsKey: any Sendable]?) {
+        CirrusMD.singleton.startSDK(withLaunchOptions: withLuanchOptions)
     }
     
     @objc func configureSDK(withButtonItems: [UIBarButtonItem]) {
@@ -29,6 +29,7 @@ public class CMDWrapper: NSObject {
         CirrusMD.singleton.setSDKConfiguration(config)
     }
     
+    @MainActor
     @objc func currentViewController() -> UIViewController? {
         return CirrusMD.singleton.viewController
     }
