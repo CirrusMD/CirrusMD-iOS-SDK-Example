@@ -1,5 +1,32 @@
 # CirrusMD iOS SDK Changelog
 
+# 13.0.1
+Xcode 26.2.0
+
+## Changes:
+
+- Bug Fix: 
+  - Right bar buttons items added to SDK config now work properly.
+
+# 13.0.0
+Xcode 26.2.0
+
+## Changes:
+
+- Updated Pods:
+  - Kingfisher 8.6.2 (https://github.com/onevcat/Kingfisher/releases)
+  - AmazonChimeSDK 0.27.2 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+- Fixed bug where an empty profile update request could be sent
+- Updated dependencies to make them Sendable.
+- Updated dependency injector to work with new Coordinator system.
+- New Home Screen for the App.
+- New Main Menu in the Nav bar home screen.
+- Add Figtree Font to the SDK and use on New Homescreen.
+- Added `is_legacy_channels_of_care_enabled` to Customer for home screen design option.
+
+- Bug Fix: 
+  - Avatar Images No longer show empty on API error.
+
 # 12.3.1
 Xcode 26.1.1
 
