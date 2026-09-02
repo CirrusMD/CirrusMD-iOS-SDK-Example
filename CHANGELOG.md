@@ -1,5 +1,28 @@
 # CirrusMD iOS SDK Changelog
 
+# 13.1.0
+Xcode 26.6.0
+
+## Changes:
+- Updated Pods:
+  - Kingfisher 8.8.1 (https://github.com/onevcat/Kingfisher/releases)
+- Updated PatientHomeView patient greeting from "Hey" to "Hi"
+- Created SwiftUI version of Assessments
+- Created scheduling tool to allow provider, date, and time selection
+- Added Appointment APIs for home feed Appointment cards and scheduling tool
+- Added SwiftUI cards to the home feed when a patient has a scheduled appointment
+- Added appointment WebSocket event and updates the data
+- Updated Home Screen Bottom card to better reflect the Stream Status for single stream patients
+- Added new Pre Encounter Flow to replace Pre Encounter Assesment
+- Changed Chat with A Doctor buttons to open the new Pre Encounter Flow
+
+- Bug Fix: 
+- Fixed a bug where the home screen could crash when recursive rebuilding happens on older devices
+- Fixed a bug where the home screen patient picker could be out of sync with app state.
+- Fixed a bug where pincode taps could be slow on some devices.
+- Fixed a bug where the home menu would not respect SDK cconfig regarding sign out.
+- Fixed a crash that was happening on iOS 16 devices.
+
 # 13.0.1
 Xcode 26.2.0
 
