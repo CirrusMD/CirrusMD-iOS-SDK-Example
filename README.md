@@ -463,9 +463,24 @@ config.enableDependents = true
 CirrusMD.singleton.setSDKConfiguration(config)
 ```
 
-### Right Bar Button Items
+### Close Button
 
-The CirrusMDSDK can support custom right bar button items to be shown in the UINavigationController the CirrusMDSDK's view controller is embedded in. For example if you want to present the CirrusMDSDK view controller modally this can be used to add a "Done" button. The right bar button items are controlled by the `rightBarButtonItems` property on `CirrusMDConfig`.
+The CirrusMDSDK supports a custom close action, which is particularly useful when presenting the SDK's view controller modally (for example, adding a way to dismiss the view). You can define this behavior by passing a closure to the `closeButtonBlock` property on `CirrusMDConfig`. The SDK will automatically handle creating and displaying the button in the navigation bar.
+
+```swift
+let config = CirrusMDConfig()
+config.closeButtonBlock = { [weak self] in
+    self?.done()
+}
+
+CirrusMD.singleton.setSDKConfiguration(config)
+```
+
+### Right Bar Button Items (Deprecated)
+
+> **Note:** Customizing the navigation bar via `rightBarButtonItems` is deprecated. Please use the `closeButtonBlock` property shown above instead.
+
+Previously, the CirrusMDSDK supported injecting custom right bar button items into the `UINavigationController` housing the SDK's view controller. This was managed via the `rightBarButtonItems` property on `CirrusMDConfig`.
 
 ```swift
 let config = CirrusMDConfig()
