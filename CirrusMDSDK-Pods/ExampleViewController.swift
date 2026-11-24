@@ -44,6 +44,13 @@ class ExampleViewController: UIViewController {
         config.primaryColorDarkMode = UIColor.purple
         config.title = "Your Custom Title"
         config.enableSettings = true
+        
+        // In this case we are on the Nav stack but you can put any UI code in here to dismiss the SDK view
+        //  When presented modally dismiss also works.
+        config.closeButtonBlock = { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
+        
         CirrusMD.singleton.setSDKConfiguration(config)
         
         showSdkButton.setTitle("Initializing CirrusMDSDK...", for: .normal)

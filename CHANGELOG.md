@@ -1,5 +1,27 @@
 # CirrusMD iOS SDK Changelog
 
+# 13.2.0
+Xcode 26.6.0
+
+## Changes:
+- Refactored CMDSnapKit to be completely compatible with Swift 6 Concurrency (isolated layout types and builders to `@MainActor`, declared associated keys thread-safe, and implemented deadlock-proof off-main-thread debug descriptions).
+- Updated Pods:
+  - AmazonChimeSDK 0.27.4 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - AmazonChimeSDKMedia 0.25.4 (https://github.com/aws/amazon-chime-sdk-ios/releases)
+  - Kingfisher 8.12.0 (https://github.com/onevcat/Kingfisher/releases)
+- Refactored SDK `Styles` class and downstream properties to be completely compatible with Swift 6 Concurrency by isolating style and color caches to `@MainActor`.
+- Deprecated `rightBarButtonItems` will be removed in the next major release.
+- Added `closeButtonBlock` to `CirrusMDConfig` as the new way to add a close button to the SDK nav bar.
+- Added `PatientClinicalRecordsVC` feature to allow patients to view and manage active, resolved, and historical clinical records
+- Removed icons from Appointment type page in the Pre Encounter flow.
+- Fixed a bug where the skip button on the patient sat survey could close the SDK when presented modally.
+
+- Bug Fix: 
+- Fixed a bug where SDK startup can fail in a bad way when the error return could not be parsed.
+- Fixed a bug where the link color at the bottom card on the home screen would not match the text.
+- Fixed a bug where the cancel button in an Assessment would not prompt the user with the confirmation alert.
+- Fixed a bug where older devices opening Safari captured browser would have dark buttons in dark mode.
+
 # 13.1.0
 Xcode 26.6.0
 

@@ -25,6 +25,8 @@ public class CMDWrapper: NSObject {
         config.primaryColorDarkMode = UIColor.purple
         config.title = "Your Custom Title"
         config.enableSettings = true
+        // We are showing that this still works for now however this method has been deprecated.
+        //  Please use closeButtonBlock instead.
         config.rightBarButtonItems = withButtonItems
         CirrusMD.singleton.setSDKConfiguration(config)
     }
